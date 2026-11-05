@@ -1,0 +1,3 @@
+[{"id": "chatgpt", "label": "ChatGPT", "model": "gpt-6-sol"},
+ {"id": "claude", "label": "Claude", "model": "claude-sonnet-5-5"},
+ {"id": "gemini", "label": "Gemini", "model": "gemini-3.8-flash"}]

@@ -1,0 +1,76 @@
+{
+  "phase": "plan",
+  "target": {
+    "name": "Chiaro",
+    "domain": "chiaro.ai",
+    "summary": "An AI-powered travel companion and audio guide mobile app that turns photos of artworks, monuments, and sights into instant interactive audio stories.",
+    "audience": "Museum visitors, independent travelers, art enthusiasts, and cultural tourists looking for on-demand audio exploration",
+    "category": "AI audio guide and travel companion apps"
+  },
+  "mindmap": {
+    "root": "AI audio guide and travel companion apps",
+    "branches": [
+      {
+        "intent": "Art & museum recognition",
+        "prompts": [
+          "app to recognize artworks",
+          "identify paintings by photo",
+          "AI museum guide app",
+          "museum artwork scanner app",
+          "what app identifies art in museums"
+        ]
+      },
+      {
+        "intent": "Self-guided sightseeing & landmark tours",
+        "prompts": [
+          "audio tour guide app",
+          "walking tour audio app",
+          "best audio guide app for landmarks",
+          "self guided city tour app",
+          "app that tells you about buildings you photograph"
+        ]
+      },
+      {
+        "intent": "Interactive & conversational guides",
+        "prompts": [
+          "interactive audio guide app",
+          "conversational AI tour guide",
+          "ask questions about museum exhibits app",
+          "app to ask questions about paintings",
+          "AI assistant for historic landmark information"
+        ]
+      },
+      {
+        "intent": "Multilingual travel audio",
+        "prompts": [
+          "multilingual audio tour app",
+          "museum guide in my language",
+          "travel guide app in multiple languages",
+          "foreign language audio guide for sightseeing",
+          "app that explains monuments in Spanish"
+        ]
+      },
+      {
+        "intent": "Trip summaries & photo recaps",
+        "prompts": [
+          "travel recap app",
+          "daily trip summary audio",
+          "automatic travel journal from vacation photos",
+          "app to log and summarize visited landmarks",
+          "create daily audio story of vacation itinerary"
+        ]
+      },
+      {
+        "intent": "Competitor comparisons & alternatives",
+        "prompts": [
+          "smartify alternatives",
+          "apps like izi travel",
+          "top alternatives to museum audio devices",
+          "free museum audio guides",
+          "cheap alternative to private tour guide"
+        ]
+      }
+    ]
+  },
+  "use_case": "A traveler or museum visitor wanting an on-demand AI tour guide that identifies sights from photos and narrates personalized audio explanations in their language."
+}
