@@ -1,0 +1,251 @@
+{
+  "mode": "visibility",
+  "batch": "b3",
+  "engine": "chatgpt",
+  "results": [
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Polarsteps",
+          "domain": "polarsteps.com"
+        },
+        {
+          "name": "FindPenguins",
+          "domain": "findpenguins.com"
+        }
+      ],
+      "prompt": "travel recap app",
+      "citations": [
+        "https://www.pebbls.com/blog/best-travel-journal-apps"
+      ],
+      "mentioned": false,
+      "answer_summary": "Polarsteps tracks your route and photos for a shareable trip recap; FindPenguins offers a similar travel diary and flyover video. Neither is specifically an audio recap."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Triplium",
+          "domain": null
+        },
+        {
+          "name": "Reisespur",
+          "domain": null
+        }
+      ],
+      "prompt": "daily trip summary audio",
+      "citations": [
+        "https://apps.apple.com/be/app/triplium-ai-travel-journal/id6791799724",
+        "https://apps.apple.com/gh/app/reisespur-travel-journal/id6816966588"
+      ],
+      "mentioned": false,
+      "answer_summary": "Triplium can assemble a short daily story from photos, notes and route data, but its listing does not establish an automatically narrated daily audio summary. Reisespur lets you preserve voice notes."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Triplium",
+          "domain": null
+        },
+        {
+          "name": "Polarsteps",
+          "domain": "polarsteps.com"
+        },
+        {
+          "name": "FindPenguins",
+          "domain": "findpenguins.com"
+        }
+      ],
+      "prompt": "automatic travel journal from vacation photos",
+      "citations": [
+        "https://apps.apple.com/be/app/triplium-ai-travel-journal/id6791799724",
+        "https://www.pebbls.com/blog/best-travel-journal-apps"
+      ],
+      "mentioned": false,
+      "answer_summary": "Triplium assembles photos and notes into a daily story and recap video. Polarsteps and FindPenguins are established alternatives for map-based photo travel journals."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "MeTrail",
+          "domain": null
+        },
+        {
+          "name": "Traveled",
+          "domain": null
+        }
+      ],
+      "prompt": "app to log and summarize visited landmarks",
+      "citations": [
+        "https://apps.apple.com/by/app/metrail-location-journal/id1611186060",
+        "https://apps.apple.com/us/app/traveled-history-timeline/id1445625132"
+      ],
+      "mentioned": false,
+      "answer_summary": "MeTrail records places and daily timelines; Traveled logs landmarks and creates place-based journal pages. Check location permissions and edit logged visits for accuracy."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Walky",
+          "domain": null
+        },
+        {
+          "name": "Tellby",
+          "domain": "tellby.us"
+        }
+      ],
+      "prompt": "create daily audio story of vacation itinerary",
+      "citations": [
+        "https://apps.apple.com/us/app/walky-trip-itinerary-planner/id6651862709",
+        "https://tellby.us/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Walky offers day-by-day itineraries and narrated stops, but not a confirmed personalized daily audio recap. Tellby offers location audio stories and trip books; check whether it meets your recap needs."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "Bloomberg Connects",
+          "domain": "bloombergconnects.org"
+        },
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        }
+      ],
+      "prompt": "smartify alternatives",
+      "citations": [
+        "https://www.izi.travel/en/app",
+        "https://bpb-us-w2.wpmucdn.com/wp.wpi.edu/dist/2/96/files/2024/04/Audio-Guide-Development-and-Visitor-Research-at-the-Brunel-Museum-9e935bb74a140802.pdf",
+        "https://voicemap.me/walking-tour-app",
+        "https://apps.apple.com/us/app/smartify-arts-and-culture/id1102736524"
+      ],
+      "mentioned": false,
+      "answer_summary": "Try izi.TRAVEL for museum and city audio guides, Bloomberg Connects for participating museums, or VoiceMap for self-guided audio walks. Artwork scanning may differ from Smartify."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Bloomberg Connects",
+          "domain": "bloombergconnects.org"
+        },
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "SmartGuide",
+          "domain": "smartguide.app"
+        }
+      ],
+      "prompt": "apps like izi travel",
+      "citations": [
+        "https://bpb-us-w2.wpmucdn.com/wp.wpi.edu/dist/2/96/files/2024/04/Audio-Guide-Development-and-Visitor-Research-at-the-Brunel-Museum-9e935bb74a140802.pdf",
+        "https://apps.apple.com/us/app/smartify-arts-and-culture/id1102736524",
+        "https://voicemap.me/walking-tour-app",
+        "https://www.smartguide.app/faq"
+      ],
+      "mentioned": false,
+      "answer_summary": "Bloomberg Connects is useful for participating museums; Smartify adds art discovery, while VoiceMap and SmartGuide cover self-guided audio tours. Availability depends on the venue and city."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Bloomberg Connects",
+          "domain": "bloombergconnects.org"
+        },
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        }
+      ],
+      "prompt": "top alternatives to museum audio devices",
+      "citations": [
+        "https://bpb-us-w2.wpmucdn.com/wp.wpi.edu/dist/2/96/files/2024/04/Audio-Guide-Development-and-Visitor-Research-at-the-Brunel-Museum-9e935bb74a140802.pdf",
+        "https://www.izi.travel/en/app",
+        "https://apps.apple.com/us/app/smartify-arts-and-culture/id1102736524"
+      ],
+      "mentioned": false,
+      "answer_summary": "Start with the museum’s own mobile guide, then try Bloomberg Connects or izi.TRAVEL for supported collections; Smartify is another option for art discovery and audio tours. Bring headphones and check venue coverage."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "Bloomberg Connects",
+          "domain": "bloombergconnects.org"
+        }
+      ],
+      "prompt": "free museum audio guides",
+      "citations": [
+        "https://americanart.si.edu/visit/tours/audio-guides",
+        "https://www.izi.travel/en/app",
+        "https://bpb-us-w2.wpmucdn.com/wp.wpi.edu/dist/2/96/files/2024/04/Audio-Guide-Development-and-Visitor-Research-at-the-Brunel-Museum-9e935bb74a140802.pdf"
+      ],
+      "mentioned": false,
+      "answer_summary": "Check the museum’s own website or QR codes first. izi.TRAVEL has free museum guides, and Bloomberg Connects offers guides at participating venues; confirm the specific exhibition is covered."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        },
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        }
+      ],
+      "prompt": "cheap alternative to private tour guide",
+      "citations": [
+        "https://www.izi.travel/en/app",
+        "https://www.ricksteves.com/watch-read-listen/audio/audio-europe",
+        "https://voicemap.me/walking-tour-app"
+      ],
+      "mentioned": false,
+      "answer_summary": "Try free self-guided tours in izi.TRAVEL or Rick Steves Audio Europe where available. VoiceMap offers paid audio walks and some free tours; none replaces a live guide for personal questions."
+    }
+  ]
+}

@@ -1,0 +1,311 @@
+{
+  "mode": "visibility",
+  "batch": "b3",
+  "engine": "gemini",
+  "results": [
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Polarsteps",
+          "domain": "polarsteps.com"
+        },
+        {
+          "name": "Journi Blog",
+          "domain": "journiapp.com"
+        },
+        {
+          "name": "Wanderlog",
+          "domain": "wanderlog.com"
+        },
+        {
+          "name": "1 Second Everyday",
+          "domain": "1se.co"
+        }
+      ],
+      "prompt": "travel recap app",
+      "citations": [
+        "https://www.polarsteps.com",
+        "https://www.journiapp.com",
+        "https://wanderlog.com"
+      ],
+      "mentioned": false,
+      "answer_summary": "Top travel recap apps include Polarsteps for automated GPS routes and video recaps, Journi Blog for photo-timeline albums, Wanderlog for itinerary-based summaries, and 1 Second Everyday for quick daily video snippets."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Autio",
+          "domain": "autio.com"
+        },
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "AudioPen",
+          "domain": "audiopen.ai"
+        },
+        {
+          "name": "Day One",
+          "domain": "dayoneapp.com"
+        }
+      ],
+      "prompt": "daily trip summary audio",
+      "citations": [
+        "https://autio.com",
+        "https://voicemap.me",
+        "https://audiopen.ai"
+      ],
+      "mentioned": false,
+      "answer_summary": "To generate or listen to daily trip audio summaries, travelers use Autio for location-based audio storytelling, VoiceMap for audio-guided walks, and audio voice-memo apps like AudioPen or Day One to record spoken daily recaps."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Journi Blog",
+          "domain": "journiapp.com"
+        },
+        {
+          "name": "Polarsteps",
+          "domain": "polarsteps.com"
+        },
+        {
+          "name": "Google Photos",
+          "domain": "photos.google.com"
+        },
+        {
+          "name": "Apple Photos",
+          "domain": "apple.com"
+        }
+      ],
+      "prompt": "automatic travel journal from vacation photos",
+      "citations": [
+        "https://www.journiapp.com",
+        "https://www.polarsteps.com",
+        "https://photos.google.com"
+      ],
+      "mentioned": false,
+      "answer_summary": "Journi Blog and Polarsteps automatically organize vacation photos into mapped timelines using EXIF timestamps and geotags. Google Photos and Apple Photos also auto-create interactive trip memory albums and recap reels."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Wanderlog",
+          "domain": "wanderlog.com"
+        },
+        {
+          "name": "Polarsteps",
+          "domain": "polarsteps.com"
+        },
+        {
+          "name": "Visited",
+          "domain": "visitedapp.com"
+        },
+        {
+          "name": "Fog of World",
+          "domain": "fogofworld.com"
+        }
+      ],
+      "prompt": "app to log and summarize visited landmarks",
+      "citations": [
+        "https://wanderlog.com",
+        "https://visitedapp.com",
+        "https://fogofworld.com"
+      ],
+      "mentioned": false,
+      "answer_summary": "Wanderlog and Polarsteps track landmark visits with maps and trip stats. Visited highlights countries and sights on personalized maps, while Fog of World turns exploring landmarks into a gamified discovery log."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Autio",
+          "domain": "autio.com"
+        },
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "Day One",
+          "domain": "dayoneapp.com"
+        },
+        {
+          "name": "Wanderlog",
+          "domain": "wanderlog.com"
+        }
+      ],
+      "prompt": "create daily audio story of vacation itinerary",
+      "citations": [
+        "https://autio.com",
+        "https://voicemap.me",
+        "https://dayoneapp.com"
+      ],
+      "mentioned": false,
+      "answer_summary": "For turning daily vacation itineraries into audio stories, Autio delivers curated audio snippets for regional routes, VoiceMap provides scripted GPS-triggered itineraries, and voice journaling tools like Day One help log daily reflections."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Bloomberg Connects",
+          "domain": "bloombergconnects.org"
+        },
+        {
+          "name": "Google Arts & Culture",
+          "domain": "artsandculture.google.com"
+        },
+        {
+          "name": "DailyArt",
+          "domain": "getdailyart.com"
+        },
+        {
+          "name": "Magnus",
+          "domain": "magnus.net"
+        }
+      ],
+      "prompt": "smartify alternatives",
+      "citations": [
+        "https://www.bloombergconnects.org",
+        "https://artsandculture.google.com",
+        "https://www.getdailyart.com"
+      ],
+      "mentioned": false,
+      "answer_summary": "Key alternatives to Smartify include Bloomberg Connects for digital museum guides, Google Arts & Culture for comprehensive artwork exploration, DailyArt for daily artwork discoveries, and Magnus for contemporary art identification."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "Bloomberg Connects",
+          "domain": "bloombergconnects.org"
+        },
+        {
+          "name": "PocketSights",
+          "domain": "pocketsights.com"
+        },
+        {
+          "name": "Guidigo",
+          "domain": "guidigo.com"
+        }
+      ],
+      "prompt": "apps like izi travel",
+      "citations": [
+        "https://voicemap.me",
+        "https://smartify.org",
+        "https://pocketsights.com"
+      ],
+      "mentioned": false,
+      "answer_summary": "Popular apps similar to izi.TRAVEL include VoiceMap for self-guided GPS audio walking tours, Smartify and Bloomberg Connects for cultural site guides, PocketSights for community walking tours, and Guidigo for museum experiences."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Bloomberg Connects",
+          "domain": "bloombergconnects.org"
+        },
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        }
+      ],
+      "prompt": "top alternatives to museum audio devices",
+      "citations": [
+        "https://www.bloombergconnects.org",
+        "https://smartify.org",
+        "https://izi.travel"
+      ],
+      "mentioned": false,
+      "answer_summary": "Instead of renting handheld museum audio devices, visitors use Bloomberg Connects and Smartify on their own smartphones, official museum mobile apps, or audio platforms like izi.TRAVEL and Rick Steves Audio Europe."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Bloomberg Connects",
+          "domain": "bloombergconnects.org"
+        },
+        {
+          "name": "Google Arts & Culture",
+          "domain": "artsandculture.google.com"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        },
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        }
+      ],
+      "prompt": "free museum audio guides",
+      "citations": [
+        "https://www.bloombergconnects.org",
+        "https://artsandculture.google.com",
+        "https://www.ricksteves.com"
+      ],
+      "mentioned": false,
+      "answer_summary": "Top free museum audio guide apps include Bloomberg Connects, which hosts guides for hundreds of institutions worldwide, Google Arts & Culture, Rick Steves Audio Europe for major European sights, and free tours on izi.TRAVEL."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "GPSmyCity",
+          "domain": "gpsmycity.com"
+        },
+        {
+          "name": "GuruWalk",
+          "domain": "guruwalk.com"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        }
+      ],
+      "prompt": "cheap alternative to private tour guide",
+      "citations": [
+        "https://voicemap.me",
+        "https://www.gpsmycity.com",
+        "https://www.guruwalk.com"
+      ],
+      "mentioned": false,
+      "answer_summary": "Affordable alternatives to hiring a private guide include GPS audio walking tour apps like VoiceMap and GPSmyCity, joining pay-what-you-wish walking tours via GuruWalk, or using free audio guides from Rick Steves."
+    }
+  ]
+}
