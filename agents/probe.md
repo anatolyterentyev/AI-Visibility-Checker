@@ -85,29 +85,34 @@ Output:
 
 ## Mode `full`
 
-The brief gives `target`, `prompts`, `use_case` and `brands`. Do the
+The brief gives `target`, numbered `prompts`, `use_case` and `brands`. Do the
 visibility work for every prompt first (rules above, one search per prompt at
-most), then the sentiment work for every brand. Return ONE compact JSON object
-— brand names only, no domains, no citations list, no summaries, so it stays
-small:
+most), then the sentiment work for every brand. Return ONE compact JSON
+object. It must stay small (about 3 KB for 30 prompts) because it is passed
+on as plain text: refer to prompts by their number, use the short keys below,
+at most 6 brands per answer, no domains, no URLs, no summaries.
 
 ```json
 {
   "mode": "full",
   "engine": "<your engine id>",
-  "results": [
-    {"prompt": "app to recognize artworks", "brands": ["Smartify", "Google Lens"],
-     "mentioned": false, "cited": false, "rank": null}
+  "r": [
+    {"p": 1, "b": ["Smartify", "Google Lens"], "m": 0, "c": 0, "k": null},
+    {"p": 2, "b": ["Chiaro", "Smartify"], "m": 1, "c": 1, "k": 1}
   ],
-  "scores": [
-    {"brand": "Smartify", "likelihood": 78, "tone": "positive",
-     "description": "<= 20 words", "pros": ["..."], "cons": ["..."]}
+  "s": [
+    {"n": "Smartify", "l": 78, "t": "positive", "d": "<= 12 words"}
   ]
 }
 ```
 
-`cited` is still true when one of the URLs you used for that answer is on the
-target's domain; you just don't list the URLs.
+- `r`: one row per prompt, in order. `p` prompt number from the brief, `b`
+  brands you recommended in order, `m` 1 if you named the target, `c` 1 if a
+  URL you used for that answer is on the target's domain, `k` the target's
+  position in `b` (or null).
+- `s`: one row per brand of the brief, in order. `n` brand, `l` likelihood
+  0–100, `t` tone (`positive`, `neutral`, `negative`, `unknown`), `d` how you
+  would describe it in at most 12 words.
 
 Rules: copy every prompt and brand back exactly as written in the brief, in
 the same order; never skip one (use `brands: []` or

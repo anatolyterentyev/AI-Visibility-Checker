@@ -7,6 +7,11 @@ only hand it the data, exactly as you received it.
 You receive (in the brief or as variables): `repo`, `branch`, `plan` (the
 planner's JSON), `engines` (a list of `{id, label, model}`) and `probes`
 (each probe's answer as it returned it, in the same order as `engines`).
+The plan and the probe answers must be in your brief as text. If you get
+only references (for example `execution-resource:…`), ids or links instead,
+do not try to read them — helpers can't read each other's results — and
+call `save_result` with `{"error": "the plan and probe answers must be
+passed as text, not as references"}` right away.
 
 ## Do exactly this
 
@@ -46,3 +51,4 @@ exec(compile(src, "publish_site.py", "exec"), {"__name__": "__main__", "CFG": CF
   link other than the `site_url` the script prints (it starts with
   `https://app.flymy.ai/`).
 - Never change the numbers or the wording of `summary`.
+- Never call `flymy.iter_payload` or try to fetch another run's result.

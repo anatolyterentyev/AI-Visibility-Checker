@@ -114,8 +114,9 @@ Show me the mind map (intent → prompts) in a few lines and continue.
 
 B3. Probe — in ONE turn, delegate_agent all three probes so they run in
 parallel, each with this brief (its own engine id; prompts = every prompt of
-the mind map, in order, exactly as written; brands = the target's name then
-the plan's competitor names):
+the mind map, in mind-map order, exactly as written — the probes refer to
+them by their position, 1 = first; brands = the target's name then the
+plan's competitor names):
   mode: full
   engine: <chatgpt | claude | gemini>
   target: {"name": "<plan.target.name>", "domain": "<plan.target.domain>"}
@@ -126,13 +127,20 @@ the plan's competitor names):
 Then wait_subagents. A probe that fails: say so and continue without it
 (do not start a replacement unless the 6-run limit and budget allow).
 
-B4. Publish — delegate_agent "AIVC Publisher" with a brief that contains, as
-returned and unchanged: repo "anatolyterentyev/AI-Visibility-Checker",
+B4. Publish — delegate_agent "AIVC Publisher" with a brief that contains,
+as plain text, unchanged: repo "anatolyterentyev/AI-Visibility-Checker",
 branch, engines [{"id","label","model"}…] in the order chatgpt, claude,
-gemini, the plan JSON, and the three probe answers in that same order (use
-each child's full result from subagent_status if the delegate answer was
-shortened). It runs scripts/publish_site.py, which recomputes every number
-and publishes the site, and returns {"site": {...}}.
+gemini, the full plan JSON, and the three probe answers (each a small JSON
+object of about 3 KB) in that same order.
+- Paste the answers themselves. NEVER pass execution-resource references,
+  result ids or links instead: helpers cannot read each other's results
+  (the platform refuses it), and that is the one way this step fails.
+- If a delegate answer you hold is shortened, get the complete text with
+  subagent_status before you paste it.
+It runs scripts/publish_site.py, which recomputes every number and publishes
+the site, and returns {"site": {...}}. If it fails, read why with
+subagent_status, fix the brief and run the publisher once more (the 6th and
+last helper run).
 
 B5. Answer me with: the site link (site_url, https://app.flymy.ai/sites/...),
 the final spend against budget_usd, visibility % (and how many points one

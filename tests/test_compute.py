@@ -126,7 +126,18 @@ class PublishSite(unittest.TestCase):
                 full["results"] += [{k: r[k] for k in ("prompt", "brands", "mentioned", "cited", "rank")}
                                     for r in o.get("results", [])]
                 full["scores"] += o.get("scores", [])
-            probes.append(json.dumps(full) if e["id"] == "claude" else full)  # text or dict both work
+            if e["id"] == "gemini":  # long form, as a dict
+                probes.append(full)
+                continue
+            number = {q: i + 1 for i, q in enumerate(C.flat_prompts_list(plan))}
+            compact = {"mode": "full", "engine": e["id"],
+                       "r": [{"p": number[r["prompt"]], "b": [C.brand_name(x) for x in r["brands"]][:10],
+                              "m": int(r["mentioned"]), "c": int(r["cited"]), "k": r["rank"]} for r in full["results"]],
+                       "s": [{"n": x["brand"], "l": x["likelihood"], "t": x["tone"],
+                              "d": " ".join(str(x.get("description", "")).split()[:12])} for x in full["scores"]]}
+            text = json.dumps(compact, ensure_ascii=False, separators=(",", ":"))
+            self.assertLess(len(text.encode()), 6000, "a compact 30-prompt answer should stay small")
+            probes.append(text if e["id"] == "claude" else compact)  # text or dict both work
         cfg = {"base_url": str(ROOT), "plan": plan, "engines": engines, "probes": probes}
         with tempfile.TemporaryDirectory() as d:
             out = subprocess.run(

@@ -76,7 +76,7 @@ def main(cfg):
     for i, p in enumerate(cfg.get("probes") or []):
         o = as_obj(p)
         if "mode" not in o:
-            o["mode"] = "full" if ("results" in o and "scores" in o) else ("sentiment" if "scores" in o else "visibility")
+            o["mode"] = "full" if (("results" in o and "scores" in o) or "r" in o) else ("sentiment" if "scores" in o else "visibility")
         if not o.get("engine") and i < len(engines):
             o["engine"] = engines[i]["id"]  # probes are passed in engine order
         probes.append(o)

@@ -68,7 +68,7 @@ def load_probe(path) -> dict:
     vis-claude-b2.json or sent-gemini.json)."""
     obj = load(path)
     if "mode" not in obj:
-        if "scores" in obj and "results" in obj:
+        if ("scores" in obj and "results" in obj) or "r" in obj:
             obj["mode"] = "full"
         else:
             obj["mode"] = "sentiment" if "scores" in obj else "visibility"
@@ -80,8 +80,33 @@ def load_probe(path) -> dict:
     return obj
 
 
+def expand_compact(out: dict, prompts: list) -> dict:
+    """Turn a compact full-mode answer (r/s rows, prompts by number) into the
+    long form: results with prompt text, scores with brand names."""
+    if "r" not in out and "s" not in out:
+        return out
+    o = {k: v for k, v in out.items() if k not in ("r", "s")}
+    o["mode"] = o.get("mode") or "full"
+    o["results"] = []
+    for row in out.get("r") or []:
+        n = row.get("p")
+        text = row.get("prompt") or (prompts[n - 1] if isinstance(n, int) and 0 < n <= len(prompts) else None)
+        if text is None:
+            continue
+        o["results"].append({"prompt": text, "brands": row.get("b", []), "mentioned": bool(row.get("m")),
+                             "cited": bool(row.get("c")), "rank": row.get("k")})
+    o["scores"] = [{"brand": row.get("n"), "likelihood": row.get("l"), "tone": row.get("t"),
+                    "description": row.get("d", ""), "pros": [], "cons": []}
+                   for row in out.get("s") or [] if row.get("n")]
+    return o
+
+
 def brand_name(b) -> str:
     return b.get("name", "") if isinstance(b, dict) else str(b)
+
+
+def flat_prompts_list(plan: dict) -> list:
+    return [p for _, p in flat_prompts(plan)]
 
 
 def flat_prompts(plan: dict):
@@ -119,7 +144,9 @@ def assemble(plan: dict, engines: list, probe_outputs: list, insights=None) -> d
     index = {p["prompt"].strip().lower(): p for p in prompts}
     sentiment, seen_batches, notes = {}, {}, []
 
+    flat = [p["prompt"] for p in prompts]
     for out in probe_outputs:
+        out = expand_compact(out, flat)
         eid = out.get("engine")
         mode = out.get("mode")
         if mode in ("visibility", "full"):
