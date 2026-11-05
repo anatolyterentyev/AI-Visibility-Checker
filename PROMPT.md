@@ -17,7 +17,8 @@ stops there instead of producing something else.
 The default check is **30 prompts × 3 engines = 90 AI answers** on each
 vendor's flagship model. It costs about **$5** of FlyMyAI balance (the
 chiaro.ai run cost $4.64) and takes about 20 minutes. `prompt_count` goes
-from 10 (quick, noisy) to 100 (precise, roughly 3× the cost).
+from 10 (quick, noisy) to 100 (precise, roughly 3× the cost). The prompt
+caps the whole task at **$20** (`budget_usd`); change it if you need more.
 
 ---
 
@@ -40,6 +41,22 @@ OUTPUT RULES — these override anything else
   (create_artifact). See https://docs.flymy.ai/agents/guides/ai-assistants".
 - Follow the steps below exactly. Do not write your own agents, methodology
   or report format, and do not substitute other tools for missing ones.
+- Keep the artifact private (the create_artifact default) unless I ask you
+  to share it.
+
+BUDGET — a hard limit for the whole task: budget_usd (default 20)
+- Before anything else, call whoami and note the balance (balance minus
+  pending_usd) as START.
+- spent = START - (current balance - pending_usd). Check it with whoami
+  before every step and after every batch of runs finishes.
+- Before STEP 2, estimate the cost (about $0.15 per prompt at 3 engines on
+  flagship models, plus about $0.50 for the lead). If the estimate is above
+  budget_usd, lower prompt_count until it fits and tell me.
+- Never start a run that could take spent over budget_usd. If spent reaches
+  80% of budget_usd, start nothing new: let running runs finish (cancel_run
+  any that would push spent over the limit), publish the report from what
+  you have, mark the missing parts in "notes", and tell me.
+- Report the final spent in your answer.
 
 GOAL
 Measure two things and publish them as a FlyMyAI artifact:
@@ -53,6 +70,7 @@ SETTINGS
   website: YOUR-SITE.com
   prompt_count: 30          (10–100)
   batch_size: 10            (prompts per probe run)
+  budget_usd: 20            (hard limit for the whole task, see BUDGET)
 
 STEP 0 — Instructions
 Fetch these files from raw.githubusercontent.com, from the same branch as the
@@ -61,7 +79,7 @@ from branch main if I gave no link:
   agents/lead.md, agents/probe.md, artifact/index.html, scripts/compute.py
 If any of them cannot be fetched (404, empty), stop and tell me which — do not
 improvise the agents, the method or the page.
-Check my balance with whoami and tell me the estimated cost before running.
+Tell me START, the estimated cost and budget_usd before running.
 
 STEP 1 — Agents (call list_agents first and reuse agents with these names;
 update their instructions and model if they exist)
@@ -123,11 +141,16 @@ STEP 6 — Report (1 run of the lead)
 Same message as STEP 4 plus "sentiment": [<the 3 sentiment outputs>].
 → the full report JSON (schema "ai-visibility-checker.v1").
 If you can run Python, check it: save plan.json, engines.json and every probe
-output into probes/, then
+output, exactly as returned, into probes/ named vis-<engine>-<batch>.json and
+sent-<engine>.json (the names fill in engine and batch when a model leaves
+them out of its JSON), then
   python3 scripts/compute.py assemble plan.json engines.json probes/ raw.json --insights report.json
   python3 scripts/compute.py compute raw.json out/
 and publish out/data.js — its numbers are exact. Otherwise publish the lead's
 report as data.js = "window.REPORT = " + <report JSON> + ";".
+Either way, check every number quoted in "insights" against the metrics and
+the per-prompt results and correct any that differ: the lead's headline
+metrics are reliable, but counts inside its insight sentences can drift.
 
 STEP 7 — Publish the artifact
   create_artifact name="AI Visibility — YOUR-SITE.com" operation_key=<new>
@@ -136,7 +159,8 @@ STEP 7 — Publish the artifact
 Send both files as content in the create_artifact call itself — never upload
 them anywhere first. Then check with read_artifact_files that both files are
 there.
-Give me the artifact link (https://app.flymy.ai/artifacts/...), the total cost of all runs, and a 5-line summary:
+Give me the artifact link (https://app.flymy.ai/artifacts/...), the total
+spent against budget_usd, and a 5-line summary:
 overall visibility % (and how many points one answer is worth), best and
 worst engine, the intent where I'm most absent and who owns it, the top
 competitor's share of voice, and my sentiment index vs. the best competitor's.

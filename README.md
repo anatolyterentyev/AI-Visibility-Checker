@@ -29,13 +29,14 @@ Claude (Sonnet 5.5) and Gemini (3.8 Flash):
 
 ---
 
-## Quick start (2 minutes)
+## Quick start
 
 1. Connect the FlyMyAI MCP to your AI assistant (Claude Code, Claude, Cursor,
    Codex, ChatGPT …): https://docs.flymy.ai/agents/guides/ai-assistants
 2. Open [`PROMPT.md`](PROMPT.md), copy the prompt, replace `YOUR-SITE.com`.
 3. Paste it into the assistant. It creates the agents on your FlyMyAI account,
-   runs the check, and returns a link to your report artifact.
+   runs the check (about 20 minutes), and returns a link to your report
+   artifact.
 
 The report is always a FlyMyAI artifact (`app.flymy.ai/artifacts/...`), never
 a file in cloud storage. Only an assistant connected to the FlyMyAI MCP can
@@ -45,7 +46,10 @@ rather than improvise a different output.
 
 The default check is 30 prompts × 3 engines = 90 AI answers on the flagship
 models. It costs about $5 of FlyMyAI balance (the chiaro.ai run cost $4.64)
-and takes about 20 minutes. `prompt_count` can go from 10 to 100.
+and takes about 20 minutes. `prompt_count` can go from 10 to 100. The prompt
+caps the whole task at $20 (`budget_usd`): the assistant tracks spend with
+your FlyMyAI balance, shrinks the prompt count if the estimate doesn't fit,
+and stops starting new runs at 80% of the cap.
 
 ---
 
