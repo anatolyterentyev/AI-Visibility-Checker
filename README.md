@@ -30,8 +30,8 @@ when asked about it, but rarely bring it up on their own.
 3. Paste it into the assistant. It creates the agents on your FlyMyAI account,
    runs the check, and returns a link to your report artifact.
 
-A run with 12 prompts × 3 engines costs about $1–2 of FlyMyAI balance
-(the chiaro.ai example cost about $1.30).
+A run with 12 prompts × 3 engines on the flagship models costs roughly $3–5
+of FlyMyAI balance.
 
 ---
 
@@ -96,13 +96,15 @@ Preview a report locally: copy an example's `data.js` next to
 
 ## Customising
 
-- **More / other engines:** add another probe agent with any model from
-  FlyMyAI's `list_agent_models` (e.g. `grok-4.7`, `claude-sonnet-5`,
-  `gpt-6-sol`) and add it to `engines` in the run message.
+- **Models:** the probes use each vendor's newest flagship on FlyMyAI —
+  GPT-6 Sol (`gpt-6-sol`), Claude Sonnet 5.5 (`claude-sonnet-5-5`) and
+  Gemini 3.8 Flash (`gemini-3.8-flash`, the newest Gemini FlyMyAI offers).
+  Swap in `claude-opus-5-5` for Claude if you want Anthropic's top model
+  (about 2× the price of Sonnet 5.5). The public prompt tells the assistant
+  to check `list_agent_models` and move to newer models as they appear.
+- **More engines:** add another probe agent (e.g. Grok, `grok-4.7`) and add it
+  to `engines` in the run message.
 - **More prompts:** `prompt_count` up to 20 (cost grows linearly).
-- **Stronger models:** the defaults are the cheap, fast tier of each vendor so
-  the check stays affordable. Real consumer assistants use bigger models;
-  switch the probe models if you want closer-to-production answers.
 
 ## Limitations
 

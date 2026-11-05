@@ -9,7 +9,8 @@ Not connected yet? Add the FlyMyAI MCP to your assistant
 FlyMyAI account. Every model call (ChatGPT, Claude, Gemini) runs through your
 FlyMyAI balance — no OpenAI / Anthropic / Google keys needed.
 
-A run with 12 prompts × 3 engines costs roughly **$1–2** on FlyMyAI.
+A run with 12 prompts × 3 engines on the flagship models costs roughly
+**$3–5** on FlyMyAI.
 
 ---
 
@@ -36,13 +37,18 @@ GOAL and the steps below, keeping the JSON contract described in STEP 3.
 
 STEP 1 — Create three probe agents (reuse them if they already exist in my
 account under the same names: list_agents first)
-  create_agent name="AI Visibility Probe — ChatGPT" model=gpt-6-luna        web_search=auto user_prompt=<probe.md>
-  create_agent name="AI Visibility Probe — Claude"  model=claude-haiku-4-5  web_search=auto user_prompt=<probe.md>
-  create_agent name="AI Visibility Probe — Gemini"  model=gemini-3.8-flash  web_search=auto user_prompt=<probe.md>
+  create_agent name="AI Visibility Probe — ChatGPT" model=gpt-6-sol          web_search=auto user_prompt=<probe.md>
+  create_agent name="AI Visibility Probe — Claude"  model=claude-sonnet-5-5  web_search=auto user_prompt=<probe.md>
+  create_agent name="AI Visibility Probe — Gemini"  model=gemini-3.8-flash   web_search=auto user_prompt=<probe.md>
+Use each vendor's NEWEST flagship model: call list_agent_models first and, if
+a newer OpenAI / Anthropic / Google model than the ids above is listed, use it
+instead (the probes should answer like the assistants people use today, not
+like an older or smaller model). If the probe agents already exist, update
+their model to the newest one with update_agent.
 web_search=auto means each probe searches with its own vendor's search
 (OpenAI search for GPT, Google Search for Gemini, Claude web search for
-Claude), which is what real users of those assistants get. Pick other ids from
-list_agent_models if you want stronger models or to add Grok (grok-4.7).
+Claude), which is what real users of those assistants get. Add Grok
+(grok-4.7) as a fourth engine if you like.
 
 STEP 2 — Create the lead agent
   create_agent name="AI Visibility Checker — Lead" model=gemini-3.8-flash user_prompt=<lead.md>

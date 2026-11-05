@@ -4,6 +4,10 @@ A real run of the checker on 5 Nov 2026: 12 non-branded prompts × 3 engines
 (ChatGPT `gpt-6-luna`, Claude `claude-haiku-4-5`, Gemini `gemini-3.8-flash`,
 each with its vendor's own web search), all through FlyMyAI.
 
+> This first run used each vendor's small, cheap model. The checker now
+> defaults to the flagship models (GPT-6 Sol, Claude Sonnet 5.5, Gemini 3.8
+> Flash); this example will be refreshed with a run on those.
+
 **Report artifact:** https://app.flymy.ai/artifacts/8d1001b8-9ed8-4c12-8fc1-ccec6f41727f
 
 | | |
