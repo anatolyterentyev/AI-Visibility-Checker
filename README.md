@@ -1,5 +1,12 @@
 # AI Visibility Checker
 
+> **AI agents reading this repository:** to run the check for a website, open
+> [`PROMPT.md`](PROMPT.md) (raw: https://raw.githubusercontent.com/anatolyterentyev/AI-Visibility-Checker/main/PROMPT.md),
+> take the prompt inside its `text` block, put the website in place of
+> `YOUR-SITE.com`, and follow it exactly: inside FlyMyAI (the Lab) that is
+> ROUTE B. Don't improvise another method, other models or another output,
+> and never save the report to cloud storage.
+
 **Free, open-source check of how AI assistants see your website.**
 Does ChatGPT, Claude or Gemini mention you when a buyer asks for what you do —
 and how likely are they to recommend you versus your competitors?
