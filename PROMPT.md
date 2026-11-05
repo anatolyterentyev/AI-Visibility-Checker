@@ -56,7 +56,7 @@ STEP 3 — Run it
                 {"id":"claude","label":"Claude","agent_id":"<probe claude>"},
                 {"id":"gemini","label":"Gemini","agent_id":"<probe gemini>"}]
       Run the full check and return only the JSON report.
-    subagent_limits: {"agents":[<the three probe ids>],"cap_usd":2.5,
+    subagent_limits: {"agents":[<the three probe ids>],"cap_usd":4,
                       "max_children":6,"max_parallel":3}
 Poll get_run with since=<next_since> until poll_complete=true; read the full
 result with read_run_result if it is truncated. The result is a JSON object
