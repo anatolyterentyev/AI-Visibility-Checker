@@ -15,7 +15,10 @@ All models are reached through **[FlyMyAI](https://flymy.ai)**: one account,
 one balance, no OpenAI / Anthropic / Google keys. The report is published as a
 **FlyMyAI artifact** (a shareable web page).
 
-**Example:** [chiaro.ai report](examples/chiaro.ai/) — see below.
+**Example — [chiaro.ai](examples/chiaro.ai/):** 5.6% AI visibility (ChatGPT 0%,
+Claude 8.3%, Gemini 8.3%), 3.4% share of voice against Smartify's 31%, and a
+sentiment index of 72/100 against Smartify's 85. The engines like the product
+when asked about it, but rarely bring it up on their own.
 
 ---
 
@@ -27,7 +30,8 @@ one balance, no OpenAI / Anthropic / Google keys. The report is published as a
 3. Paste it into the assistant. It creates the agents on your FlyMyAI account,
    runs the check, and returns a link to your report artifact.
 
-A run with 12 prompts × 3 engines costs about $1–2 of FlyMyAI balance.
+A run with 12 prompts × 3 engines costs about $1–2 of FlyMyAI balance
+(the chiaro.ai example cost about $1.30).
 
 ---
 
@@ -84,7 +88,8 @@ A run with 12 prompts × 3 engines costs about $1–2 of FlyMyAI balance.
 | [`agents/lead.md`](agents/lead.md) | Instructions of the orchestrating lead agent |
 | [`agents/probe.md`](agents/probe.md) | Instructions of the per-engine probe agent (visibility + sentiment modes) |
 | [`artifact/index.html`](artifact/index.html) | The report page; reads `window.REPORT` from `data.js` |
-| [`examples/chiaro.ai/`](examples/chiaro.ai/) | A real run on chiaro.ai: JSON report + `data.js` |
+| [`scripts/compute.py`](scripts/compute.py) | Re-derives every metric from the raw answers and writes `report.json` + `data.js` (no dependencies) |
+| [`examples/chiaro.ai/`](examples/chiaro.ai/) | A real run on chiaro.ai: raw and recomputed JSON + `data.js` |
 
 Preview a report locally: copy an example's `data.js` next to
 `artifact/index.html` and open the HTML file in a browser.

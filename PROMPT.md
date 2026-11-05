@@ -63,7 +63,8 @@ result with read_run_result if it is truncated. The result is a JSON object
 with schema "ai-visibility-checker.v1" (target, engines, mindmap, visibility,
 prompts, leaderboard, sentiment, insights). Validate that it parses and that
 the numbers are consistent with the per-prompt results; if a number is off,
-recompute it from "prompts" and "sentiment" yourself.
+recompute it from "prompts" and "sentiment" yourself (scripts/compute.py in
+the repo does exactly that if you can run Python).
 
 STEP 4 — Publish the report as a FlyMyAI artifact
   create_artifact name="AI Visibility — YOUR-SITE.com" operation_key=<new uuid>
