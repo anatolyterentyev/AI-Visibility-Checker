@@ -12,8 +12,8 @@ It measures just two things:
 | **Sentiment index (0–100)** | Each engine is asked how likely it is to recommend you — and each competitor — for your use case. The index is the average across engines. |
 
 All models are reached through **[FlyMyAI](https://flymy.ai)**: one account,
-one balance, no OpenAI / Anthropic / Google keys. The report is published as a
-**FlyMyAI artifact** (a shareable web page).
+one balance, no OpenAI / Anthropic / Google keys. The report is a dashboard
+page hosted on FlyMyAI, never a file in cloud storage.
 
 **Example — [chiaro.ai](examples/chiaro.ai/)**, 30 prompts × ChatGPT (GPT-6 Sol),
 Claude (Sonnet 5.5) and Gemini (3.8 Flash):
@@ -31,25 +31,21 @@ Claude (Sonnet 5.5) and Gemini (3.8 Flash):
 
 ## Quick start
 
-1. Connect the FlyMyAI MCP to your AI assistant (Claude Code, Claude, Cursor,
-   Codex, ChatGPT …): https://docs.flymy.ai/agents/guides/ai-assistants
-2. Open [`PROMPT.md`](PROMPT.md), copy the prompt, replace `YOUR-SITE.com`.
-3. Paste it into the assistant. It creates the agents on your FlyMyAI account,
-   runs the check (about 20 minutes), and returns a link to your report
-   artifact.
+Open [`PROMPT.md`](PROMPT.md), copy the prompt, replace `YOUR-SITE.com`, and
+paste it into either of these:
 
-The report is always a FlyMyAI artifact (`app.flymy.ai/artifacts/...`), never
-a file in cloud storage. Only an assistant connected to the FlyMyAI MCP can
-create artifacts, so run the prompt there. Agents inside FlyMyAI itself (such
-as the Lab chat) don't have that tool, and the prompt tells them to stop
-rather than improvise a different output.
+| Where | What you get |
+|---|---|
+| **The FlyMyAI Lab** (or any agent chat inside FlyMyAI) | a FlyMyAI **site page** (`app.flymy.ai/sites/...`) |
+| **An AI assistant connected to the FlyMyAI MCP** (Claude Code, Claude, Cursor, Codex, ChatGPT …: https://docs.flymy.ai/agents/guides/ai-assistants) | a FlyMyAI **artifact** (`app.flymy.ai/artifacts/...`) |
+
+Both show the same dashboard (`artifact/index.html` + `data.js`). Agents
+inside FlyMyAI can't create artifacts, which is why the Lab publishes a site.
 
 The default check is 30 prompts × 3 engines = 90 AI answers on the flagship
-models. It costs about $5 of FlyMyAI balance (the chiaro.ai run cost $4.64)
-and takes about 20 minutes. `prompt_count` can go from 10 to 100. The prompt
-caps the whole task at $20 (`budget_usd`): the assistant tracks spend with
-your FlyMyAI balance, shrinks the prompt count if the estimate doesn't fit,
-and stops starting new runs at 80% of the cap.
+models, in about 20 minutes. It costs about $3–5: the probes in the Lab test
+run of flymy.ai cost $1.41 together. The prompt caps the whole task at $20
+(`budget_usd`).
 
 ---
 
@@ -98,9 +94,15 @@ and stops starting new runs at 80% of the cap.
    writes insights. `scripts/compute.py` can rebuild the same report from the
    raw probe outputs, and the page is published as a FlyMyAI artifact.
 
-The user's assistant drives the batches directly rather than having the lead
-start subagents, because FlyMyAI allows at most 6 subagents per run and 3
-engines × (batches + sentiment) quickly exceeds that.
+**Two routes, one method.** From an assistant on the FlyMyAI MCP, the
+assistant drives the agents itself: probes run in batches of 10 prompts and
+sentiment is a separate round on the competitors the answers revealed. In
+the FlyMyAI Lab, a chat may start at most 6 helper runs from a $5 helper
+pool, so the Lab route runs exactly 5: a planner, the three probes in
+`full` mode (all prompts plus sentiment in one run, a compact answer of about
+3 KB), and a publisher that runs `scripts/publish_site.py`. In the Lab route,
+sentiment is scored for the competitors the planner found on the web; the
+leaderboard is still built from the engines' answers.
 
 ### Formulas
 
@@ -120,10 +122,12 @@ engines × (batches + sentiment) quickly exceeds that.
 |---|---|
 | [`PROMPT.md`](PROMPT.md) | The public prompt: paste into any assistant connected to FlyMyAI |
 | [`agents/lead.md`](agents/lead.md) | Instructions of the lead agent: `plan` (site → mind map) and `analyze` (probe answers → competitors, metrics, insights) |
-| [`agents/probe.md`](agents/probe.md) | Instructions of the per-engine probe agent (visibility + sentiment modes) |
+| [`agents/probe.md`](agents/probe.md) | Instructions of the per-engine probe agent (`visibility`, `sentiment` and the Lab's compact `full` mode) |
+| [`agents/publisher.md`](agents/publisher.md) | Lab route: the helper that runs `publish_site.py` |
+| [`scripts/publish_site.py`](scripts/publish_site.py) | Lab route: runs inside a FlyMyAI sandbox, recomputes every number with `compute.py`, writes the insights and publishes the page with the sites tool |
 | [`artifact/index.html`](artifact/index.html) | The report page; reads `window.REPORT` from `data.js` |
 | [`scripts/compute.py`](scripts/compute.py) | `split` prompts into batches, `assemble` probe outputs, list `competitors`, `compute` every metric → `report.json` + `data.js` (standard library only) |
-| [`tests/`](tests/) | `python3 -m unittest discover tests`: round-trip of the chiaro.ai run through split → assemble → compute |
+| [`tests/`](tests/) | `python3 -m unittest discover tests`: round-trip of the chiaro.ai run through split → assemble → compute, and the Lab publish script end to end |
 | [`examples/chiaro.ai/`](examples/chiaro.ai/) | A real run on chiaro.ai: raw and recomputed JSON + `data.js` |
 
 Preview a report locally: copy an example's `data.js` next to
