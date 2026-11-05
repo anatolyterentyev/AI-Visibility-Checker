@@ -84,6 +84,9 @@ STEP 4 — Competitors (1 run of the lead)
                         {"id":"gemini","label":"Gemini","model":"<id>"}],
             "visibility": [<every visibility probe output, as returned>]}
 → {"competitors": [top 5 brands]}
+(If you can run Python, `scripts/compute.py assemble …` then
+`scripts/compute.py competitors raw.json` gives the same list exactly and
+saves this run.)
 
 STEP 5 — Sentiment (3 probe runs in parallel, one per engine)
   message:

@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import compute as C  # noqa: E402
 
-RAW = ROOT / "examples" / "chiaro.ai" / "report.raw.json"
+RAW = ROOT / "examples" / "chiaro.ai" / "run-12" / "report.raw.json"
 
 
 def probe_outputs(raw: dict, size: int):
@@ -78,6 +78,19 @@ class RoundTrip(unittest.TestCase):
             f = Path(d) / "x.json"
             f.write_text('Here you go:\n```json\n{"mode": "sentiment", "engine": "x", "scores": []}\n```')
             self.assertEqual(C.load(f)["engine"], "x")
+            f.write_text(json.dumps({"answer": '{"mode": "sentiment", "engine": "y", "scores": []}'}))
+            self.assertEqual(C.load(f)["engine"], "y")
+
+    def test_probe_fields_inferred_from_file_name(self):
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / "sent-gemini.json"
+            f.write_text('{"scores": [{"brand": "X", "likelihood": 50}]}')
+            o = C.load_probe(f)
+            self.assertEqual((o["mode"], o["engine"]), ("sentiment", "gemini"))
+            f = Path(d) / "vis-claude-b2.json"
+            f.write_text('{"results": []}')
+            o = C.load_probe(f)
+            self.assertEqual((o["mode"], o["engine"], o["batch"]), ("visibility", "claude", "b2"))
 
     def test_cli_end_to_end(self):
         plan, outs = probe_outputs(self.raw, 10)

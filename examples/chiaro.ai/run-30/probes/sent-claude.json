@@ -1,0 +1,86 @@
+{
+  "mode": "sentiment",
+  "engine": "claude",
+  "scores": [
+    {
+      "cons": [
+        "little known to me",
+        "unverified features"
+      ],
+      "pros": [],
+      "tone": "unknown",
+      "brand": "Chiaro",
+      "likelihood": 8,
+      "description": "I don't know this product well; it may be a newer or niche art/travel guide app, but I can't describe it reliably."
+    },
+    {
+      "cons": [
+        "no photo recognition",
+        "fixed tours, not personalized"
+      ],
+      "pros": [
+        "high-quality narrated tours",
+        "works offline"
+      ],
+      "tone": "positive",
+      "brand": "VoiceMap",
+      "likelihood": 55,
+      "description": "A GPS-triggered audio walking tour app with tours by local guides and storytellers in many cities worldwide."
+    },
+    {
+      "cons": [
+        "limited to partner venues",
+        "little AI personalization"
+      ],
+      "pros": [
+        "artwork scanning",
+        "wide museum partnerships"
+      ],
+      "tone": "positive",
+      "brand": "Smartify",
+      "likelihood": 80,
+      "description": "A museum and gallery app that identifies artworks by scanning them and gives audio and text guides at partner institutions."
+    },
+    {
+      "cons": [
+        "uneven content quality",
+        "no photo-based identification"
+      ],
+      "pros": [
+        "free and multilingual",
+        "wide coverage"
+      ],
+      "tone": "neutral",
+      "brand": "izi.TRAVEL",
+      "likelihood": 50,
+      "description": "A free platform of audio guides and tours for museums and cities, created by institutions and community contributors in many languages."
+    },
+    {
+      "cons": [
+        "Europe only, mostly English",
+        "not interactive or AI-driven"
+      ],
+      "pros": [
+        "engaging expert narration",
+        "free"
+      ],
+      "tone": "positive",
+      "brand": "Rick Steves Audio Europe",
+      "likelihood": 60,
+      "description": "A free app with Rick Steves' audio tours of major European museums and sights, plus walking tours and travel talks."
+    },
+    {
+      "cons": [
+        "unclear offering",
+        "low recognition"
+      ],
+      "pros": [
+        "possibly an audio guide"
+      ],
+      "tone": "unknown",
+      "brand": "SmartGuide",
+      "likelihood": 15,
+      "description": "I'm not sure of this one. It may be an audio guide or tour app, but I can't confirm its features."
+    }
+  ]
+}

@@ -1,0 +1,398 @@
+{
+  "mode": "visibility",
+  "batch": "b1",
+  "engine": "gemini",
+  "results": [
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "Magnus",
+          "domain": "magnus.net"
+        },
+        {
+          "name": "ArtScan",
+          "domain": "paintingrecognition.com"
+        },
+        {
+          "name": "Google Lens",
+          "domain": "lens.google.com"
+        },
+        {
+          "name": "Google Arts & Culture",
+          "domain": "artsandculture.google.com"
+        }
+      ],
+      "prompt": "app to recognize artworks",
+      "citations": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF6p8PsBiZrhWoCGLlfCNE4_WbceNta7BlooZZwFscxqzZjq_bKtRo8hDUGmie2RHR1WCGZgz-QZcv7zB8zUjgnNFaUaLgl-lKhReOz1tEZ_FJLbQrXoShnOpuymP3DKte7Q_5Xyip1sZk5R6cHe-euqppSXy8kP5z9eethn96Knn09TlaB91k=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHE8E2Bujv_bIr0C7jkZusZWUVjwSLVg5sVDPjRTiBgpCjLVtXQQQnw_k5RGfTNOiG3PNWbxe4EzjF80oDxQldmfW8uqqC69rbAKnUzLl857sTrxScxtpGBQqPWEG4gI-qIUjrBNHB9vN0EPJKSwKqPm2tBfPV-_4x8tMQ=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE6hmrK6O_QLrdvNfyKnUcu0b5uzXY8QFCYSLgD8mvGJ2KlzOv0Z-3A9y43qBvPDJ0wTpB5tlXpDGyHP5yEXbcp67BMRFN0j5M_P4YCTrkfP8AHgJFRKIPQTzHSU94xOq6NNTSdkxTQ2sh0KyKiHGuY25RqeVaXGRm7EejjBw==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH4xXABxdv3OiRmPz-dh42J-Ewmp41xnkUuWyn4SezDxjQXuEI4P7Jd-U6-vkEqhjNrgw4f-UAIreDaIWIt0pYxVNMDZYKaUXF9",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFsY8GjrX_uiltgcX2APW3BO55yboUxuYh8uuvOddqibgfW9nkZw4Lmj78flrgzqrM4IHBj2_D8wlIqbGEriFOFkovltyiU4ePWY21X2qc4H7-Ye2mIw58cHFF9xvr9878LvqxUnDfVtG5-N-IW0zvzvaM4xRnETtPEg9vsR_szAlQn4xU="
+      ],
+      "mentioned": false,
+      "answer_summary": "Recommended Smartify as the leading museum artwork recognition app, alongside Magnus for gallery art pricing, ArtScan for AI-powered identification, and Google Lens for general visual search."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "ArtScan",
+          "domain": "paintingrecognition.com"
+        },
+        {
+          "name": "Google Lens",
+          "domain": "lens.google.com"
+        },
+        {
+          "name": "Magnus",
+          "domain": "magnus.net"
+        },
+        {
+          "name": "Art Identifier",
+          "domain": "apple.com"
+        },
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "scan.art",
+          "domain": "scan.art"
+        }
+      ],
+      "prompt": "identify paintings by photo",
+      "citations": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEDYdrIgPDfDLn9Q45Btzl8eMbkhx5nqfOoH36AuDoD5F-UCGmZp8KyoIC17a3loC7olfX29pO_CeTZ1gAn2aCstHJzme66dLXM3oMtILSDjlTUa_KeY8kjHbqIrKButDeY93YtvnXk",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGOYaIZox_F0dCsM1DA40HGuOn1qPPopVY5_yC9gmDy7bewzBeSmoWgbE6llq9fMZgG3gEbDhxQ2-VpIZ9sFxLDOl8MvLhn7tM=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFnRi3T2eBxYmLWekfdiwEpK5Ob2-SanImRek7kN_5dSSf4d3K2XTLd_dGkwveDO-flMEmYiug6-ULapkG3-UqTdiNkHhG-nst2Bt_OpyxCttHckDjI",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHwgmzPruKKfKEEDCR6EiGSsCAA6ZNtvIv2WScE-7ybEmea_Cfc1pXOCep3riwRU3Ah-QT8MGwJIwBI0V_VMK8ySsYsayN-7kMUyc6We21A1sGawlMFr97A1vEdot0n0kPykHYEaZJUNohL6-HvAw==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGWI3XKPOk4riFdtVUoW-XCv3EefZjJmEGfKEuE-T-IuXxCt7j3FOrbCZ3cYGf5Z-VwKbYR-rmXwgQnQX7UlGNnm7msLief_RV1FFbZoMt_YLRYVCbZZj3Yi4uLvogi_OJ7e_4XpzgquI6cKK9vCD7Pb9tFK2DmhDHeOuNq5qxx"
+      ],
+      "mentioned": false,
+      "answer_summary": "Suggested ArtScan, Google Lens, and Magnus as top tools to identify paintings by photo, followed by dedicated mobile apps like Art Identifier and Smartify."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Museum Guide: AI Powered",
+          "domain": "apple.com"
+        },
+        {
+          "name": "Artevo",
+          "domain": "play.google.com"
+        },
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "Bloomberg Connects",
+          "domain": "bloombergconnects.org"
+        },
+        {
+          "name": "AnyArt",
+          "domain": "anyart.app"
+        },
+        {
+          "name": "SmartGuide",
+          "domain": "smartguide.app"
+        }
+      ],
+      "prompt": "AI museum guide app",
+      "citations": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFkm7J_oX4v4Qjrfyi0rtzm5i6Z5EZyEFl197M1Y7kWSvudnBOKwbvWsD0uMn-jz7pzsJfRkRGtv56N33H7zrOFAJSiQ2oDmdVZMpD_0gP1-QyOxyAMdatSlWJ8KRS1Tw==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGMhdrtOeAWLxcbyInQ5yV1gBky33QhphvSE1_GqSgfvTu-fxs_G_WJ21YE7aN2wjJxlXpI5dav3VBoooKBKjk9xepQIRbnpfS6JF3dM8wBoMhgg49MQeZd5WIdfD0YpjBbmYN6706pV3JBC-1JNUZgWa7A_qDPBlW3AOo=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE8vbs4S5au1kebrDI3HJ7rCeMlc1tkN4aZVL0vZwscbvV1qnsZ0Dp5O6a-JyRdhwLlp0NB6sqw1rExebMfRCbqDmrSGQ4RilCisb4D-h0wZ2a2hEqPjy74NUcNVzWYI7UZmvZqo05sZlQh8AuHwGDNX325vpAbY68=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGEIKaUymNY0DX4PIrcM-gtZ_KujCwADBy4pjahQTel5EE6wymKE9bwfgaXrRs-VtsHDVs6dhd1zjdXZZ58WZT5GMaY3yTvz6VRJOZxc80sQJaadjuWTBe-Ydmw",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGPfz2R9GOz37oSo3by-REvyY3INaLcO48xwFWYDhH8BKvqX1xhyOVKPnSjeMWeQXEE0gkls23SUv-ehHQeePRIUbfSbM_zQj97GeJfb28msywa8qwG5jmc"
+      ],
+      "mentioned": false,
+      "answer_summary": "Highlighted AI museum guide apps including Museum Guide, Artevo, Smartify, Bloomberg Connects, AnyArt, and SmartGuide for interactive audio commentary and art identification."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "ArtScan",
+          "domain": "paintingrecognition.com"
+        },
+        {
+          "name": "Art Scanner with AI",
+          "domain": "play.google.com"
+        },
+        {
+          "name": "Muzea",
+          "domain": "play.google.com"
+        },
+        {
+          "name": "Bloomberg Connects",
+          "domain": "bloombergconnects.org"
+        }
+      ],
+      "prompt": "museum artwork scanner app",
+      "citations": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFc6N6AZcfepNYuBpRE3KeMcAmGIQh3AdtLbJKPQyAmUg-bA9dBn48zRrVOasmnXC0uKCGegE-owj-PRK4nvQF2-KV1CK-wVkWBvwOskd4rDhiEX4sWkcmeY5JC-buZ",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH93c5r374Nl0v4Q5dALcJ1FTuR3dlFteAUeGck4Uj3CU3reil7JyImMM4FgSGWCpFCYQQXcAxBGph-CXOVVkb8agbF14URMVMIuvxFIOCgUKtZfpMkWbPeWq8XZVm7_Id3qVEJulTK6jpG9GDvP0pIKNpsNIR_HWX95gA0",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHg1J5GnIalJxd9e1NcVJfYZp7sY7s0vx7iyFMdWRbyzfpu-UhCmqaTjfPvblB5VsEGS7QQyBsMsRM_LkDOXWuaaiuV0Dmz-tX4FTCu1hYaA2_9rHCsJjEvUB-U1F5MqO28uVqTa0IpBCtQdVqEvE2JYwhBXBU=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE7GWrZY1jM2WZjreJ_QOrLQkYWoAGBTXEqdudgCMbRxxMVq-XOUETIxnRyn-BYm6yUKFSsmT4UTT8y4SpOCJQ7b0n5ev3Y8uNQ",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHTRGOuA9u3eQoXmj-GvBGA6FHi24W0uqeky_UMDgB0VSgkSsCkag56j9S-0_-n1MfkCPzwI_REhl-qDosJprVkfdUA1jBRYbVtYZJllAoq0jtgEb7edA6GkzZd6xHiNA3HnhF0Z4KyOcGwbIafkO7KgkihPnbV0wqOnZ3N0RmwwU-rb8QJskDc"
+      ],
+      "mentioned": false,
+      "answer_summary": "Recommended Smartify and ArtScan as primary museum artwork scanner apps, along with Art Scanner with AI, Muzea, and Bloomberg Connects for comprehensive museum guidance."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "ArtScan",
+          "domain": "paintingrecognition.com"
+        },
+        {
+          "name": "Google Lens",
+          "domain": "lens.google.com"
+        },
+        {
+          "name": "Magnus",
+          "domain": "magnus.net"
+        }
+      ],
+      "prompt": "what app identifies art in museums",
+      "citations": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFWZGbaKcjJ5IdIUZPO4QtZ6qtka2K1Xb9TOo7Sf-MsP0hRpLCeUyxVVPhnDiaQsZUJw4IWh-VoJD9_TqSYgrcMT9gCeb9E2bF40zzBZb3RTYJmJ5v4Wi_O9_B8RXeBIBbTs5EEAZIQBUEEvs6HFmuRucxvX_xAClR5vZkOJZO4nA==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF83OzwpMFXk9FEIm3ivpRnFLtHurEz5UR7JuvPeebXKXbWCe3GAgn3uq_gbeQUZz1YRJEYKQNt2Ox3HNaNgzi4uZ2UpoM6kq5vH5h5NV08JLzC1lUeBqjezy4YyMShvg==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG8CoJfQX_KT8OZ3BarvuWyVudq7LPq2AmMAK48yBE6Q69Va3-eX7gTKzEYDumnZxeASS6VuEV-KYFvdCH3ke1aTDT_bdtFrHxQsv-26RP0CJfLJg2WW3Ambro9MWU1k1JrMNlAG5HRoAay-2vyyTK7FLr44cAl49lOcvgRK9RLI0YyU8K5das=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHlNw_ogGQCFD4BUD79IQp96Hu-Oa2ft8ykl_el9MDME5JSdMorxeL-rkr0tUViZU478tLhANHgsiEh5ECafZ2o1EingGNRZkwhWzc_-AuBdOo5WTbhDG21eE_7FJasEsnl-WVwRBViUBVIg3LiitHrAsIeJL26",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH8AiXkJqooJ-9jhuf90qPbU4DyBdG-roPeOX-vjrAeQyW3-NAgDfFb-MGwjeLArkJejQpX2TsPnbHPR619x1eATY42rHJOewlGexFFQM0QiCFBK0YsLEj2-4KnSq08-5pQfLstdC5-Bz3cswFR"
+      ],
+      "mentioned": false,
+      "answer_summary": "Identified Smartify as the primary app for museum artworks, accompanied by ArtScan for detailed AI insights, Google Lens for quick recognition, and Magnus for contemporary pieces."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "SmartGuide",
+          "domain": "smart-guide.org"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        },
+        {
+          "name": "Action Tour Guide",
+          "domain": "actiontourguide.com"
+        },
+        {
+          "name": "Shaka Guide",
+          "domain": "shakaguide.com"
+        }
+      ],
+      "prompt": "audio tour guide app",
+      "citations": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFg8bpsHJWmbbSjUtOFruCfUK1L9teiq-v4qjT-t8Uglugs4h9u1NdB26uJz7YLPWjKABV8Y_StCNVF_sWKBYuCDYSPl6i94LLsPLmEKnM0W8OOxfGdaUs4Dpr03COx0JQHRw4sMlxjL-zw7DYEAW7vZTdz7JV6k1sZ8DiV",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFJLm5sbP3qC5ucYFx4ucArjmYx439z2aEFt7UAs8vaJvczG_vPG4Lv1ixzF4NOvVFFnu4Wh-fkSakgbD-v3o-3j7tpdlPareAHbu2TkjUqWkMwF1dltd2W-urNpjdSAirRkFIlvlYAwkNfENrIWwxJ-BZZQYTpnNHDdNKjEANt-g==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE75VhDqFMPZ-yXGa6EIzE-u4FiCC4F2Vo5Mv24Aca8asr59CZ5LZmwXoy00CZRXTtQokZpMrOT5eREm2hZn9ja4hQ9eeSDn5Y42FXQmc8YGierL9Q9dNdCR9LC51VMCnqbY1lej-GR_-3K72z_k81TwYsRtFIv4QAJ914=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHOoju1JTfpGfVHjsFev-vcQYlWRsGMSeRD_qxsEseF807wQ8qGK6-_jTWpFfZ7NmzA8zkpv6fwHCJSAuG7WfU5PGrcpBOu7n3y4xBuswLqo0g=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHc2gqkTOfgVBPes3h3IjrS07VMO2YdJ8y3nF3AO7jbEA-RcANtc3cx7mbek4Mm9FfkYrfikGt8RPC93yDVP2nrRj7tM6V0tcQBKMdpaa6KYtEsOM8Ie9Uv6rr_C4SpAGx6-0SwiGL4J1zHnR86"
+      ],
+      "mentioned": false,
+      "answer_summary": "Recommended izi.TRAVEL, VoiceMap, and SmartGuide as the top audio tour guide apps, along with Rick Steves Audio Europe and Action Tour Guide."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "Action Tour Guide",
+          "domain": "actiontourguide.com"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        },
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "GPSmyCity",
+          "domain": "gpsmycity.com"
+        },
+        {
+          "name": "SmartGuide",
+          "domain": "smartguide.app"
+        }
+      ],
+      "prompt": "walking tour audio app",
+      "citations": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHRJ3mNpefBl5Ynunb0D6soWkpawA6uF4PKC5Y8VPguS4pAYKhMZqnMByJ13ipnUKJnJiI3LB19rYP7CmIj0qo-ZEvZ3mo75AizXwJ3zCpggghOSP6Y00n-HSPz-bgsx3vkkfPY4a7f_uEcydzFBcr5YqTyzdzO7vIYAAcrhw==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQElVls7l8xNYXRqFg7jICuVm2VqkMoSs4QKH4SewCTPSMW74pibIPwDRtDBnw11Pyd3RTgDxKtdiq3YcB1yb31JvLpjYKWyM_vUWeyLbX19N56Cal4u8pHBXjFLwzWy2A5_Q6moeJC9F9V6ixlw",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE4oksIyGq93pgHamuikjUN5t99l5VJjkWKg5zXn980Vc3TdVsAktRAS6eGd-_TZ7MbwcU2PpI_WioNoiGbtlOpXn30AYPxImfd4CCRh5PVzJBInaPZiwLhLrt_2zVS5yCnv1yfCT8lyHBFYE3Gc6F5YuuMNp3gZvhE",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE77kXjcQ53cBRX9lk6FdRBDa--rf8G0XOmEqR5Aun7Vj_2yeeo1GD7JlCtq3buaSyu1mdRTHDS8EfgWJKuUxXCsmkMjF4QngXIYmyhLAe6Jzl56_iY51qaHy4shg6WwjMCksQRg02LWR1HF4_nuuT59X7q6_o9Tdfz3smMO0mcZ4ZOkKN3nz8=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHKBzFUfPUDRVwJ_QFK99gOcIK-42pp334UyYxgAM0rJ6nAs7hx-zijoEKOZ9twOC3Vs2QzM9HfrGP6PIhnPManIh2KIqY0mnIKswxWN6yf8DM="
+      ],
+      "mentioned": false,
+      "answer_summary": "Suggested VoiceMap, Action Tour Guide, Rick Steves Audio Europe, and izi.TRAVEL for GPS-guided walking tours, plus GPSmyCity and SmartGuide."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        },
+        {
+          "name": "Action Tour Guide",
+          "domain": "actiontourguide.com"
+        },
+        {
+          "name": "SmartGuide",
+          "domain": "smartguide.app"
+        },
+        {
+          "name": "Shaka Guide",
+          "domain": "shakaguide.com"
+        }
+      ],
+      "prompt": "best audio guide app for landmarks",
+      "citations": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFj4xq0VoT_53iFw9vgCwrv60bo_LFXBdwDJzb4KG3S78tVKqpIcdhXPy5V6u7BIdMqRqZ3AoUiTbSsroYtkxmCRVrgm2v7QJa5kpJWKKKt2dJOnZmG8813oOr4Z9J0qkRrWPNogRe2E2_zZE66SNeVEIjF5QmyypplHYhK",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGvE4KTSFiLKf0cnsXvm3PxU38gAx2p7dfIObUnz_IUYsHj5e2pl_Z7-aVOsnshs0XcQTynLklS-jVEes6zlOA8_ejpuk4G5rUC6aEHwM24pG_TpGfiCvuDbkfYDw_UvQ==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGSDXzKMGCz0nPmFHo4Se7pYGc9hhUCZVGFNYT0fq3JkP_zsvnRzj0lHfX8ClMvyeQCmlh9gbSBjFgV-iqPj5yep_LCHAjv3yy0eCz0Bpm9VDpFNZP0hww1b23MiNft00XSi6c9CsqbUIHRw3n9-eQWpFwavkyLMk8s",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFbfNRnkO1wqXypuTy44m9NNL_mz4HPvdGAMmx5pzjEy6iNHpVJs-xSqVw5LMFYFGc7nzYAmnUd3C_WIhnFYKfp94_fRjBN8Dh_zcKl5peRKdpqrWzYkliYwxzHPfV7cH1fVt23"
+      ],
+      "mentioned": false,
+      "answer_summary": "Recommended izi.TRAVEL and VoiceMap as the best audio guides for landmarks, alongside Rick Steves Audio Europe, Action Tour Guide, and SmartGuide."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "GPSmyCity",
+          "domain": "gpsmycity.com"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        },
+        {
+          "name": "SmartGuide",
+          "domain": "smartguide.app"
+        },
+        {
+          "name": "Action Tour Guide",
+          "domain": "actiontourguide.com"
+        },
+        {
+          "name": "Questo",
+          "domain": "questoapp.com"
+        },
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        }
+      ],
+      "prompt": "self guided city tour app",
+      "citations": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFpK9vddGaCSsfszF1Jdp9ZEXP4Sz_zhRRNadPWNvCuOxo7whcj6HFdeZRQX8V8Mfk0KShqg0tA4aChqKd0BCnYihyuVpqlMCzC5N_UssaLVw11HZrLdUF2PPW28eaM0rQ1ARgnFruZrmoWa0kp",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHsLlNjyD5LBDMgn5bmzPhXCVHwp9ZDY6xFOZ7rnfAHNbg8v2bWyp9CBVoitSPFRh-y2E6beQBYLXd8o8ewo6pdtb2zljzMXboBndBmjSYcuRgQVIY_MhS6hK9Mswoq-WtGaDhoS_54IWr5U6NihT_VWsHrpCfOvXTxsaLa7I-12fMafPgNJjaZhKA-UQ==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGawJ8HOPa-lrIvXMfaVGDQytyIVOqsRvniH1E9uhXaWT_lmv3QQANZkVDMoh-5DNeaB7fUFutcNweyfhAzSOXWsISPWBlCM1wmYHzj1jsVa__XWg-pjT4jypefoIgdMO23BAiqfvntdsf-IZB95LDZfMjD",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFA3Fvf5e7ijiNTGy4dsJCnruJzWfXMWpMkGM6qY6iReqT2kXvb6eBbf4e1w9GrINkgDqN-Cp0hBUE1NAo5qfKlEFTkJoRKi94SmhDzMUQLNw==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEM8KURUiVh7mGlXT55skdejvIkFjFhW2YvZ9CXMbkJgrltInZgDiZ4N71HUiMKBwBf0PAy-9qoAB-BZxf9zSmB8Ou8DSTmbjFZMVHyilcTNB_Y5ztFj0u7-DIN-L38bgI2gPcVnD4xhJi10j1vqpY-efseqTaIS1c="
+      ],
+      "mentioned": false,
+      "answer_summary": "Highlighted VoiceMap, GPSmyCity, and Rick Steves Audio Europe as top self-guided city tour apps, along with SmartGuide, Action Tour Guide, and Questo."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "LABYL",
+          "domain": "ndny.co"
+        },
+        {
+          "name": "Building ID: AI Scanner",
+          "domain": "apple.com"
+        },
+        {
+          "name": "Building Lore",
+          "domain": "buildinglores.com"
+        },
+        {
+          "name": "Citypik",
+          "domain": "citypik.com"
+        },
+        {
+          "name": "GeoTale",
+          "domain": "play.google.com"
+        },
+        {
+          "name": "PicAGo",
+          "domain": "picago.app"
+        },
+        {
+          "name": "Google Lens",
+          "domain": "lens.google.com"
+        }
+      ],
+      "prompt": "app that tells you about buildings you photograph",
+      "citations": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEZghyKjqfbr-T-39iOGKg-YalXbQiFoAemkrF4EpXuYFfoOS7ft11dmV8AzETkAjA2gAsSdC5VnNVDFS52AdtyqmxgjjjYop9exSgGLW3G_tOluj602p7IuTp-i5270rv64I0X8dJQACY4C32iyI2yDZiAUJ6fmwyMQYPYRe7fI2V6qQ==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE-DJZ1p6uOqIVTF-6Nv1i36thou3q02ceUqY_pKtEQeuYlrgHWy-2YgfxQVNTLSMbXws6638Lph7Q16vEo23sC5K5j-yi0-d2Viz3W4WVpi329Xdejba6KlAm8P5xzPgEDpi6CVgvPbKR5tLB_JLsw1Uwhur7DIeVC2yY=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEzjEbstb0dx8ze-oxpYAhwZag__4VIv940kueu9we7k_nRG_FNYVp1cx8B09G_4ijMEuZ2LyYrGvg2Vod8pxyDvtkXZaxfyXCRbzZQCywQfi0mj-UNld8DBY6kIkWqnE0yhSd6I0cys0yP-Kn_Qws=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEauNGMHF6he9vD8R5UeBVLvH1ivl-e2yUFKIAt-D1RCvTaVOfzwSetWqGbRuuXiizpxt-FBRCGyCzpPLCVY3ezmXdLgB78Qy7DYSiusymzx-im-1bHOmpPZuDH4O0Wvim0s1qcgHpSfqCBlR6FgNpC4M0QThT76hk3QccX",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHfhEtFtVu_DbVUPpoMq4VvpNwHmOrk6vNzbAtF098HuMHl5rxbOdB0p-h44odw-SOyATufMNM7fre7bNY5q1PFp4IvubKImxCVejkboVRKaSjJ6Yv60HzR8nngzfc4MovMzX4M2XGoRGImBp2QtiqKPl0NXcDo-kfaLA=="
+      ],
+      "mentioned": false,
+      "answer_summary": "Recommended architectural visual recognition apps including LABYL, Building ID: AI Scanner, Building Lore, Citypik, GeoTale, and Google Lens to identify photographed buildings."
+    }
+  ]
+}

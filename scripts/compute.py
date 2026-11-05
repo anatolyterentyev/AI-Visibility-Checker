@@ -12,7 +12,9 @@ in a report can be reproduced from the raw probe answers.
   assemble     plan.json engines.json probes_dir/ report.raw.json [--insights insights.json]
                Merge the plan and every probe output in probes_dir/ (*.json,
                visibility batches and sentiment answers, any order) into one
-               raw report.
+               raw report. Name files vis-<engine>-<batch>.json and
+               sent-<engine>.json so engine and batch are known even when a
+               model leaves them out of its JSON.
 
   competitors  report.raw.json [--top 5]
                Print the brands the engines recommended most (the brands to
@@ -47,10 +49,30 @@ def load(path) -> dict:
     """Read a JSON file; tolerate a ```json fence or prose around the object."""
     text = Path(path).read_text()
     try:
-        return json.loads(text)
+        obj = json.loads(text)
     except json.JSONDecodeError:
         start, end = text.find("{"), text.rfind("}")
-        return json.loads(text[start:end + 1])
+        obj = json.loads(text[start:end + 1])
+    # some runs wrap the agent's JSON as {"answer": "<json string>"}
+    if isinstance(obj, dict) and set(obj) == {"answer"} and isinstance(obj["answer"], str):
+        inner = obj["answer"]
+        obj = json.loads(inner[inner.find("{"):inner.rfind("}") + 1])
+    return obj
+
+
+def load_probe(path) -> dict:
+    """Load a probe output, filling in fields a model sometimes leaves out:
+    mode (from the content) and engine / batch (from a file name like
+    vis-claude-b2.json or sent-gemini.json)."""
+    obj = load(path)
+    if "mode" not in obj:
+        obj["mode"] = "sentiment" if "scores" in obj else "visibility"
+    m = re.match(r"(?:vis|sent)-([a-z0-9]+)(?:-(b\d+))?\.json$", Path(path).name)
+    if m:
+        obj.setdefault("engine", m.group(1))
+        if m.group(2):
+            obj.setdefault("batch", m.group(2))
+    return obj
 
 
 def brand_name(b) -> str:
@@ -119,6 +141,17 @@ def assemble(plan: dict, engines: list, probe_outputs: list, insights=None) -> d
                 entry = sentiment.setdefault(norm(s["brand"]), {"brand": s["brand"], "by_engine": {}})
                 entry["by_engine"][eid] = {k: s.get(k) for k in
                                            ("likelihood", "tone", "description", "pros", "cons")}
+
+    # Some engines (Gemini's Google Search grounding) return opaque redirect
+    # links instead of source URLs, so a citation of the target can't be seen.
+    redirect_hosts = ("vertexaisearch.cloud.google.com",)
+    for e in engines:
+        cites = [c for p in prompts for c in p["results"].get(e["id"], {}).get("citations", [])]
+        hidden = sum(any(h in c for h in redirect_hosts) for c in cites)
+        if cites and hidden / len(cites) > 0.2:
+            notes.append(f"{hidden} of {len(cites)} {e['label']} citations are search-redirect links, "
+                         f"not source URLs, so a citation of {target['domain']} could be missed there; "
+                         f"mentions are unaffected.")
 
     total = len(prompts)
     eng = []
@@ -289,7 +322,7 @@ def main(argv) -> None:
     elif cmd == "assemble":
         plan, engines = load(pos[0]), load(pos[1])
         engines = engines.get("engines", engines) if isinstance(engines, dict) else engines
-        outputs = [load(f) for f in sorted(Path(pos[2]).glob("*.json"))]
+        outputs = [load_probe(f) for f in sorted(Path(pos[2]).glob("*.json"))]
         insights = load(opt("--insights")) if opt("--insights") else None
         if isinstance(insights, dict):
             insights = insights.get("insights", [])
