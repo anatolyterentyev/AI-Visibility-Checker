@@ -1,0 +1,217 @@
+{
+  "mode": "visibility",
+  "batch": "b2",
+  "engine": "chatgpt",
+  "results": [
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Convo Guide",
+          "domain": "apps.apple.com"
+        },
+        {
+          "name": "Dex: Audio Tours & City Guides",
+          "domain": "play.google.com"
+        }
+      ],
+      "prompt": "interactive audio guide app",
+      "citations": [
+        "https://apps.apple.com/us/app/convo-guide/id6642643377",
+        "https://play.google.com/store/apps/details?id=com.headout.dex"
+      ],
+      "mentioned": false,
+      "answer_summary": "For an interactive museum audio guide, try Convo Guide for voice or text questions about exhibits; Dex is another option for contextual tours. Check venue coverage first."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Guidude",
+          "domain": "play.google.com"
+        },
+        {
+          "name": "Nextour",
+          "domain": "apps.apple.com"
+        }
+      ],
+      "prompt": "conversational AI tour guide",
+      "citations": [
+        "https://play.google.com/store/apps/details?id=com.inithere.guidude",
+        "https://apps.apple.com/us/app/nextour-gps-audio-tour-guide/id6747329621"
+      ],
+      "mentioned": false,
+      "answer_summary": "Guidude offers conversational voice tours of landmarks; Nextour combines a live AI guide with GPS-aware sightseeing. Confirm coverage for your destination."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Convo Guide",
+          "domain": "apps.apple.com"
+        },
+        {
+          "name": "SeeMuseums",
+          "domain": "apps.apple.com"
+        }
+      ],
+      "prompt": "ask questions about museum exhibits app",
+      "citations": [
+        "https://apps.apple.com/us/app/convo-guide/id6642643377",
+        "https://apps.apple.com/us/app/seemuseums/id6743142285"
+      ],
+      "mentioned": false,
+      "answer_summary": "Convo Guide lets you ask voice or text questions about museum exhibits; SeeMuseums also offers an AI tour guide that answers visitor questions."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Musaium",
+          "domain": "musaium.com"
+        },
+        {
+          "name": "VibeMuse",
+          "domain": "vibemuse.app"
+        }
+      ],
+      "prompt": "app to ask questions about paintings",
+      "citations": [
+        "https://musaium.com/en",
+        "https://vibemuse.app/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Try Musaium: photograph an artwork or ask aloud, then follow up conversationally. VibeMuse likewise supports questions about paintings and sculptures."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Guidude",
+          "domain": "play.google.com"
+        },
+        {
+          "name": "If The Past Could Talk",
+          "domain": "ifthepastcouldtalk.com"
+        }
+      ],
+      "prompt": "AI assistant for historic landmark information",
+      "citations": [
+        "https://play.google.com/store/apps/details?id=com.inithere.guidude",
+        "https://ifthepastcouldtalk.com/about"
+      ],
+      "mentioned": false,
+      "answer_summary": "Guidude covers historic landmarks with conversational audio; If The Past Could Talk focuses on heritage-site identification and narrated information. Verify historical claims against site sources."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Stanza",
+          "domain": "stanzapp.com"
+        },
+        {
+          "name": "Audiala",
+          "domain": "apps.apple.com"
+        }
+      ],
+      "prompt": "multilingual audio tour app",
+      "citations": [
+        "https://stanzapp.com/",
+        "https://apps.apple.com/us/app/audiala-ai-audio-tour-guide/id6446038181"
+      ],
+      "mentioned": false,
+      "answer_summary": "Stanza offers multilingual museum and landmark audio guides with offline tours; Audiala is another broad-coverage option. Check language availability for the specific stop."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Stanza",
+          "domain": "stanzapp.com"
+        }
+      ],
+      "prompt": "museum guide in my language",
+      "citations": [
+        "https://stanzapp.com/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Try Stanza for museum audio in different languages, or check the museum’s official guide for your language before visiting."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Stanza",
+          "domain": "stanzapp.com"
+        },
+        {
+          "name": "Audiala",
+          "domain": "apps.apple.com"
+        },
+        {
+          "name": "TourTour",
+          "domain": "tourtour.app"
+        }
+      ],
+      "prompt": "travel guide app in multiple languages",
+      "citations": [
+        "https://stanzapp.com/",
+        "https://apps.apple.com/us/app/audiala-ai-audio-tour-guide/id6446038181",
+        "https://tourtour.app/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Stanza, Audiala and TourTour offer multilingual sightseeing audio guides; destination and language coverage differ, so check your itinerary in each app."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Stanza",
+          "domain": "stanzapp.com"
+        },
+        {
+          "name": "TourTour",
+          "domain": "tourtour.app"
+        }
+      ],
+      "prompt": "foreign language audio guide for sightseeing",
+      "citations": [
+        "https://stanzapp.com/",
+        "https://tourtour.app/"
+      ],
+      "mentioned": false,
+      "answer_summary": "For sightseeing in another language, check Stanza’s downloadable landmark guides or TourTour’s city audio tours; confirm the language and destination before downloading."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "TourTour",
+          "domain": "tourtour.app"
+        },
+        {
+          "name": "Stanza",
+          "domain": "stanzapp.com"
+        }
+      ],
+      "prompt": "app that explains monuments in Spanish",
+      "citations": [
+        "https://tourtour.app/",
+        "https://stanzapp.com/"
+      ],
+      "mentioned": false,
+      "answer_summary": "TourTour lists monuments and Spanish-language audio; Stanza also offers Spanish guides for landmarks. Check whether the specific monument is covered."
+    }
+  ]
+}

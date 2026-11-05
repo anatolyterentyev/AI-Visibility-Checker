@@ -1,0 +1,369 @@
+{
+  "mode": "visibility",
+  "batch": "b2",
+  "engine": "claude",
+  "results": [
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "Musetory",
+          "domain": ""
+        },
+        {
+          "name": "Bloomberg Connects",
+          "domain": "bloombergconnects.org"
+        },
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "Locatify",
+          "domain": "locatify.com"
+        },
+        {
+          "name": "Tourient",
+          "domain": "tourient.app"
+        }
+      ],
+      "prompt": "interactive audio guide app",
+      "citations": [
+        "https://izi.travel/en/app",
+        "https://apps.apple.com/us/app/musetory-museum-audio-guide/id6761122184",
+        "https://tourient.app/blog/5-best-apps-for-creating-audio-tours",
+        "https://locatify.com/solutions-for-museums/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Recommended izi.TRAVEL, Musetory, Bloomberg Connects and Smartify for museum and city audio guides. Mentioned Locatify and Tourient as tools for building guides."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Musa",
+          "domain": "musa.guide"
+        },
+        {
+          "name": "Artlas",
+          "domain": "artlas.art"
+        },
+        {
+          "name": "FuTour",
+          "domain": "futour.app"
+        },
+        {
+          "name": "SeeMuseums",
+          "domain": "studioforcreativeinquiry.org"
+        },
+        {
+          "name": "AITourPilot",
+          "domain": "aitourpilot.com"
+        },
+        {
+          "name": "SimplyArt",
+          "domain": "simplyart.ai"
+        }
+      ],
+      "prompt": "conversational AI tour guide",
+      "citations": [
+        "https://www.musa.guide/en",
+        "https://www.artlas.art/en",
+        "https://futour.app/",
+        "https://studioforcreativeinquiry.org/project/seemuseums-an-ai-tour-guide",
+        "https://www.aitourpilot.com/",
+        "https://simplyart.ai/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Listed AI guides you can talk to or ask questions: Musa, Artlas, FuTour, SeeMuseums, AITourPilot and SimplyArt. Said most are aimed at museums."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "FuTour",
+          "domain": "futour.app"
+        },
+        {
+          "name": "Musa",
+          "domain": "musa.guide"
+        },
+        {
+          "name": "SeeMuseums",
+          "domain": "studioforcreativeinquiry.org"
+        },
+        {
+          "name": "Artlas",
+          "domain": "artlas.art"
+        },
+        {
+          "name": "SimplyArt",
+          "domain": "simplyart.ai"
+        }
+      ],
+      "prompt": "ask questions about museum exhibits app",
+      "citations": [
+        "https://futour.app/",
+        "https://www.musa.guide/en",
+        "https://studioforcreativeinquiry.org/project/seemuseums-an-ai-tour-guide",
+        "https://www.artlas.art/en",
+        "https://simplyart.ai/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Suggested apps with a Q&A AI guide: FuTour, Musa, SeeMuseums, Artlas and SimplyArt. Said to check whether your museum supports them."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "SeeMuseums",
+          "domain": "studioforcreativeinquiry.org"
+        },
+        {
+          "name": "Artlas",
+          "domain": "artlas.art"
+        },
+        {
+          "name": "FuTour",
+          "domain": "futour.app"
+        },
+        {
+          "name": "SimplyArt",
+          "domain": "simplyart.ai"
+        },
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        }
+      ],
+      "prompt": "app to ask questions about paintings",
+      "citations": [
+        "https://studioforcreativeinquiry.org/project/seemuseums-an-ai-tour-guide",
+        "https://www.artlas.art/en",
+        "https://futour.app/",
+        "https://simplyart.ai/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Recommended SeeMuseums, Artlas, FuTour and SimplyArt for asking an AI about artworks. Said Smartify is also worth trying for scanning artworks."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Audiala",
+          "domain": "audiala.com"
+        },
+        {
+          "name": "City Guide: AI Walking Tours",
+          "domain": ""
+        },
+        {
+          "name": "AI TourMate",
+          "domain": "aitourmate.eu"
+        },
+        {
+          "name": "Stanza",
+          "domain": ""
+        }
+      ],
+      "prompt": "AI assistant for historic landmark information",
+      "citations": [
+        "https://apps.apple.com/us/app/audiala-ai-audio-tour-guide/id6446038181",
+        "https://apps.apple.com/us/app/city-guide-ai-walking-tours/id6738431029",
+        "https://aitourmate.eu/audio-guide/barcelona"
+      ],
+      "mentioned": false,
+      "answer_summary": "Suggested AI audio guides for landmarks: Audiala, City Guide: AI Walking Tours, AI TourMate and Stanza. Said general chatbots also work for landmark questions."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "SmartGuide",
+          "domain": "smart-guide.org"
+        },
+        {
+          "name": "Musetory",
+          "domain": ""
+        },
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "Votura",
+          "domain": "votura.app"
+        },
+        {
+          "name": "PocketGuide",
+          "domain": "pocketguide.com"
+        }
+      ],
+      "prompt": "multilingual audio tour app",
+      "citations": [
+        "https://play.google.com/store/apps/details?id=travel.opas.client&hl=en",
+        "https://blog.smart-guide.org/en/best-tour-guide-apps-for-travelers-in-2026",
+        "https://votura.app/blog/votura-multi-language-tours/",
+        "https://apps.apple.com/us/app/musetory-museum-audio-guide/id6761122184"
+      ],
+      "mentioned": false,
+      "answer_summary": "Recommended izi.TRAVEL (50+ languages), SmartGuide (about 100 languages), Musetory (74 languages), VoiceMap, Votura and PocketGuide. Compared language coverage for each."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Musetory",
+          "domain": ""
+        },
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "Bloomberg Connects",
+          "domain": "bloombergconnects.org"
+        },
+        {
+          "name": "Musa",
+          "domain": "musa.guide"
+        },
+        {
+          "name": "Artlas",
+          "domain": "artlas.art"
+        }
+      ],
+      "prompt": "museum guide in my language",
+      "citations": [
+        "https://apps.apple.com/us/app/musetory-museum-audio-guide/id6761122184",
+        "https://izi.travel/en/app",
+        "https://www.musa.guide/en",
+        "https://www.artlas.art/en"
+      ],
+      "mentioned": false,
+      "answer_summary": "Suggested Musetory, izi.TRAVEL, Bloomberg Connects and Musa for museum guides in many languages. Said to check the museum's own app for your language."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "SmartGuide",
+          "domain": "smart-guide.org"
+        },
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "GuideSofia",
+          "domain": ""
+        },
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "PocketGuide",
+          "domain": "pocketguide.com"
+        }
+      ],
+      "prompt": "travel guide app in multiple languages",
+      "citations": [
+        "https://blog.smart-guide.org/en/best-tour-guide-apps-for-travelers-in-2026",
+        "https://play.google.com/store/apps/details?id=travel.opas.client&hl=en"
+      ],
+      "mentioned": false,
+      "answer_summary": "Recommended SmartGuide, izi.TRAVEL, GuideSofia, VoiceMap and PocketGuide as GPS travel guide apps. Compared language counts and coverage of destinations."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "SmartGuide",
+          "domain": "smart-guide.org"
+        },
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "Votura",
+          "domain": "votura.app"
+        },
+        {
+          "name": "AudioMe Tours",
+          "domain": "audiometours.com"
+        }
+      ],
+      "prompt": "foreign language audio guide for sightseeing",
+      "citations": [
+        "https://play.google.com/store/apps/details?id=travel.opas.client&hl=en",
+        "https://blog.smart-guide.org/en/best-tour-guide-apps-for-travelers-in-2026",
+        "https://votura.app/blog/votura-multi-language-tours/",
+        "https://audiometours.com/ailanguages/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Suggested izi.TRAVEL, SmartGuide, VoiceMap, Votura and AudioMe Tours for GPS audio guides in different languages. Said some tours are only in English."
+    },
+    {
+      "rank": 3,
+      "cited": true,
+      "brands": [
+        {
+          "name": "Audiala",
+          "domain": "audiala.com"
+        },
+        {
+          "name": "AI TourMate",
+          "domain": "aitourmate.eu"
+        },
+        {
+          "name": "Chiaro",
+          "domain": "chiaro.ai"
+        },
+        {
+          "name": "GuideSofia",
+          "domain": ""
+        },
+        {
+          "name": "Stanza",
+          "domain": ""
+        },
+        {
+          "name": "City Guide: AI Walking Tours",
+          "domain": ""
+        }
+      ],
+      "prompt": "app that explains monuments in Spanish",
+      "citations": [
+        "https://apps.apple.com/us/app/audiala-ai-audio-tour-guide/id6446038181",
+        "https://aitourmate.eu/audio-guide/barcelona",
+        "https://chiaro.ai/",
+        "https://apps.apple.com/us/app/city-guide-ai-walking-tours/id6738431029"
+      ],
+      "mentioned": true,
+      "answer_summary": "Recommended Audiala, AI TourMate, Chiaro, GuideSofia, Stanza and City Guide for monument narration with Spanish support. Noted Chiaro offers Spanish guides from a photo, in 18 languages."
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "mode": "visibility",
+  "batch": "b1",
+  "engine": "chatgpt",
+  "results": [
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "Google Arts & Culture",
+          "domain": "artsandculture.google.com"
+        },
+        {
+          "name": "Magnus",
+          "domain": "magnus.net"
+        }
+      ],
+      "prompt": "app to recognize artworks",
+      "citations": [
+        "https://play.google.com/store/apps/details?hl=en_US&id=com.mobgen.smartify",
+        "https://play.google.com/store/apps/details?id=com.google.android.apps.cultural",
+        "https://magnus.net/faq/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Try Smartify for museum artwork scans, Google Arts & Culture for selected collections, or Magnus for photo matching. Coverage varies by artwork."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Google Lens",
+          "domain": "lens.google"
+        },
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "Magnus",
+          "domain": "magnus.net"
+        }
+      ],
+      "prompt": "identify paintings by photo",
+      "citations": [
+        "https://support.google.com/photos/answer/7539151?co=GENIE.Platform%3DAndroid&hl%3Den%26co%3DGENIE.Platform%3DAndroid=&utm_source=openai",
+        "https://play.google.com/store/apps/details?hl=en_US&id=com.mobgen.smartify",
+        "https://magnus.net/faq/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Start with Google Lens for visual matching; Smartify is better suited to participating museum collections, while Magnus focuses on identifying art from photos."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "ArtSnap AI",
+          "domain": null
+        },
+        {
+          "name": "Artlog: Museum Art Scanner",
+          "domain": null
+        }
+      ],
+      "prompt": "AI museum guide app",
+      "citations": [
+        "https://play.google.com/store/apps/details?hl=en_US&id=com.mobgen.smartify",
+        "https://apps.apple.com/us/app/artsnap-ai/id6743003187?utm_source=openai",
+        "https://apps.apple.com/us/app/artlog-museum-art-scanner/id6815466893?utm_source=openai"
+      ],
+      "mentioned": false,
+      "answer_summary": "Smartify offers museum scans and guides; ArtSnap AI and Artlog advertise AI artwork identification and audio explanations. Check coverage for your museum."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "ArtSnap AI",
+          "domain": null
+        },
+        {
+          "name": "Artlog: Museum Art Scanner",
+          "domain": null
+        }
+      ],
+      "prompt": "museum artwork scanner app",
+      "citations": [
+        "https://play.google.com/store/apps/details?hl=en_US&id=com.mobgen.smartify",
+        "https://apps.apple.com/us/app/artsnap-ai/id6743003187?utm_source=openai",
+        "https://apps.apple.com/us/app/artlog-museum-art-scanner/id6815466893?utm_source=openai"
+      ],
+      "mentioned": false,
+      "answer_summary": "Try Smartify first for supported museums; ArtSnap AI and Artlog also advertise camera-based artwork scans and explanations."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "Google Arts & Culture",
+          "domain": "artsandculture.google.com"
+        }
+      ],
+      "prompt": "what app identifies art in museums",
+      "citations": [
+        "https://play.google.com/store/apps/details?hl=en_US&id=com.mobgen.smartify",
+        "https://play.google.com/store/apps/details?id=com.google.android.apps.cultural"
+      ],
+      "mentioned": false,
+      "answer_summary": "Smartify identifies works at partner museums; Google Arts & Culture’s Art Recogniser works at select museums. Neither recognizes everything."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        }
+      ],
+      "prompt": "audio tour guide app",
+      "citations": [
+        "https://voicemap.me/walking-tour-app?utm_source=openai",
+        "https://www.izi.travel/en/app?utm_source=openai",
+        "https://www.ricksteves.com/watch-read-listen/audio/audio-europe?utm_source=openai"
+      ],
+      "mentioned": false,
+      "answer_summary": "For self-guided city walks, VoiceMap has GPS-triggered narration; izi.TRAVEL covers cities and museums, while Rick Steves Audio Europe focuses on European sights."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        }
+      ],
+      "prompt": "walking tour audio app",
+      "citations": [
+        "https://voicemap.me/walking-tour-app?utm_source=openai",
+        "https://www.izi.travel/en/app?utm_source=openai",
+        "https://www.ricksteves.com/watch-read-listen/audio/audio-europe?utm_source=openai"
+      ],
+      "mentioned": false,
+      "answer_summary": "VoiceMap is a strong choice for GPS-triggered walking tours with offline maps. izi.TRAVEL has city tours, and Rick Steves Audio Europe offers European walks."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        }
+      ],
+      "prompt": "best audio guide app for landmarks",
+      "citations": [
+        "https://voicemap.me/walking-tour-app?utm_source=openai",
+        "https://www.izi.travel/en/app?utm_source=openai",
+        "https://www.ricksteves.com/watch-read-listen/audio/audio-europe?utm_source=openai"
+      ],
+      "mentioned": false,
+      "answer_summary": "For narrated landmark walks, start with VoiceMap. izi.TRAVEL is useful for city and museum guides; Rick Steves Audio Europe is a free Europe-focused option."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        }
+      ],
+      "prompt": "self guided city tour app",
+      "citations": [
+        "https://voicemap.me/walking-tour-app?utm_source=openai",
+        "https://www.izi.travel/en/app?utm_source=openai",
+        "https://www.ricksteves.com/watch-read-listen/audio/audio-europe?utm_source=openai"
+      ],
+      "mentioned": false,
+      "answer_summary": "VoiceMap offers GPS-triggered self-guided city walks and offline maps. Try izi.TRAVEL for city guides or Rick Steves Audio Europe for European routes."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Google Lens",
+          "domain": "lens.google"
+        },
+        {
+          "name": "Archie: Identify Architecture",
+          "domain": null
+        },
+        {
+          "name": "Citypik",
+          "domain": "citypik.com"
+        }
+      ],
+      "prompt": "app that tells you about buildings you photograph",
+      "citations": [
+        "https://support.google.com/photos/answer/7539151?co=GENIE.Platform%3DAndroid&hl%3Den%26co%3DGENIE.Platform%3DAndroid=&utm_source=openai",
+        "https://apps.apple.com/us/app/archie-identify-architecture/id6503988435?utm_source=openai",
+        "https://www.citypik.com/en/?utm_source=openai"
+      ],
+      "mentioned": false,
+      "answer_summary": "Google Lens can identify landmarks in photos. For architecture-focused information, try Archie or Citypik; identification of obscure buildings may be uncertain."
+    }
+  ]
+}
