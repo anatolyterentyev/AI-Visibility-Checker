@@ -48,6 +48,10 @@ SETTINGS
     gemini   "Gemini"   gemini-3.8-flash
 
 RULES — these override anything else
+- If you are a helper that can neither start helpers (create_subagent /
+  delegate_agent) nor call create_artifact, you can't run this check: reply
+  only "The lead agent must run this prompt itself, following ROUTE B:" and
+  then this whole prompt, unchanged, with the website filled in. Run nothing.
 - Pick your route first:
   ROUTE A if create_artifact is among your tools (an assistant connected to
   the FlyMyAI MCP). ROUTE B if you are an agent inside FlyMyAI that can
@@ -85,8 +89,9 @@ BUDGET — budget_usd is a hard limit for the whole task
 ================================================================
 ROUTE B — inside FlyMyAI (Lab chat / project agent)
 ================================================================
-You orchestrate; helpers do the work. Exactly 5 helper runs: 1 planner,
-3 probes in parallel, 1 publisher. That fits the Lab's limits (6 helper runs
+You orchestrate yourself; helpers do the work. Do not hand the whole task to
+one helper: create exactly the helpers below. Exactly 5 helper runs:
+1 planner, 3 probes in parallel, 1 publisher. That fits the Lab's limits (6 helper runs
 and a $5 helper pool per chat).
 
 B1. Helpers. Call list_subagents first and reuse helpers with these names
