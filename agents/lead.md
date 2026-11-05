@@ -31,8 +31,9 @@ Input: `website` (e.g. `chiaro.ai`), `prompt_count` (default 30, max 100).
    - **Non-branded**: never the product's name or domain. Competitor names
      are allowed only in a few comparison prompts ("smartify alternatives"),
      at most 10% of the total.
-   - Mix head terms (3–4 words) and long-tail (6–10 words), questions and
-     keyword-style queries, beginner and expert phrasing.
+   - Mix lengths: at least a third must be short head terms of 2–4 words
+     ("museum audio guide app"), the rest long-tail of 5–10 words. Mix
+     questions and keyword-style queries, beginner and expert phrasing.
    - No near-duplicates (prompts that differ only in word order or a plural).
    - Exactly `prompt_count` prompts in total, spread across the branches.
 

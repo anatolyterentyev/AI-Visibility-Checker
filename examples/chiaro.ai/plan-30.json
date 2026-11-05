@@ -1,0 +1,76 @@
+{
+  "phase": "plan",
+  "target": {
+    "name": "Chiaro",
+    "domain": "chiaro.ai",
+    "summary": "An AI-powered travel companion that turns photos of artworks, monuments, and landmarks into instant spoken audio guides.",
+    "audience": "Independent travelers, museum visitors, cultural tourists, and art lovers looking for on-demand audio guides without human tours.",
+    "category": "AI travel guide & museum audio tour app"
+  },
+  "mindmap": {
+    "root": "AI travel guide & museum audio tour apps",
+    "branches": [
+      {
+        "intent": "Art & Painting Recognition",
+        "prompts": [
+          "app to recognize artworks from photo",
+          "identify paintings by taking a picture",
+          "how to scan museum art and get audio explanation",
+          "best app for identifying artwork in museums",
+          "art scanner that explains paintings"
+        ]
+      },
+      {
+        "intent": "Landmark & Monument Guides",
+        "prompts": [
+          "audio guide for historic monuments",
+          "app that tells stories about historical landmarks",
+          "photo recognition app for tourist attractions",
+          "identify statue from camera with audio story",
+          "instant landmark audio guide on phone"
+        ]
+      },
+      {
+        "intent": "Self-Guided Museum Audio Tours",
+        "prompts": [
+          "best audio guide app for museums",
+          "museum companion app instead of renting headsets",
+          "how to get audio guides for art galleries",
+          "app for self guided museum tours",
+          "smartify alternatives for museum audio guides"
+        ]
+      },
+      {
+        "intent": "AI Walking Tours & City Exploration",
+        "prompts": [
+          "ai personal tour guide app",
+          "interactive walking tour app with spoken guide",
+          "best travel app for exploring cities on foot",
+          "ai audio guide for walking around europe",
+          "virtual tour guide app for travelers"
+        ]
+      },
+      {
+        "intent": "Interactive Travel Q&A & Storytelling",
+        "prompts": [
+          "app that answers questions about historical sites",
+          "travel guide app with conversational voice narration",
+          "ask questions about architecture while traveling",
+          "photo to audio story travel app",
+          "guidebook alternative with instant voice answers"
+        ]
+      },
+      {
+        "intent": "Multilingual Audio Guides for Tourists",
+        "prompts": [
+          "multilingual museum audio guide app",
+          "travel audio guide in multiple languages",
+          "audio tour app with natural voice narration",
+          "app like izi travel for cultural landmarks",
+          "offline audio guide for sightseeing abroad"
+        ]
+      }
+    ]
+  },
+  "use_case": "Looking for an effortless AI audio guide app that recognizes artworks and landmarks from photos and tells their stories."
+}
