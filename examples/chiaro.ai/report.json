@@ -794,6 +794,8 @@
     "mentions_pct": 5.6,
     "citations_pct": 2.8,
     "avg_rank": 3.5,
+    "answers": 36,
+    "pts_per_answer": 2.8,
     "by_engine": {
       "chatgpt": {
         "pct": 0.0,
@@ -826,15 +828,6 @@
       "sentiment_index": 85
     },
     {
-      "brand": "Google Arts & Culture",
-      "domain": "artsandculture.google.com",
-      "is_target": false,
-      "mentions": 11,
-      "share_of_voice_pct": 19.0,
-      "mention_rate_pct": 30.6,
-      "sentiment_index": 74
-    },
-    {
       "brand": "Bloomberg Connects",
       "domain": "bloombergconnects.org",
       "is_target": false,
@@ -842,6 +835,15 @@
       "share_of_voice_pct": 19.0,
       "mention_rate_pct": 30.6,
       "sentiment_index": 76
+    },
+    {
+      "brand": "Google Arts & Culture",
+      "domain": "artsandculture.google.com",
+      "is_target": false,
+      "mentions": 11,
+      "share_of_voice_pct": 19.0,
+      "mention_rate_pct": 30.6,
+      "sentiment_index": 74
     },
     {
       "brand": "izi.TRAVEL",
@@ -874,5 +876,35 @@
   "generated_at": "2026-11-05T14:40:24Z",
   "notes": [
     "Gemini's sentiment probe was not run because the subagent budget cap ($2.50) was used up by the visibility round, so the sentiment index here is the average of ChatGPT and Claude. The default cap in PROMPT.md is now $4."
+  ],
+  "by_intent": [
+    {
+      "intent": "identify artwork",
+      "prompts": 3,
+      "answers": 9,
+      "pct": 0.0,
+      "leader": "Smartify"
+    },
+    {
+      "intent": "museum audio guide",
+      "prompts": 3,
+      "answers": 9,
+      "pct": 11.1,
+      "leader": "Bloomberg Connects"
+    },
+    {
+      "intent": "learn art history",
+      "prompts": 3,
+      "answers": 9,
+      "pct": 0.0,
+      "leader": "Smartify"
+    },
+    {
+      "intent": "travel guide companion",
+      "prompts": 3,
+      "answers": 9,
+      "pct": 11.1,
+      "leader": "VoiceMap"
+    }
   ]
 }

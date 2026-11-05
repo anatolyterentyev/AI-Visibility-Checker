@@ -30,46 +30,60 @@ when asked about it, but rarely bring it up on their own.
 3. Paste it into the assistant. It creates the agents on your FlyMyAI account,
    runs the check, and returns a link to your report artifact.
 
-A run with 12 prompts × 3 engines on the flagship models costs roughly $3–5
-of FlyMyAI balance.
+The default check is 30 prompts × 3 engines = 90 AI answers. On the flagship
+models that's an estimated $8–12 of FlyMyAI balance; the assistant reports the
+real cost at the end. `prompt_count` can go from 10 to 100.
 
 ---
 
 ## How it works
 
 ```
-             ┌────────────────────────────── Lead agent (FlyMyAI) ──────────────────────────────┐
- website ──▶ │ 1. read the site      2. prompt mind map (non-branded, 2–10 words)               │
-             │                         e.g. "app to recognize artworks"                         │
-             │ 3. visibility probes ─┬─▶ ChatGPT probe (GPT + OpenAI web search)                │
-             │                       ├─▶ Claude probe  (Claude + Claude web search)             │
-             │                       └─▶ Gemini probe  (Gemini + Google Search)                 │
-             │ 4. competitors = brands the engines recommended most                             │
-             │ 5. sentiment probes: each engine scores you + competitors 0–100                  │
-             │ 6. compute metrics → JSON report                                                 │
-             └──────────────────────────────────────────────────────────────────────────────────┘
-                                             │
-                                             ▼
-                           FlyMyAI artifact (artifact/index.html + data.js)
+ your assistant (FlyMyAI MCP)
+   │
+   ├─ 1. Lead · plan ─────────▶ reads the site, builds the prompt mind map
+   │                            (30 non-branded prompts, 2–10 words each)
+   │
+   ├─ 2. Visibility, in parallel: prompts in batches of 10 × every engine
+   │        ChatGPT probe  (GPT-6 Sol + OpenAI web search)
+   │        Claude probe   (Claude Sonnet 5.5 + Claude web search)
+   │        Gemini probe   (Gemini 3.8 Flash + Google Search)
+   │      → which brands each engine recommended, in order, and what it cited
+   │
+   ├─ 3. Lead · analyze ──────▶ competitors = brands the engines named most
+   │
+   ├─ 4. Sentiment, one run per engine: score you + competitors 0–100
+   │
+   ├─ 5. Lead · analyze ──────▶ metrics + insights → JSON report
+   │      (scripts/compute.py recomputes every number from the raw answers)
+   │
+   └─ 6. FlyMyAI artifact: artifact/index.html + data.js
 ```
 
 1. **Understand the site.** The lead agent reads the website and writes down
-   the product, category, audience and the jobs it solves.
-2. **Prompt mind map.** It builds a tree: category → 3–5 intents → 2–5 prompts
-   each. Prompts are 2–10 words, typed the way people talk to ChatGPT, and
-   **never contain your brand** — we measure discovery, not reputation.
-3. **Visibility probes.** For every engine, a probe subagent runs on that
-   vendor's model with that vendor's own web search
-   (`web_search=auto` on FlyMyAI), answers every prompt as it would for a real
-   user, and reports the brands it recommended (in order) and the URLs it cited.
-4. **Competitors** are not configured — they are discovered: the brands the
-   engines named most often across all answers.
+   the product, category, audience, the jobs it solves, and a one-line use
+   case.
+2. **Prompt mind map.** It builds a tree: category → 4–8 intents → prompts.
+   Prompts are 2–10 words, typed the way people talk to ChatGPT, and **never
+   contain your brand**: the check measures discovery, not reputation.
+3. **Visibility probes.** Prompts go out in batches of 10. Each engine's probe
+   runs on that vendor's newest model with that vendor's own web search
+   (`web_search=auto` on FlyMyAI), answers each prompt as it would for a real
+   user, and reports the brands it recommended (in order) and the URLs it
+   cited. All batches run in parallel, so 30 or 100 prompts take about the
+   same time.
+4. **Competitors** aren't configured up front. They're the brands the engines
+   named most often across all answers.
 5. **Sentiment probes.** Every engine describes you and each competitor and
    gives a 0–100 "would I recommend it for this use case" score, plus tone,
    pros and cons.
-6. **Report.** The lead returns one JSON object
-   (`schema: ai-visibility-checker.v1`); the assistant publishes it with the
-   report page as a FlyMyAI artifact.
+6. **Report.** The lead computes the metrics (with code, not in its head) and
+   writes insights. `scripts/compute.py` can rebuild the same report from the
+   raw probe outputs, and the page is published as a FlyMyAI artifact.
+
+The user's assistant drives the batches directly rather than having the lead
+start subagents, because FlyMyAI allows at most 6 subagents per run and 3
+engines × (batches + sentiment) quickly exceeds that.
 
 ### Formulas
 
@@ -77,18 +91,22 @@ of FlyMyAI balance.
   answered by that engine × 100
 - **Visibility % (overall)** = same over all prompt × engine pairs
 - **Share of voice** = your mentions ÷ mentions of you + top 5 competitors
+- **Visibility % (intent)** = the same, within one branch of the mind map
 - **Sentiment index (brand)** = mean of the engines' 0–100 recommendation
   likelihoods
+- The report also says how many points one answer is worth (100 ÷ answers):
+  1.1 points per answer at 30 prompts × 3 engines, 2.8 points at 12 × 3
 
 ## Repository
 
 | Path | What it is |
 |---|---|
 | [`PROMPT.md`](PROMPT.md) | The public prompt: paste into any assistant connected to FlyMyAI |
-| [`agents/lead.md`](agents/lead.md) | Instructions of the orchestrating lead agent |
+| [`agents/lead.md`](agents/lead.md) | Instructions of the lead agent: `plan` (site → mind map) and `analyze` (probe answers → competitors, metrics, insights) |
 | [`agents/probe.md`](agents/probe.md) | Instructions of the per-engine probe agent (visibility + sentiment modes) |
 | [`artifact/index.html`](artifact/index.html) | The report page; reads `window.REPORT` from `data.js` |
-| [`scripts/compute.py`](scripts/compute.py) | Re-derives every metric from the raw answers and writes `report.json` + `data.js` (no dependencies) |
+| [`scripts/compute.py`](scripts/compute.py) | `split` prompts into batches, `assemble` probe outputs, list `competitors`, `compute` every metric → `report.json` + `data.js` (standard library only) |
+| [`tests/`](tests/) | `python3 -m unittest discover tests`: round-trip of the chiaro.ai run through split → assemble → compute |
 | [`examples/chiaro.ai/`](examples/chiaro.ai/) | A real run on chiaro.ai: raw and recomputed JSON + `data.js` |
 
 Preview a report locally: copy an example's `data.js` next to
@@ -104,7 +122,7 @@ Preview a report locally: copy an example's `data.js` next to
   to check `list_agent_models` and move to newer models as they appear.
 - **More engines:** add another probe agent (e.g. Grok, `grok-4.7`) and add it
   to `engines` in the run message.
-- **More prompts:** `prompt_count` up to 20 (cost grows linearly).
+- **More prompts:** `prompt_count` from 10 to 100 (cost grows linearly; batches run in parallel).
 
 ## Limitations
 

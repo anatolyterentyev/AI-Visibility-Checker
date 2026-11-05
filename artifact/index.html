@@ -139,8 +139,18 @@
         <div class="track"><div class="fill" style="width:${Math.max(v.pct || 0, 0.8)}%;background:${accent}"></div></div>
         <span class="num">${pct(v.pct || 0)}</span></div>`; }).join('')}
     </div>
-    <p class="method">Mentioned in ${pct(R.visibility.mentions_pct)} of answers · cited (link to ${esc(t.domain)}) in ${pct(R.visibility.citations_pct)} · average position when mentioned: ${R.visibility.avg_rank ?? '—'}</p>
+    <p class="method">Mentioned in ${pct(R.visibility.mentions_pct)} of answers · cited (link to ${esc(t.domain)}) in ${pct(R.visibility.citations_pct)} · average position when mentioned: ${R.visibility.avg_rank ?? '—'}${R.visibility.answers ? ` · ${R.visibility.answers} answers, so one answer moves the score by ${R.visibility.pts_per_answer} pts` : ''}</p>
   </section>
+
+  ${(R.by_intent || []).length ? `<section class="card">
+    <h2>Visibility by intent</h2>
+    <p class="sub">Where in the buyer's journey AI brings you up — and who owns each intent instead.</p>
+    <div class="bars">${R.by_intent.map(b => `<div class="row"><span></span>
+        <span>${esc(b.intent)} <span class="brands">${b.prompts} prompts${b.leader ? ' · leader: ' + esc(b.leader) : ''}</span></span>
+        <div class="track"><div class="fill" style="width:${Math.max(b.pct, 0.8)}%;background:${accent}"></div></div>
+        <span class="num">${pct(b.pct)}</span></div>`).join('')}
+    </div>
+  </section>` : ''}
 
   <section class="card">
     <h2>Who AI recommends instead</h2>

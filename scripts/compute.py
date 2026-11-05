@@ -1,21 +1,36 @@
 #!/usr/bin/env python3
-"""Recompute every metric of an AI Visibility Checker report from its raw data.
+"""AI Visibility Checker — deterministic helpers (standard library only).
 
-The lead agent already computes the numbers, but LLM arithmetic can drift.
-This script re-derives visibility, share of voice and sentiment index from
-`prompts` and `sentiment`, so the published report is exactly reproducible.
+The agents do the asking; this script does the bookkeeping, so every number
+in a report can be reproduced from the raw probe answers.
 
-    python3 scripts/compute.py examples/chiaro.ai/report.raw.json examples/chiaro.ai
+  split        plan.json [--size 10]
+               Print the visibility batches (one JSON object per line):
+               {"batch": "b1", "prompts": [...]} — send each batch to every
+               engine's probe agent.
 
-writes <out>/report.json and <out>/data.js (load data.js next to
-artifact/index.html). Standard library only.
+  assemble     plan.json engines.json probes_dir/ report.raw.json [--insights insights.json]
+               Merge the plan and every probe output in probes_dir/ (*.json,
+               visibility batches and sentiment answers, any order) into one
+               raw report.
+
+  competitors  report.raw.json [--top 5]
+               Print the brands the engines recommended most (the brands to
+               send to the sentiment probes, after the target).
+
+  compute      report.raw.json out_dir/
+               Recompute every metric and write out_dir/report.json and
+               out_dir/data.js (load data.js next to artifact/index.html).
 """
 import json
 import re
 import sys
 from collections import Counter
+from datetime import datetime, timezone
 from pathlib import Path
 
+
+# --------------------------------------------------------------------------- helpers
 
 def norm(name: str) -> str:
     """Canonical key for a brand name: 'izi.TRAVEL' == 'Izi Travel'."""
@@ -28,66 +43,190 @@ def rnd(x: float) -> float:
     return round(x + 1e-9, 1)
 
 
-def compute(r: dict) -> dict:
-    engines = [e for e in r["engines"] if e.get("status", "ok") != "failed"]
-    eids = [e["id"] for e in engines]
-    target = r["target"]["name"]
-    tkey = norm(target)
+def load(path) -> dict:
+    """Read a JSON file; tolerate a ```json fence or prose around the object."""
+    text = Path(path).read_text()
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        start, end = text.find("{"), text.rfind("}")
+        return json.loads(text[start:end + 1])
 
-    # --- visibility ---------------------------------------------------------
-    by_engine, ranks, pairs, hits, ment, cites = {}, [], 0, 0, 0, 0
-    for eid in eids:
-        answered = m = c = h = 0
-        for p in r["prompts"]:
-            res = p.get("results", {}).get(eid)
-            if not res:
-                continue
-            answered += 1
-            names = [norm(b) for b in res.get("brands", [])]
-            mentioned = bool(res.get("mentioned")) or tkey in names
-            cited = bool(res.get("cited"))
-            if mentioned and res.get("rank") is None and tkey in names:
-                res["rank"] = names.index(tkey) + 1
-            res["mentioned"] = mentioned
-            m += mentioned
-            c += cited
-            h += mentioned or cited
-            if mentioned and res.get("rank"):
-                ranks.append(res["rank"])
-        by_engine[eid] = {"pct": rnd(100 * h / answered) if answered else 0.0,
-                          "mentioned": m, "cited": c, "answered": answered}
-        pairs += answered
-        hits += h
-        ment += m
-        cites += c
-    r["visibility"] = {
-        "overall_pct": rnd(100 * hits / pairs) if pairs else 0.0,
-        "mentions_pct": rnd(100 * ment / pairs) if pairs else 0.0,
-        "citations_pct": rnd(100 * cites / pairs) if pairs else 0.0,
-        "avg_rank": rnd(sum(ranks) / len(ranks)) if ranks else None,
-        "by_engine": by_engine,
-    }
 
-    # --- share of voice -----------------------------------------------------
-    counts, display = Counter(), {}
+def brand_name(b) -> str:
+    return b.get("name", "") if isinstance(b, dict) else str(b)
+
+
+def flat_prompts(plan: dict):
+    for br in plan["mindmap"]["branches"]:
+        for p in br["prompts"]:
+            yield br["intent"], p
+
+
+def answers(r: dict, eids):
     for p in r["prompts"]:
         for eid in eids:
             res = p.get("results", {}).get(eid)
-            if not res:
-                continue
-            for b in dict.fromkeys(norm(x) for x in res.get("brands", [])):
-                counts[b] += 1
-            for x in res.get("brands", []):
-                display.setdefault(norm(x), x)
-    old = {norm(b["brand"]): b for b in r.get("leaderboard", [])}
-    sent = {norm(s["brand"]): s for s in r.get("sentiment", [])}
-    # ties are broken in favour of brands that already have sentiment scores
-    ranked = sorted((k for k in counts if k != tkey), key=lambda k: (-counts[k], k not in sent))
-    competitors = ranked[:5]
-    keys = [tkey] + competitors
-    total = sum(counts[k] for k in keys) or 1
+            if res is not None:
+                yield p, eid, res
 
-    # --- sentiment ----------------------------------------------------------
+
+def live_engines(r: dict):
+    return [e["id"] for e in r["engines"] if e.get("status", "ok") != "failed"]
+
+
+# --------------------------------------------------------------------------- split
+
+def split(plan: dict, size: int = 10):
+    prompts = [p for _, p in flat_prompts(plan)]
+    return [{"batch": f"b{i // size + 1}", "prompts": prompts[i:i + size]}
+            for i in range(0, len(prompts), size)]
+
+
+# --------------------------------------------------------------------------- assemble
+
+def assemble(plan: dict, engines: list, probe_outputs: list, insights=None) -> dict:
+    target = plan["target"]
+    tkey = norm(target["name"])
+    prompts = [{"prompt": p, "intent": intent, "results": {}} for intent, p in flat_prompts(plan)]
+    index = {p["prompt"].strip().lower(): p for p in prompts}
+    sentiment, seen_batches, notes = {}, {}, []
+
+    for out in probe_outputs:
+        eid = out.get("engine")
+        if out.get("mode") == "visibility":
+            seen_batches.setdefault(eid, set()).add(out.get("batch"))
+            for res in out.get("results", []):
+                p = index.get(str(res.get("prompt", "")).strip().lower())
+                if p is None:
+                    notes.append(f"{eid}: answer for unknown prompt ignored: {res.get('prompt')!r}")
+                    continue
+                names = [brand_name(b) for b in res.get("brands", [])]
+                keys = [norm(n) for n in names]
+                mentioned = bool(res.get("mentioned")) or tkey in keys
+                rank = res.get("rank")
+                if mentioned and rank is None and tkey in keys:
+                    rank = keys.index(tkey) + 1
+                p["results"][eid] = {
+                    "mentioned": mentioned, "cited": bool(res.get("cited")), "rank": rank,
+                    "brands": names, "citations": res.get("citations", []),
+                    "summary": res.get("answer_summary", res.get("summary", "")),
+                    "domains": {brand_name(b): b.get("domain") for b in res.get("brands", [])
+                                if isinstance(b, dict) and b.get("domain")},
+                }
+        elif out.get("mode") == "sentiment":
+            for s in out.get("scores", []):
+                entry = sentiment.setdefault(norm(s["brand"]), {"brand": s["brand"], "by_engine": {}})
+                entry["by_engine"][eid] = {k: s.get(k) for k in
+                                           ("likelihood", "tone", "description", "pros", "cons")}
+
+    total = len(prompts)
+    eng = []
+    for e in engines:
+        got = sum(1 for p in prompts if e["id"] in p["results"])
+        status = "ok" if got == total else ("partial" if got else "failed")
+        if status != "ok":
+            notes.append(f"{e['label']}: answers for {got} of {total} prompts.")
+        eng.append({**e, "status": status})
+
+    r = {
+        "schema": "ai-visibility-checker.v1",
+        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "target": target, "use_case": plan.get("use_case", ""), "mindmap": plan["mindmap"],
+        "engines": eng, "prompts": prompts,
+        "sentiment": list(sentiment.values()),
+        "insights": insights or [], "notes": notes,
+    }
+    return r
+
+
+# --------------------------------------------------------------------------- competitors
+
+def brand_counts(r: dict):
+    eids = live_engines(r)
+    counts, spelling, domains = Counter(), {}, {}
+    for _, _, res in answers(r, eids):
+        names = res.get("brands", [])
+        for k in dict.fromkeys(norm(n) for n in names):
+            counts[k] += 1
+        for n in names:
+            spelling.setdefault(norm(n), Counter())[n] += 1
+        for n, d in (res.get("domains") or {}).items():
+            domains.setdefault(norm(n), d)
+    display = {k: c.most_common(1)[0][0] for k, c in spelling.items()}
+    return counts, display, domains
+
+
+def competitors(r: dict, top: int = 5):
+    tkey = norm(r["target"]["name"])
+    counts, display, domains = brand_counts(r)
+    scored = {norm(s["brand"]) for s in r.get("sentiment", [])}
+    ranked = sorted((k for k in counts if k != tkey and k),
+                    key=lambda k: (-counts[k], k not in scored, k))
+    return [{"brand": display[k], "domain": domains.get(k, ""), "mentions": counts[k]}
+            for k in ranked[:top]]
+
+
+# --------------------------------------------------------------------------- compute
+
+def compute(r: dict) -> dict:
+    eids = live_engines(r)
+    target = r["target"]["name"]
+    tkey = norm(target)
+
+    # visibility
+    by_engine = {e: {"pct": 0.0, "mentioned": 0, "cited": 0, "answered": 0} for e in eids}
+    ranks, total, hits, ment, cites = [], 0, 0, 0, 0
+    for _, eid, res in answers(r, eids):
+        keys = [norm(n) for n in res.get("brands", [])]
+        res["mentioned"] = bool(res.get("mentioned")) or tkey in keys
+        if res["mentioned"] and res.get("rank") is None and tkey in keys:
+            res["rank"] = keys.index(tkey) + 1
+        hit = res["mentioned"] or bool(res.get("cited"))
+        b = by_engine[eid]
+        b["answered"] += 1
+        b["mentioned"] += res["mentioned"]
+        b["cited"] += bool(res.get("cited"))
+        b["hits"] = b.get("hits", 0) + hit
+        total += 1
+        hits += hit
+        ment += res["mentioned"]
+        cites += bool(res.get("cited"))
+        if res["mentioned"] and res.get("rank"):
+            ranks.append(res["rank"])
+    for b in by_engine.values():
+        b["pct"] = rnd(100 * b.pop("hits", 0) / b["answered"]) if b["answered"] else 0.0
+    pct = lambda n: rnd(100 * n / total) if total else 0.0
+    r["visibility"] = {
+        "overall_pct": pct(hits), "mentions_pct": pct(ment), "citations_pct": pct(cites),
+        "avg_rank": rnd(sum(ranks) / len(ranks)) if ranks else None,
+        "answers": total, "pts_per_answer": rnd(100 / total) if total else None,
+        "by_engine": by_engine,
+    }
+
+    # per intent
+    by_intent = []
+    for br in r["mindmap"]["branches"]:
+        rows = [p for p in r["prompts"] if p["intent"] == br["intent"]]
+        n = h = 0
+        leaders = Counter()
+        for p in rows:
+            for eid in eids:
+                res = p["results"].get(eid)
+                if res is None:
+                    continue
+                n += 1
+                h += res["mentioned"] or bool(res.get("cited"))
+                for k in dict.fromkeys(norm(x) for x in res.get("brands", [])):
+                    leaders[k] += 1
+        leaders.pop(tkey, None)
+        _, display, _ = brand_counts(r)
+        by_intent.append({"intent": br["intent"], "prompts": len(rows), "answers": n,
+                          "pct": rnd(100 * h / n) if n else 0.0,
+                          "leader": display.get(leaders.most_common(1)[0][0], "") if leaders else ""})
+    r["by_intent"] = by_intent
+
+    # sentiment
     for s in r.get("sentiment", []):
         scores = [v["likelihood"] for v in s.get("by_engine", {}).values()
                   if isinstance(v.get("likelihood"), (int, float))]
@@ -95,40 +234,81 @@ def compute(r: dict) -> dict:
         tones = Counter(v.get("tone") for v in s.get("by_engine", {}).values() if v.get("tone"))
         s["tone"] = tones.most_common(1)[0][0] if tones else "unknown"
         s["is_target"] = norm(s["brand"]) == tkey
+    sent = {norm(s["brand"]): s for s in r.get("sentiment", [])}
 
+    # leaderboard: target + top 5 competitors
+    counts, display, domains = brand_counts(r)
+    old = {norm(b["brand"]): b for b in r.get("leaderboard", [])}
+    comps = [norm(c["brand"]) for c in competitors(r)]
+    keys = [tkey] + comps
+    denom = sum(counts[k] for k in keys) or 1
     board = []
     for k in keys:
-        prev = old.get(k, {})
         board.append({
-            "brand": target if k == tkey else prev.get("brand", display.get(k, k)),
-            "domain": r["target"]["domain"] if k == tkey else prev.get("domain", ""),
+            "brand": target if k == tkey else display.get(k, old.get(k, {}).get("brand", k)),
+            "domain": r["target"]["domain"] if k == tkey else (domains.get(k) or old.get(k, {}).get("domain", "")),
             "is_target": k == tkey,
             "mentions": counts[k],
-            "share_of_voice_pct": rnd(100 * counts[k] / total),
-            "mention_rate_pct": rnd(100 * counts[k] / pairs) if pairs else 0.0,
+            "share_of_voice_pct": rnd(100 * counts[k] / denom),
+            "mention_rate_pct": pct(counts[k]),
             "sentiment_index": sent[k]["index"] if k in sent else None,
         })
     r["leaderboard"] = sorted(board, key=lambda b: -b["share_of_voice_pct"])
     return r
 
 
-def main() -> None:
-    if len(sys.argv) != 3:
-        sys.exit(__doc__)
-    report = compute(json.loads(Path(sys.argv[1]).read_text()))
-    out = Path(sys.argv[2])
+# --------------------------------------------------------------------------- cli
+
+def write_outputs(report: dict, out: Path) -> None:
     out.mkdir(parents=True, exist_ok=True)
-    text = json.dumps(report, indent=2, ensure_ascii=False)
-    (out / "report.json").write_text(text + "\n")
+    (out / "report.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
     compact = json.dumps(report, ensure_ascii=False, separators=(",", ":"))
     (out / "data.js").write_text("window.REPORT = " + compact + ";\n")
+
+
+def summary(report: dict) -> None:
     v = report["visibility"]
-    print(f"visibility {v['overall_pct']}%  by engine " +
+    print(f"visibility {v['overall_pct']}% over {v['answers']} answers "
+          f"(1 answer = {v['pts_per_answer']} pts) | " +
           ", ".join(f"{k} {x['pct']}%" for k, x in v["by_engine"].items()))
     for b in report["leaderboard"]:
-        print(f"  {b['brand']:<24} SoV {b['share_of_voice_pct']:>5}%  mentions {b['mentions']:>2}  "
+        print(f"  {b['brand']:<24} SoV {b['share_of_voice_pct']:>5}%  mentions {b['mentions']:>3}  "
               f"sentiment {b['sentiment_index']}")
 
 
+def main(argv) -> None:
+    if len(argv) < 2:
+        sys.exit(__doc__)
+    cmd, args = argv[1], argv[2:]
+    opt = lambda name, default=None: args[args.index(name) + 1] if name in args else default
+    pos = [a for i, a in enumerate(args) if not a.startswith("--") and (i == 0 or not args[i - 1].startswith("--"))]
+
+    if cmd == "split":
+        for b in split(load(pos[0]), int(opt("--size", 10))):
+            print(json.dumps(b, ensure_ascii=False))
+    elif cmd == "assemble":
+        plan, engines = load(pos[0]), load(pos[1])
+        engines = engines.get("engines", engines) if isinstance(engines, dict) else engines
+        outputs = [load(f) for f in sorted(Path(pos[2]).glob("*.json"))]
+        insights = load(opt("--insights")) if opt("--insights") else None
+        if isinstance(insights, dict):
+            insights = insights.get("insights", [])
+        report = assemble(plan, engines, outputs, insights)
+        Path(pos[3]).write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
+        print(f"assembled {len(report['prompts'])} prompts, "
+              f"{sum(len(p['results']) for p in report['prompts'])} answers, "
+              f"{len(report['sentiment'])} brands with sentiment -> {pos[3]}")
+        for n in report["notes"]:
+            print("  note:", n)
+    elif cmd == "competitors":
+        print(json.dumps(competitors(load(pos[0]), int(opt("--top", 5))), indent=2, ensure_ascii=False))
+    elif cmd == "compute":
+        report = compute(load(pos[0]))
+        write_outputs(report, Path(pos[1]))
+        summary(report)
+    else:
+        sys.exit(__doc__)
+
+
 if __name__ == "__main__":
-    main()
+    main(sys.argv)
