@@ -32,7 +32,7 @@
   .kpi .v small { font-size: 16px; color: var(--muted); font-weight: 500; }
   .kpi .l { color: var(--muted); font-size: 13px; }
   .grid2 { display: grid; grid-template-columns: 300px 1fr; gap: 24px; align-items: center; }
-  .bars .row { display: grid; grid-template-columns: 28px 1fr minmax(120px, 2fr) 64px; gap: 10px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .bars .row { display: grid; grid-template-columns: 28px 1fr minmax(120px, 2fr) 96px; gap: 10px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); }
   .bars .row:last-child { border-bottom: 0; }
   .bars .row.me { background: var(--accent-soft); border-radius: 10px; padding-left: 6px; padding-right: 6px; }
   .track { height: 8px; border-radius: 99px; background: var(--track); overflow: hidden; }
@@ -68,7 +68,7 @@
   @media (max-width: 760px) {
     .kpis { grid-template-columns: repeat(2, 1fr); }
     .grid2 { grid-template-columns: 1fr; }
-    .bars .row { grid-template-columns: 22px 1fr 56px; }
+    .bars .row { grid-template-columns: 22px 1fr 88px; }
     .bars .row .track { grid-column: 1 / -1; }
   }
 </style>
@@ -91,6 +91,7 @@
   let ci = 0; const color = {};
   lb.forEach(b => { color[b.brand] = b.is_target ? accent : palette[ci++ % palette.length]; });
   const me = lb.find(b => b.is_target) || {};
+  const sEngines = engines.filter(e => (R.sentiment || []).some(s => (s.by_engine || {})[e.id]));
   const meSent = (R.sentiment || []).find(s => s.is_target) || {};
   const scoreBg = v => v >= 70 ? 'var(--accent-soft)' : v >= 40 ? 'var(--track)' : 'transparent';
 
@@ -160,12 +161,12 @@
     <h2>Sentiment — how likely is each AI to recommend you?</h2>
     <p class="sub">Each engine scored every brand 0–100 for this use case: <em>${esc(R.use_case || t.category || '')}</em>. Index = average across engines.</p>
     <div class="scroll"><table>
-      <thead><tr><th>Brand</th>${engines.map(e => `<th>${esc(e.label)}</th>`).join('')}<th>Index</th></tr></thead>
+      <thead><tr><th>Brand</th>${sEngines.map(e => `<th>${esc(e.label)}</th>`).join('')}<th>Index</th></tr></thead>
       <tbody>${(R.sentiment || []).slice().sort((a, b) => b.index - a.index).map(s => {
-        const firstDesc = engines.map(e => (s.by_engine || {})[e.id]).find(x => x && x.description);
+        const firstDesc = sEngines.map(e => (s.by_engine || {})[e.id]).find(x => x && x.description);
         return `<tr><td><b>${esc(s.brand)}</b>${s.is_target ? '<span class="you">YOU</span>' : ''} <span class="tone ${esc(s.tone)}">${esc(s.tone || '')}</span>
           ${firstDesc ? `<div class="desc">“${esc(firstDesc.description)}”</div>` : ''}</td>
-          ${engines.map(e => { const x = (s.by_engine || {})[e.id]; return `<td>${x ? `<span class="score" style="background:${scoreBg(x.likelihood)}">${x.likelihood}</span>` : '—'}</td>`; }).join('')}
+          ${sEngines.map(e => { const x = (s.by_engine || {})[e.id]; return `<td>${x ? `<span class="score" style="background:${scoreBg(x.likelihood)}">${x.likelihood}</span>` : '—'}</td>`; }).join('')}
           <td><span class="score" style="background:${scoreBg(s.index)}">${Math.round(s.index)}</span></td></tr>`; }).join('')}
       </tbody></table></div>
   </section>
@@ -194,6 +195,8 @@
   </section>
 
   ${(R.insights || []).length ? `<section class="card"><h2>What to do next</h2><ul class="ins">${R.insights.map(i => `<li>${esc(i)}</li>`).join('')}</ul></section>` : ''}
+
+  ${(R.notes || []).length ? `<p class="method">${R.notes.map(esc).join(' ')}</p>` : ''}
 
   <footer>Open-source AI Visibility Checker · models accessed through <a href="https://flymy.ai" target="_blank" rel="noopener">FlyMyAI</a></footer>`;
 })();
