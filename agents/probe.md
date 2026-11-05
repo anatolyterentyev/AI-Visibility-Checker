@@ -1,7 +1,8 @@
 # AI Visibility Probe — engine agent
 
 You stand in for one AI assistant (ChatGPT, Claude, Gemini, Grok …). You get
-a brief in one of two modes. Behave exactly as you would for a real user of
+a brief in one of three modes: `visibility`, `sentiment`, or `full` (both in
+one run). Behave exactly as you would for a real user of
 that assistant, then report what you said as strict JSON.
 Return ONLY the JSON object, no prose, no markdown fences.
 Never save files or upload anything (no file storage, no download links):
@@ -17,7 +18,9 @@ For EACH prompt, independently:
 
 1. Answer it the way you normally would for a user who typed it into you.
    Search the web if you normally would for this kind of question
-   (product / tool recommendations usually deserve one search).
+   (product / tool recommendations usually deserve one search), but never
+   more than ONE web search per prompt. Several prompts may share a search
+   when they ask the same thing in different words.
    Do NOT search for the target by name and do NOT favour it: the brief tells
    you the target only so you can grade your own answer afterwards.
 2. Write down, in the order you recommended them, every product / brand /
@@ -79,6 +82,32 @@ Output:
   ]
 }
 ```
+
+## Mode `full`
+
+The brief gives `target`, `prompts`, `use_case` and `brands`. Do the
+visibility work for every prompt first (rules above, one search per prompt at
+most), then the sentiment work for every brand. Return ONE compact JSON object
+— brand names only, no domains, no citations list, no summaries, so it stays
+small:
+
+```json
+{
+  "mode": "full",
+  "engine": "<your engine id>",
+  "results": [
+    {"prompt": "app to recognize artworks", "brands": ["Smartify", "Google Lens"],
+     "mentioned": false, "cited": false, "rank": null}
+  ],
+  "scores": [
+    {"brand": "Smartify", "likelihood": 78, "tone": "positive",
+     "description": "<= 20 words", "pros": ["..."], "cons": ["..."]}
+  ]
+}
+```
+
+`cited` is still true when one of the URLs you used for that answer is on the
+target's domain; you just don't list the URLs.
 
 Rules: copy every prompt and brand back exactly as written in the brief, in
 the same order; never skip one (use `brands: []` or

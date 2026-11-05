@@ -20,9 +20,11 @@ in a report can be reproduced from the raw probe answers.
                Print the brands the engines recommended most (the brands to
                send to the sentiment probes, after the target).
 
-  compute      report.raw.json out_dir/
+  compute      report.raw.json out_dir/ [--auto-insights]
                Recompute every metric and write out_dir/report.json and
                out_dir/data.js (load data.js next to artifact/index.html).
+               --auto-insights (or a report without insights) writes the
+               insights from the computed numbers.
 """
 import json
 import re
@@ -66,8 +68,11 @@ def load_probe(path) -> dict:
     vis-claude-b2.json or sent-gemini.json)."""
     obj = load(path)
     if "mode" not in obj:
-        obj["mode"] = "sentiment" if "scores" in obj else "visibility"
-    m = re.match(r"(?:vis|sent)-([a-z0-9]+)(?:-(b\d+))?\.json$", Path(path).name)
+        if "scores" in obj and "results" in obj:
+            obj["mode"] = "full"
+        else:
+            obj["mode"] = "sentiment" if "scores" in obj else "visibility"
+    m = re.match(r"(?:vis|sent|full)-([a-z0-9]+)(?:-(b\d+))?\.json$", Path(path).name)
     if m:
         obj.setdefault("engine", m.group(1))
         if m.group(2):
@@ -116,7 +121,8 @@ def assemble(plan: dict, engines: list, probe_outputs: list, insights=None) -> d
 
     for out in probe_outputs:
         eid = out.get("engine")
-        if out.get("mode") == "visibility":
+        mode = out.get("mode")
+        if mode in ("visibility", "full"):
             seen_batches.setdefault(eid, set()).add(out.get("batch"))
             for res in out.get("results", []):
                 p = index.get(str(res.get("prompt", "")).strip().lower())
@@ -136,7 +142,7 @@ def assemble(plan: dict, engines: list, probe_outputs: list, insights=None) -> d
                     "domains": {brand_name(b): b.get("domain") for b in res.get("brands", [])
                                 if isinstance(b, dict) and b.get("domain")},
                 }
-        elif out.get("mode") == "sentiment":
+        if mode in ("sentiment", "full"):
             for s in out.get("scores", []):
                 entry = sentiment.setdefault(norm(s["brand"]), {"brand": s["brand"], "by_engine": {}})
                 entry["by_engine"][eid] = {k: s.get(k) for k in
@@ -233,7 +239,7 @@ def compute(r: dict) -> dict:
     r["visibility"] = {
         "overall_pct": pct(hits), "mentions_pct": pct(ment), "citations_pct": pct(cites),
         "avg_rank": rnd(sum(ranks) / len(ranks)) if ranks else None,
-        "answers": total, "pts_per_answer": rnd(100 / total) if total else None,
+        "answers": total, "hits": hits, "pts_per_answer": rnd(100 / total) if total else None,
         "by_engine": by_engine,
     }
 
@@ -288,6 +294,69 @@ def compute(r: dict) -> dict:
         })
     r["leaderboard"] = sorted(board, key=lambda b: -b["share_of_voice_pct"])
     return r
+
+
+# --------------------------------------------------------------------------- insights
+
+def insights(r: dict) -> list:
+    """Takeaways written from the computed numbers only, so no count can drift."""
+    t = r["target"]["name"]
+    v = r["visibility"]
+    labels = {e["id"]: e["label"] for e in r["engines"]}
+    out = [f"{t} was named or cited in {v.get('hits', 0)} of {v['answers']} AI answers "
+           f"({v['overall_pct']}% visibility; one answer moves it by {v['pts_per_answer']} points)."]
+
+    by_engine = v["by_engine"]
+    zero = [labels.get(e, e) for e, x in by_engine.items() if x["answered"] and x["pct"] == 0]
+    seen = sorted(((x["pct"], e) for e, x in by_engine.items() if x["pct"] > 0), reverse=True)
+    if zero and seen:
+        best = seen[0][1]
+        how = "only " + labels.get(best, best) + " did" if len(seen) == 1 else labels.get(best, best) + " did most often"
+        out.append(f"{' and '.join(zero)} never named {t}; {how} "
+                   f"({by_engine[best]['pct']}%, {by_engine[best]['mentioned']} of {by_engine[best]['answered']} answers).")
+    elif zero:
+        out.append(f"None of the engines ({', '.join(zero)}) named {t} for any prompt.")
+
+    intents = r.get("by_intent", [])
+    absent = [b for b in intents if b["pct"] == 0]
+    present = sorted((b for b in intents if b["pct"] > 0), key=lambda b: -b["pct"])
+    if present:
+        b = present[0]
+        out.append(f"{t} shows up most for '{b['intent']}' ({b['pct']}%)"
+                   + (f"; it is absent from {len(absent)} of {len(intents)} intents." if absent else "."))
+    for b in absent[:2]:
+        if b.get("leader"):
+            out.append(f"For '{b['intent']}' AI recommends {b['leader']} most, and never {t}.")
+
+    board = r.get("leaderboard", [])
+    rivals = [b for b in board if not b["is_target"]]
+    me = next((b for b in board if b["is_target"]), None)
+    if rivals and me:
+        top = rivals[0]
+        out.append(f"{top['brand']} leads share of voice with {top['share_of_voice_pct']}% "
+                   f"({top['mentions']} answers) against {t}'s {me['share_of_voice_pct']}%.")
+
+    sent = {s["brand"]: s for s in r.get("sentiment", [])}
+    mine = next((s for s in r.get("sentiment", []) if s.get("is_target")), None)
+    others = sorted((s for s in r.get("sentiment", []) if not s.get("is_target")), key=lambda s: -s["index"])
+    if mine:
+        line = f"Sentiment index: {t} {mine['index']}/100"
+        if others:
+            line += f" vs. {others[0]['brand']} {others[0]['index']}/100 (the highest of the competitors)"
+        lows = [labels.get(e, e) for e, x in mine["by_engine"].items()
+                if isinstance(x.get("likelihood"), (int, float)) and (x["likelihood"] < 20 or x.get("tone") == "unknown")]
+        highs = [labels.get(e, e) for e, x in mine["by_engine"].items()
+                 if isinstance(x.get("likelihood"), (int, float)) and x["likelihood"] >= 70]
+        if lows:
+            line += f"; {' and '.join(lows)} barely know{'s' if len(lows) == 1 else ''} {t}"
+        out.append(line + ".")
+        if v["overall_pct"] < 10 and highs:
+            out.append(f"Discovery, not reputation, is the gap: {' and '.join(highs)} rate {t} highly when asked "
+                       f"about it, but rarely bring it up for buyer questions.")
+        elif mine["index"] < 40:
+            out.append(f"Reputation is a gap too: engines rate {t} low for this use case, so a clear, consistent "
+                       f"product description across the web is the first fix.")
+    return out
 
 
 # --------------------------------------------------------------------------- cli
@@ -345,6 +414,8 @@ def main(argv) -> None:
         print(json.dumps(competitors(load(pos[0]), int(opt("--top", 5))), indent=2, ensure_ascii=False))
     elif cmd == "compute":
         report = compute(load(pos[0]))
+        if "--auto-insights" in args or not report.get("insights"):
+            report["insights"] = insights(report)
         write_outputs(report, Path(pos[1]))
         summary(report)
     else:

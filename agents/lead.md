@@ -37,6 +37,12 @@ Input: `website` (e.g. `chiaro.ai`), `prompt_count` (default 30, max 100).
      questions and keyword-style queries, beginner and expert phrasing.
    - No near-duplicates (prompts that differ only in word order or a plural).
    - Exactly `prompt_count` prompts in total, spread across the branches.
+4. **Likely competitors.** Search the web for the category (for example
+   "best <category>", "<product type> alternatives") and list the 5 products
+   buyers most often compare with this one (`competitors`, with domain).
+   Real products only, not the target. (Used by routes that can't afford a
+   separate competitor round; the leaderboard is still built from the
+   engines' answers.)
 
 Output:
 
@@ -45,7 +51,8 @@ Output:
   "phase": "plan",
   "target": {"name": "", "domain": "", "summary": "", "category": "", "audience": ""},
   "use_case": "",
-  "mindmap": {"root": "", "branches": [{"intent": "", "prompts": [""]}]}
+  "mindmap": {"root": "", "branches": [{"intent": "", "prompts": [""]}]},
+  "competitors": [{"brand": "", "domain": ""}]
 }
 ```
 

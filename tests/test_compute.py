@@ -110,5 +110,42 @@ class RoundTrip(unittest.TestCase):
             self.assertTrue((d / "out" / "data.js").read_text().startswith("window.REPORT = {"))
 
 
+class PublishSite(unittest.TestCase):
+    """The FlyMyAI Lab route: full-mode probe answers -> publish_site.py -> site files."""
+
+    def test_full_mode_run_matches_the_published_report(self):
+        run = ROOT / "examples" / "chiaro.ai" / "run-30"
+        plan = json.loads((run / "plan.json").read_text())
+        engines = json.loads((run / "engines.json").read_text())
+        expected = json.loads((run / "report.json").read_text())
+        probes = []
+        for e in engines:  # merge each engine's batches and sentiment into one full-mode answer
+            full = {"mode": "full", "engine": e["id"], "results": [], "scores": []}
+            for f in sorted((run / "probes").glob(f"*-{e['id']}*.json")):
+                o = C.load_probe(f)
+                full["results"] += [{k: r[k] for k in ("prompt", "brands", "mentioned", "cited", "rank")}
+                                    for r in o.get("results", [])]
+                full["scores"] += o.get("scores", [])
+            probes.append(json.dumps(full) if e["id"] == "claude" else full)  # text or dict both work
+        cfg = {"base_url": str(ROOT), "plan": plan, "engines": engines, "probes": probes}
+        with tempfile.TemporaryDirectory() as d:
+            out = subprocess.run(
+                [sys.executable, "-c",
+                 "import json,sys;CFG=json.load(sys.stdin);"
+                 f"exec(compile(open({str(ROOT / 'scripts' / 'publish_site.py')!r}).read(),'p','exec'),"
+                 "{'__name__':'__main__','CFG':CFG})"],
+                input=json.dumps(cfg), capture_output=True, text=True, cwd=d, check=True).stdout
+            line = next(l for l in out.splitlines() if l.startswith("<<<SITE>>>"))
+            site = json.loads(line[len("<<<SITE>>>"):])
+            data = (Path(d) / "site_out" / "data.js").read_text()
+            self.assertTrue((Path(d) / "site_out" / "index.html").read_text().startswith("<!doctype html>"))
+        self.assertEqual(site["visibility_pct"], expected["visibility"]["overall_pct"])
+        self.assertEqual(site["by_engine"], {k: v["pct"] for k, v in expected["visibility"]["by_engine"].items()})
+        self.assertEqual(site["leaderboard"], [[b["brand"], b["share_of_voice_pct"]] for b in expected["leaderboard"]])
+        self.assertIn("1 of 90 AI answers", site["summary"][0])
+        report = json.loads(data[len("window.REPORT = "):-2])
+        self.assertNotIn("citations", report["prompts"][0]["results"]["chatgpt"])
+
+
 if __name__ == "__main__":
     unittest.main()
