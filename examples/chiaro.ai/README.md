@@ -1,38 +1,68 @@
 # Example: chiaro.ai
 
-A real run of the checker on 5 Nov 2026: 12 non-branded prompts × 3 engines
-(ChatGPT `gpt-6-luna`, Claude `claude-haiku-4-5`, Gemini `gemini-3.8-flash`,
-each with its vendor's own web search), all through FlyMyAI.
+Two real runs of the checker on chiaro.ai, both on 5 Nov 2026, both through
+FlyMyAI.
 
-> This first run used each vendor's small, cheap model. The checker now
-> defaults to the flagship models (GPT-6 Sol, Claude Sonnet 5.5, Gemini 3.8
-> Flash); this example will be refreshed with a run on those.
+## run-30: the default check (flagship models)
 
-**Report artifact:** https://app.flymy.ai/artifacts/8d1001b8-9ed8-4c12-8fc1-ccec6f41727f
+30 non-branded prompts × 3 engines = **90 AI answers**. Each engine used its
+vendor's own web search:
+
+| Engine | Model |
+|---|---|
+| ChatGPT | GPT-6 Sol (`gpt-6-sol`) |
+| Claude | Claude Sonnet 5.5 (`claude-sonnet-5-5`) |
+| Gemini | Gemini 3.8 Flash (`gemini-3.8-flash`) |
+
+**Report artifact:** see the link in the repo's main README.
 
 | | |
 |---|---|
-| AI visibility | **5.6%** — named or cited in 2 of 36 answers |
-| By engine | ChatGPT 0% · Claude 8.3% (ranked #1 and cited for "take photo of landmark get audio explanation") · Gemini 8.3% (#6 for "free spoken audio guide for art galleries") |
-| Share of voice | Chiaro 3.4% vs. Smartify 31.0%, Google Arts & Culture 19.0%, Bloomberg Connects 19.0%, izi.TRAVEL 17.2%, VoiceMap 10.3% |
-| Sentiment index | Chiaro **72**/100 (ChatGPT 60, Claude 85) vs. Smartify 85, Bloomberg Connects 76, Google Arts & Culture 74, izi.TRAVEL 74, VoiceMap 68 |
+| AI visibility | **1.1%**: named in 1 of 90 answers (one answer is worth 1.1 points) |
+| By engine | ChatGPT 0% · Claude 3.3% · Gemini 0% |
+| The one hit | Claude recommended Chiaro **#3**, with a link to chiaro.ai, for "app that explains monuments in Spanish" |
+| By intent | Multilingual travel audio 6.7%; every other intent 0% |
+| Share of voice | VoiceMap 24.5% · Smartify 20.9% · izi.TRAVEL 20.0% · Rick Steves Audio Europe 18.2% · SmartGuide 15.5% · **Chiaro 0.9%** |
+| Sentiment index | Smartify **79** · **Chiaro 63** · VoiceMap 50 · izi.TRAVEL 44 · SmartGuide 44 · Rick Steves 36 |
 
-The engines like Chiaro when asked about it directly (positive tone across the
-board), but they rarely bring it up unprompted: it's a discovery problem, not
-a reputation problem.
+**What it means:**
+- **Chiaro has a discovery problem, not a reputation problem.** When asked
+  about Chiaro directly, ChatGPT scored it 89/100 and Gemini 92/100 (both
+  higher than Smartify), describing it accurately as a photo-to-audio,
+  multilingual guide. But when buyers ask for what Chiaro does, it almost
+  never comes up.
+- **Claude doesn't know Chiaro yet.** Claude Sonnet 5.5 gave it 8/100 and
+  said it couldn't describe the product reliably. That pulls the index down
+  to 63; without Claude, Chiaro would lead the field.
+- **The intents that fit Chiaro best are owned by others:** Smartify for
+  artwork recognition, VoiceMap and izi.TRAVEL for landmark tours, and a long
+  tail of new AI-guide apps (Artlas, Musa, SeeMuseums) for "ask questions
+  about paintings".
 
-Cost: about $1.30 of FlyMyAI balance ($1.25 for the probe subagents, plus the
-lead agent).
+**Caveat:** 49 of Gemini's 118 citations were Google search-redirect links
+rather than real URLs, so a Gemini citation of chiaro.ai could have been
+missed. Mentions are unaffected, and Gemini never named Chiaro.
 
-Gemini's sentiment probe didn't run in this example because the $2.50
-subagent cap ran out, so the sentiment index here averages only ChatGPT and
-Claude. `PROMPT.md` now defaults to a $4 cap.
+### Files
 
-## Files
+- `plan.json`: the lead agent's site summary and 30-prompt mind map
+- `engines.json`: the engines and models used
+- `probes/`: every probe output exactly as returned: `vis-<engine>-<batch>.json`
+  (9 visibility batches) and `sent-<engine>.json` (3 sentiment answers)
+- `report.raw.json`, `report.json`, `data.js`: rebuilt from `probes/` with
 
-- `report.raw.json` — the lead agent's output, unchanged except for the
-  `generated_at` timestamp and a `notes` field
-- `report.json`, `data.js` — the same data after `scripts/compute.py`
-  re-derived every metric (it matched the agent's numbers)
+```bash
+python3 scripts/compute.py assemble examples/chiaro.ai/run-30/plan.json examples/chiaro.ai/run-30/engines.json examples/chiaro.ai/run-30/probes examples/chiaro.ai/run-30/report.raw.json
+```
 
-Preview: copy `data.js` next to `artifact/index.html` and open the HTML file.
+```bash
+python3 scripts/compute.py compute examples/chiaro.ai/run-30/report.raw.json examples/chiaro.ai/run-30
+```
+
+## run-12: the first, small run
+
+12 prompts × 3 engines on each vendor's small model (GPT-6 Luna, Claude
+Haiku 4.5, Gemini 3.8 Flash), with Gemini's sentiment probe missing. It
+measured 5.6% visibility, but with 36 answers one answer moved the score by
+2.8 points, so it was mostly noise. It's kept for comparison; the checker no
+longer defaults to it.
