@@ -37,6 +37,12 @@ Claude (Sonnet 5.5) and Gemini (3.8 Flash):
 3. Paste it into the assistant. It creates the agents on your FlyMyAI account,
    runs the check, and returns a link to your report artifact.
 
+The report is always a FlyMyAI artifact (`app.flymy.ai/artifacts/...`), never
+a file in cloud storage. Only an assistant connected to the FlyMyAI MCP can
+create artifacts, so run the prompt there. Agents inside FlyMyAI itself (such
+as the Lab chat) don't have that tool, and the prompt tells them to stop
+rather than improvise a different output.
+
 The default check is 30 prompts × 3 engines = 90 AI answers on the flagship
 models. It costs about $5 of FlyMyAI balance (the chiaro.ai run cost $4.64)
 and takes about 20 minutes. `prompt_count` can go from 10 to 100.

@@ -1,6 +1,6 @@
 # Public prompt — build your own AI Visibility Checker on FlyMyAI
 
-Copy everything inside the block below into any AI assistant that is connected
+Copy everything inside the block below into an AI assistant that is connected
 to the **FlyMyAI MCP** (Claude Code, Claude, Cursor, Codex, ChatGPT …).
 Replace `YOUR-SITE.com` with your website. That's all.
 
@@ -8,6 +8,11 @@ Not connected yet? Add the FlyMyAI MCP to your assistant
 (https://docs.flymy.ai/agents/guides/ai-assistants) and sign in with your
 FlyMyAI account. Every model call (ChatGPT, Claude, Gemini) runs through your
 FlyMyAI balance — no OpenAI / Anthropic / Google keys needed.
+
+**Where it works:** the report is a FlyMyAI artifact, which only an assistant
+connected to the FlyMyAI MCP can create (`create_artifact`). Agents running
+*inside* FlyMyAI, such as the Lab chat, don't have that tool, so the prompt
+stops there instead of producing something else.
 
 The default check is **30 prompts × 3 engines = 90 AI answers** on each
 vendor's flagship model. It costs about **$5** of FlyMyAI balance (the
@@ -20,6 +25,21 @@ from 10 (quick, noisy) to 100 (precise, roughly 3× the cost).
 Build and run an AI Visibility Checker for YOUR-SITE.com on FlyMyAI.
 Use only FlyMyAI MCP tools. Source of truth (open source):
 https://github.com/anatolyterentyev/AI-Visibility-Checker
+
+OUTPUT RULES — these override anything else
+- The ONLY deliverable is a FlyMyAI artifact created with create_artifact
+  (its link starts with https://app.flymy.ai/artifacts/). Nothing else counts
+  as done.
+- NEVER save the report or any data to file storage. No Google Cloud Storage,
+  no storage.googleapis.com links, no execute_code_with_outputs,
+  write_agent_chat_file or download links, no Markdown / PDF / CSV report
+  files. Never put a storage link in your answer.
+- If create_artifact is not among your tools (for example you are an agent
+  inside FlyMyAI, such as the Lab chat), STOP before running anything and
+  reply only: "This prompt needs an assistant connected to the FlyMyAI MCP
+  (create_artifact). See https://docs.flymy.ai/agents/guides/ai-assistants".
+- Follow the steps below exactly. Do not write your own agents, methodology
+  or report format, and do not substitute other tools for missing ones.
 
 GOAL
 Measure two things and publish them as a FlyMyAI artifact:
@@ -35,9 +55,12 @@ SETTINGS
   batch_size: 10            (prompts per probe run)
 
 STEP 0 — Instructions
-Fetch from the repo (raw.githubusercontent.com, branch main):
+Fetch these files from raw.githubusercontent.com, from the same branch as the
+PROMPT.md link I gave you (for .../blob/<branch>/PROMPT.md use <branch>), or
+from branch main if I gave no link:
   agents/lead.md, agents/probe.md, artifact/index.html, scripts/compute.py
-If you cannot fetch them, stop and tell me — do not improvise the agents.
+If any of them cannot be fetched (404, empty), stop and tell me which — do not
+improvise the agents, the method or the page.
 Check my balance with whoami and tell me the estimated cost before running.
 
 STEP 1 — Agents (call list_agents first and reuse agents with these names;
@@ -110,7 +133,10 @@ STEP 7 — Publish the artifact
   create_artifact name="AI Visibility — YOUR-SITE.com" operation_key=<new>
     files: index.html = artifact/index.html from the repo, unchanged
            data.js    = as built in STEP 6
-Give me the artifact link, the total cost of all runs, and a 5-line summary:
+Send both files as content in the create_artifact call itself — never upload
+them anywhere first. Then check with read_artifact_files that both files are
+there.
+Give me the artifact link (https://app.flymy.ai/artifacts/...), the total cost of all runs, and a 5-line summary:
 overall visibility % (and how many points one answer is worth), best and
 worst engine, the intent where I'm most absent and who owns it, the top
 competitor's share of voice, and my sentiment index vs. the best competitor's.
