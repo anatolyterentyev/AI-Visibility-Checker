@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Visibility Report</title>
+<style>
+  :root {
+    --bg: #f6f7f5; --card: #ffffff; --ink: #14171a; --muted: #69707a; --line: #e6e8e3;
+    --accent: #12b85c; --accent-soft: #e5f7ec; --warn: #f08a24; --bad: #e5484d; --track: #eef0ec;
+    --c1: #3b82f6; --c2: #f08a24; --c3: #14b8a6; --c4: #e64980; --c5: #8b5cf6; --c6: #12b85c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0f1112; --card: #171a1c; --ink: #eceeed; --muted: #9aa1a8; --line: #272b2e;
+      --accent-soft: #11301f; --track: #22262a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, sans-serif; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 28px 16px 64px; }
+  header { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; justify-content: space-between; margin-bottom: 20px; }
+  .eyebrow { font: 600 11px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  h1 { margin: 6px 0 4px; font-size: 30px; letter-spacing: -.02em; }
+  h2 { margin: 0 0 4px; font-size: 18px; letter-spacing: -.01em; }
+  .sub { color: var(--muted); margin: 0; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; font-size: 12px; color: var(--muted); background: var(--card); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+  .card > .sub { margin-bottom: 16px; }
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
+  .kpi { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; }
+  .kpi .v { font-size: 34px; font-weight: 700; letter-spacing: -.03em; }
+  .kpi .v small { font-size: 16px; color: var(--muted); font-weight: 500; }
+  .kpi .l { color: var(--muted); font-size: 13px; }
+  .grid2 { display: grid; grid-template-columns: 300px 1fr; gap: 24px; align-items: center; }
+  .bars .row { display: grid; grid-template-columns: 28px 1fr minmax(120px, 2fr) 96px; gap: 10px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .bars .row:last-child { border-bottom: 0; }
+  .bars .row.me { background: var(--accent-soft); border-radius: 10px; padding-left: 6px; padding-right: 6px; }
+  .track { height: 8px; border-radius: 99px; background: var(--track); overflow: hidden; }
+  .fill { height: 100%; border-radius: 99px; }
+  .num { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .rank { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .you { font: 600 10px/1 ui-monospace, monospace; background: var(--accent-soft); color: var(--accent); padding: 3px 6px; border-radius: 6px; margin-left: 6px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 8px; vertical-align: middle; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { text-align: left; font: 600 11px/1.2 ui-monospace, monospace; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 10px 8px; border-bottom: 1px solid var(--line); }
+  td { padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:last-child td { border-bottom: 0; }
+  .scroll { overflow-x: auto; }
+  .score { display: inline-block; min-width: 40px; text-align: center; padding: 3px 8px; border-radius: 8px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .tone { font-size: 12px; padding: 2px 8px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted); }
+  .tone.positive { color: var(--accent); border-color: var(--accent); }
+  .tone.negative { color: var(--bad); border-color: var(--bad); }
+  .desc { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .yes { color: var(--accent); font-weight: 700; }
+  .no { color: var(--muted); }
+  .brands { color: var(--muted); font-size: 12px; }
+  .mind { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .branch { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+  .branch h3 { margin: 0 0 8px; font-size: 14px; }
+  .chip { display: inline-block; margin: 0 6px 6px 0; padding: 4px 10px; border-radius: 99px; background: var(--track); font-size: 13px; }
+  .chip.hit { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .root { text-align: center; margin-bottom: 14px; }
+  .root span { display: inline-block; padding: 8px 16px; border-radius: 99px; background: var(--ink); color: var(--bg); font-weight: 600; }
+  ul.ins { margin: 0; padding-left: 18px; } ul.ins li { margin: 6px 0; }
+  footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 28px; }
+  footer a { color: var(--accent); text-decoration: none; }
+  .method { color: var(--muted); font-size: 13px; }
+  @media (max-width: 760px) {
+    .kpis { grid-template-columns: repeat(2, 1fr); }
+    .grid2 { grid-template-columns: 1fr; }
+    .bars .row { grid-template-columns: 22px 1fr 88px; }
+    .bars .row .track { grid-column: 1 / -1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script src="data.js"></script>
+<script>
+(function () {
+  const R = window.REPORT;
+  const app = document.getElementById('app');
+  if (!R) { app.innerHTML = '<p>No report data (data.js) found.</p>'; return; }
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const pct = v => (v == null ? '—' : (Math.round(v * 10) / 10) + '%');
+  const palette = ['--c1','--c2','--c3','--c4','--c5'].map(v => getComputedStyle(document.documentElement).getPropertyValue(v).trim());
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+  const engines = (R.engines || []).filter(e => e.status !== 'failed');
+  const t = R.target || {};
+  const lb = (R.leaderboard || []).slice().sort((a, b) => b.share_of_voice_pct - a.share_of_voice_pct);
+  let ci = 0; const color = {};
+  lb.forEach(b => { color[b.brand] = b.is_target ? accent : palette[ci++ % palette.length]; });
+  const me = lb.find(b => b.is_target) || {};
+  const sEngines = engines.filter(e => (R.sentiment || []).some(s => (s.by_engine || {})[e.id]));
+  const meSent = (R.sentiment || []).find(s => s.is_target) || {};
+  const scoreBg = v => v >= 70 ? 'var(--accent-soft)' : v >= 40 ? 'var(--track)' : 'transparent';
+
+  function donut(items) {
+    const r = 70, C = 2 * Math.PI * r; let off = 0;
+    const total = items.reduce((s, i) => s + i.share_of_voice_pct, 0) || 1;
+    const segs = items.map(i => {
+      const len = C * i.share_of_voice_pct / total;
+      const s = `<circle r="${r}" cx="90" cy="90" fill="none" stroke="${color[i.brand]}" stroke-width="22"
+        stroke-dasharray="${Math.max(len - 2, 0.001)} ${C}" stroke-dashoffset="${-off}" transform="rotate(-90 90 90)"/>`;
+      off += len; return s;
+    }).join('');
+    return `<svg viewBox="0 0 180 180" width="260" height="260" role="img" aria-label="Share of voice">
+      <circle r="${r}" cx="90" cy="90" fill="none" stroke="var(--track)" stroke-width="22"/>${segs}
+      <text x="90" y="82" text-anchor="middle" fill="var(--muted)" font-size="10">${esc(t.name)} · you</text>
+      <text x="90" y="106" text-anchor="middle" fill="var(--ink)" font-size="26" font-weight="700">${pct(me.share_of_voice_pct || 0)}</text>
+    </svg>`;
+  }
+
+  const hitPrompts = new Set((R.prompts || []).filter(p => Object.values(p.results || {}).some(r => r.mentioned || r.cited)).map(p => p.prompt));
+
+  app.innerHTML = `
+  <header>
+    <div>
+      <div class="eyebrow">AI visibility report</div>
+      <h1>${esc(t.name || t.domain)}</h1>
+      <p class="sub">${esc(t.summary || '')}</p>
+    </div>
+    <span class="pill">${esc(t.domain)} · ${esc((R.generated_at || '').slice(0, 10))} · ${engines.map(e => esc(e.label)).join(', ')}</span>
+  </header>
+
+  <section class="kpis">
+    <div class="kpi"><div class="v">${pct(R.visibility.overall_pct)}</div><div class="l">AI visibility — answers that name or cite you</div></div>
+    <div class="kpi"><div class="v">${pct(me.share_of_voice_pct)}</div><div class="l">Share of voice vs. top competitors</div></div>
+    <div class="kpi"><div class="v">${meSent.index != null ? Math.round(meSent.index) : '—'}<small> /100</small></div><div class="l">Sentiment index — likelihood AI recommends you</div></div>
+    <div class="kpi"><div class="v">${(R.prompts || []).length}<small> × ${engines.length}</small></div><div class="l">Buyer prompts × AI engines tested</div></div>
+  </section>
+
+  <section class="card">
+    <h2>Visibility by engine</h2>
+    <p class="sub">Share of buyer prompts where each assistant named or cited ${esc(t.name)}.</p>
+    <div class="bars">${engines.map(e => {
+      const v = (R.visibility.by_engine || {})[e.id] || {};
+      return `<div class="row"><span></span><span>${esc(e.label)} <span class="brands">${esc(e.model || '')}</span></span>
+        <div class="track"><div class="fill" style="width:${Math.max(v.pct || 0, 0.8)}%;background:${accent}"></div></div>
+        <span class="num">${pct(v.pct || 0)}</span></div>`; }).join('')}
+    </div>
+    <p class="method">Mentioned in ${pct(R.visibility.mentions_pct)} of answers · cited (link to ${esc(t.domain)}) in ${pct(R.visibility.citations_pct)} · average position when mentioned: ${R.visibility.avg_rank ?? '—'}${R.visibility.answers ? ` · ${R.visibility.answers} answers, so one answer moves the score by ${R.visibility.pts_per_answer} pts` : ''}</p>
+  </section>
+
+  ${(R.by_intent || []).length ? `<section class="card">
+    <h2>Visibility by intent</h2>
+    <p class="sub">Where in the buyer's journey AI brings you up — and who owns each intent instead.</p>
+    <div class="bars">${R.by_intent.map(b => `<div class="row"><span></span>
+        <span>${esc(b.intent)} <span class="brands">${b.prompts} prompts${b.leader ? ' · leader: ' + esc(b.leader) : ''}</span></span>
+        <div class="track"><div class="fill" style="width:${Math.max(b.pct, 0.8)}%;background:${accent}"></div></div>
+        <span class="num">${pct(b.pct)}</span></div>`).join('')}
+    </div>
+  </section>` : ''}
+
+  <section class="card">
+    <h2>Who AI recommends instead</h2>
+    <p class="sub">Of every tracked-brand mention across all answers, how many belong to each brand. Competitors were discovered from the answers themselves.</p>
+    <div class="grid2">
+      <div style="text-align:center">${donut(lb)}</div>
+      <div class="bars">${lb.map((b, i) => `
+        <div class="row ${b.is_target ? 'me' : ''}"><span class="rank">${i + 1}</span>
+          <span><span class="dot" style="background:${color[b.brand]}"></span>${esc(b.brand)}${b.is_target ? '<span class="you">YOU</span>' : ''}</span>
+          <div class="track"><div class="fill" style="width:${Math.max(b.share_of_voice_pct, 0.8)}%;background:${color[b.brand]}"></div></div>
+          <span class="num">${pct(b.share_of_voice_pct)} <span class="brands">${b.mentions}</span></span>
+        </div>`).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Sentiment — how likely is each AI to recommend you?</h2>
+    <p class="sub">Each engine scored every brand 0–100 for this use case: <em>${esc((R.use_case || t.category || '').replace(/\.$/, ''))}</em>. Index = average across engines.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Brand</th>${sEngines.map(e => `<th>${esc(e.label)}</th>`).join('')}<th>Index</th></tr></thead>
+      <tbody>${(R.sentiment || []).slice().sort((a, b) => b.index - a.index).map(s => {
+        const firstDesc = sEngines.map(e => (s.by_engine || {})[e.id]).find(x => x && x.description);
+        return `<tr><td><b>${esc(s.brand)}</b>${s.is_target ? '<span class="you">YOU</span>' : ''} <span class="tone ${esc(s.tone)}">${esc(s.tone || '')}</span>
+          ${firstDesc ? `<div class="desc">“${esc(firstDesc.description)}”</div>` : ''}</td>
+          ${sEngines.map(e => { const x = (s.by_engine || {})[e.id]; return `<td>${x ? `<span class="score" style="background:${scoreBg(x.likelihood)}">${x.likelihood}</span>` : '—'}</td>`; }).join('')}
+          <td><span class="score" style="background:${scoreBg(s.index)}">${Math.round(s.index)}</span></td></tr>`; }).join('')}
+      </tbody></table></div>
+  </section>
+
+  <section class="card">
+    <h2>Prompt mind map</h2>
+    <p class="sub">Non-branded questions (2–10 words) a buyer would ask before knowing ${esc(t.name)}. Green = at least one engine named you.</p>
+    <div class="root"><span>${esc(R.mindmap?.root || t.category || '')}</span></div>
+    <div class="mind">${(R.mindmap?.branches || []).map(b => `
+      <div class="branch"><h3>${esc(b.intent)}</h3>${(b.prompts || []).map(p => `<span class="chip ${hitPrompts.has(p) ? 'hit' : ''}">${esc(p)}</span>`).join('')}</div>`).join('')}
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Prompt by prompt</h2>
+    <p class="sub">✓ = named or cited you. Under each mark: the first brands that engine recommended.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>#</th><th>Prompt</th>${engines.map(e => `<th>${esc(e.label)}</th>`).join('')}</tr></thead>
+      <tbody>${(R.prompts || []).map((p, i) => `<tr><td class="rank">${String(i + 1).padStart(2, '0')}</td>
+        <td>${esc(p.prompt)}<div class="brands">${esc(p.intent || '')}</div></td>
+        ${engines.map(e => { const r = (p.results || {})[e.id]; if (!r) return '<td class="no">—</td>';
+          const hit = r.mentioned || r.cited;
+          return `<td><span class="${hit ? 'yes' : 'no'}">${hit ? '✓' + (r.rank ? ' #' + r.rank : '') : '✗'}</span>
+            <div class="brands">${esc((r.brands || []).slice(0, 3).join(', '))}</div></td>`; }).join('')}
+      </tr>`).join('')}</tbody></table></div>
+  </section>
+
+  ${(R.insights || []).length ? `<section class="card"><h2>What to do next</h2><ul class="ins">${R.insights.map(i => `<li>${esc(i)}</li>`).join('')}</ul></section>` : ''}
+
+  ${(R.notes || []).length ? `<p class="method">${R.notes.map(esc).join(' ')}</p>` : ''}
+
+  <footer>Open-source AI Visibility Checker · models accessed through <a href="https://flymy.ai" target="_blank" rel="noopener">FlyMyAI</a></footer>`;
+})();
+</script>
+</body>
+</html>

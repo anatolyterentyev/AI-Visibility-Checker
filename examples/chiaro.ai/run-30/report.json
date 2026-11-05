@@ -1,0 +1,2846 @@
+{
+  "schema": "ai-visibility-checker.v1",
+  "generated_at": "2026-11-05T16:30:02Z",
+  "target": {
+    "name": "Chiaro",
+    "domain": "chiaro.ai",
+    "summary": "An AI-powered travel companion and audio guide mobile app that turns photos of artworks, monuments, and sights into instant interactive audio stories.",
+    "audience": "Museum visitors, independent travelers, art enthusiasts, and cultural tourists looking for on-demand audio exploration",
+    "category": "AI audio guide and travel companion apps"
+  },
+  "use_case": "A traveler or museum visitor wanting an on-demand AI tour guide that identifies sights from photos and narrates personalized audio explanations in their language.",
+  "mindmap": {
+    "root": "AI audio guide and travel companion apps",
+    "branches": [
+      {
+        "intent": "Art & museum recognition",
+        "prompts": [
+          "app to recognize artworks",
+          "identify paintings by photo",
+          "AI museum guide app",
+          "museum artwork scanner app",
+          "what app identifies art in museums"
+        ]
+      },
+      {
+        "intent": "Self-guided sightseeing & landmark tours",
+        "prompts": [
+          "audio tour guide app",
+          "walking tour audio app",
+          "best audio guide app for landmarks",
+          "self guided city tour app",
+          "app that tells you about buildings you photograph"
+        ]
+      },
+      {
+        "intent": "Interactive & conversational guides",
+        "prompts": [
+          "interactive audio guide app",
+          "conversational AI tour guide",
+          "ask questions about museum exhibits app",
+          "app to ask questions about paintings",
+          "AI assistant for historic landmark information"
+        ]
+      },
+      {
+        "intent": "Multilingual travel audio",
+        "prompts": [
+          "multilingual audio tour app",
+          "museum guide in my language",
+          "travel guide app in multiple languages",
+          "foreign language audio guide for sightseeing",
+          "app that explains monuments in Spanish"
+        ]
+      },
+      {
+        "intent": "Trip summaries & photo recaps",
+        "prompts": [
+          "travel recap app",
+          "daily trip summary audio",
+          "automatic travel journal from vacation photos",
+          "app to log and summarize visited landmarks",
+          "create daily audio story of vacation itinerary"
+        ]
+      },
+      {
+        "intent": "Competitor comparisons & alternatives",
+        "prompts": [
+          "smartify alternatives",
+          "apps like izi travel",
+          "top alternatives to museum audio devices",
+          "free museum audio guides",
+          "cheap alternative to private tour guide"
+        ]
+      }
+    ]
+  },
+  "engines": [
+    {
+      "id": "chatgpt",
+      "label": "ChatGPT",
+      "model": "gpt-6-sol",
+      "status": "ok"
+    },
+    {
+      "id": "claude",
+      "label": "Claude",
+      "model": "claude-sonnet-5-5",
+      "status": "ok"
+    },
+    {
+      "id": "gemini",
+      "label": "Gemini",
+      "model": "gemini-3.8-flash",
+      "status": "ok"
+    }
+  ],
+  "prompts": [
+    {
+      "prompt": "app to recognize artworks",
+      "intent": "Art & museum recognition",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Smartify",
+            "Google Arts & Culture",
+            "Magnus"
+          ],
+          "citations": [
+            "https://play.google.com/store/apps/details?hl=en_US&id=com.mobgen.smartify",
+            "https://play.google.com/store/apps/details?id=com.google.android.apps.cultural",
+            "https://magnus.net/faq/"
+          ],
+          "summary": "Try Smartify for museum artwork scans, Google Arts & Culture for selected collections, or Magnus for photo matching. Coverage varies by artwork.",
+          "domains": {
+            "Smartify": "smartify.org",
+            "Google Arts & Culture": "artsandculture.google.com",
+            "Magnus": "magnus.net"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Google Arts & Culture",
+            "Smartify",
+            "Google Lens",
+            "Magnus",
+            "ArtScan"
+          ],
+          "citations": [
+            "https://paintingrecognition.com/blog/best-painting-recognition-apps-compared.html",
+            "https://cypaint.com/article/is-there-an-app-that-can-identify-paintings-and-prints"
+          ],
+          "summary": "Recommended Google Arts & Culture, Smartify, Google Lens, Magnus and ArtScan for photo-based artwork recognition, with extra context on artists and museum coverage.",
+          "domains": {
+            "Google Arts & Culture": "artsandculture.google.com",
+            "Smartify": "smartify.org",
+            "Google Lens": "lens.google",
+            "Magnus": "magnus.app",
+            "ArtScan": "paintingrecognition.com"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Smartify",
+            "Magnus",
+            "ArtScan",
+            "Google Lens",
+            "Google Arts & Culture"
+          ],
+          "citations": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF6p8PsBiZrhWoCGLlfCNE4_WbceNta7BlooZZwFscxqzZjq_bKtRo8hDUGmie2RHR1WCGZgz-QZcv7zB8zUjgnNFaUaLgl-lKhReOz1tEZ_FJLbQrXoShnOpuymP3DKte7Q_5Xyip1sZk5R6cHe-euqppSXy8kP5z9eethn96Knn09TlaB91k=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHE8E2Bujv_bIr0C7jkZusZWUVjwSLVg5sVDPjRTiBgpCjLVtXQQQnw_k5RGfTNOiG3PNWbxe4EzjF80oDxQldmfW8uqqC69rbAKnUzLl857sTrxScxtpGBQqPWEG4gI-qIUjrBNHB9vN0EPJKSwKqPm2tBfPV-_4x8tMQ=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE6hmrK6O_QLrdvNfyKnUcu0b5uzXY8QFCYSLgD8mvGJ2KlzOv0Z-3A9y43qBvPDJ0wTpB5tlXpDGyHP5yEXbcp67BMRFN0j5M_P4YCTrkfP8AHgJFRKIPQTzHSU94xOq6NNTSdkxTQ2sh0KyKiHGuY25RqeVaXGRm7EejjBw==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH4xXABxdv3OiRmPz-dh42J-Ewmp41xnkUuWyn4SezDxjQXuEI4P7Jd-U6-vkEqhjNrgw4f-UAIreDaIWIt0pYxVNMDZYKaUXF9",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFsY8GjrX_uiltgcX2APW3BO55yboUxuYh8uuvOddqibgfW9nkZw4Lmj78flrgzqrM4IHBj2_D8wlIqbGEriFOFkovltyiU4ePWY21X2qc4H7-Ye2mIw58cHFF9xvr9878LvqxUnDfVtG5-N-IW0zvzvaM4xRnETtPEg9vsR_szAlQn4xU="
+          ],
+          "summary": "Recommended Smartify as the leading museum artwork recognition app, alongside Magnus for gallery art pricing, ArtScan for AI-powered identification, and Google Lens for general visual search.",
+          "domains": {
+            "Smartify": "smartify.org",
+            "Magnus": "magnus.net",
+            "ArtScan": "paintingrecognition.com",
+            "Google Lens": "lens.google.com",
+            "Google Arts & Culture": "artsandculture.google.com"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "identify paintings by photo",
+      "intent": "Art & museum recognition",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Google Lens",
+            "Smartify",
+            "Magnus"
+          ],
+          "citations": [
+            "https://support.google.com/photos/answer/7539151?co=GENIE.Platform%3DAndroid&hl%3Den%26co%3DGENIE.Platform%3DAndroid=&utm_source=openai",
+            "https://play.google.com/store/apps/details?hl=en_US&id=com.mobgen.smartify",
+            "https://magnus.net/faq/"
+          ],
+          "summary": "Start with Google Lens for visual matching; Smartify is better suited to participating museum collections, while Magnus focuses on identifying art from photos.",
+          "domains": {
+            "Google Lens": "lens.google",
+            "Smartify": "smartify.org",
+            "Magnus": "magnus.net"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Google Lens",
+            "ArtScan",
+            "Art Identifier",
+            "Google Arts & Culture",
+            "Smartify"
+          ],
+          "citations": [
+            "https://paintingrecognition.com/",
+            "https://apps.apple.com/us/app/art-identifier/id6747607478"
+          ],
+          "summary": "Suggested Google Lens for quick photo matches, ArtScan and Art Identifier for dedicated painting ID, and Google Arts & Culture or Smartify for museum-collection matches.",
+          "domains": {
+            "Google Lens": "lens.google",
+            "ArtScan": "paintingrecognition.com",
+            "Art Identifier": "apps.apple.com",
+            "Google Arts & Culture": "artsandculture.google.com",
+            "Smartify": "smartify.org"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "ArtScan",
+            "Google Lens",
+            "Magnus",
+            "Art Identifier",
+            "Smartify",
+            "scan.art"
+          ],
+          "citations": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEDYdrIgPDfDLn9Q45Btzl8eMbkhx5nqfOoH36AuDoD5F-UCGmZp8KyoIC17a3loC7olfX29pO_CeTZ1gAn2aCstHJzme66dLXM3oMtILSDjlTUa_KeY8kjHbqIrKButDeY93YtvnXk",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGOYaIZox_F0dCsM1DA40HGuOn1qPPopVY5_yC9gmDy7bewzBeSmoWgbE6llq9fMZgG3gEbDhxQ2-VpIZ9sFxLDOl8MvLhn7tM=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFnRi3T2eBxYmLWekfdiwEpK5Ob2-SanImRek7kN_5dSSf4d3K2XTLd_dGkwveDO-flMEmYiug6-ULapkG3-UqTdiNkHhG-nst2Bt_OpyxCttHckDjI",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHwgmzPruKKfKEEDCR6EiGSsCAA6ZNtvIv2WScE-7ybEmea_Cfc1pXOCep3riwRU3Ah-QT8MGwJIwBI0V_VMK8ySsYsayN-7kMUyc6We21A1sGawlMFr97A1vEdot0n0kPykHYEaZJUNohL6-HvAw==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGWI3XKPOk4riFdtVUoW-XCv3EefZjJmEGfKEuE-T-IuXxCt7j3FOrbCZ3cYGf5Z-VwKbYR-rmXwgQnQX7UlGNnm7msLief_RV1FFbZoMt_YLRYVCbZZj3Yi4uLvogi_OJ7e_4XpzgquI6cKK9vCD7Pb9tFK2DmhDHeOuNq5qxx"
+          ],
+          "summary": "Suggested ArtScan, Google Lens, and Magnus as top tools to identify paintings by photo, followed by dedicated mobile apps like Art Identifier and Smartify.",
+          "domains": {
+            "ArtScan": "paintingrecognition.com",
+            "Google Lens": "lens.google.com",
+            "Magnus": "magnus.net",
+            "Art Identifier": "apple.com",
+            "Smartify": "smartify.org",
+            "scan.art": "scan.art"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "AI museum guide app",
+      "intent": "Art & museum recognition",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Smartify",
+            "ArtSnap AI",
+            "Artlog: Museum Art Scanner"
+          ],
+          "citations": [
+            "https://play.google.com/store/apps/details?hl=en_US&id=com.mobgen.smartify",
+            "https://apps.apple.com/us/app/artsnap-ai/id6743003187?utm_source=openai",
+            "https://apps.apple.com/us/app/artlog-museum-art-scanner/id6815466893?utm_source=openai"
+          ],
+          "summary": "Smartify offers museum scans and guides; ArtSnap AI and Artlog advertise AI artwork identification and audio explanations. Check coverage for your museum.",
+          "domains": {
+            "Smartify": "smartify.org"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Artlas",
+            "ArtSnap",
+            "Museo",
+            "Artiou",
+            "MuseumAI",
+            "Smartify"
+          ],
+          "citations": [
+            "https://apps.apple.com/us/app/artlas-museums-ai-companion/id6476963918",
+            "https://play.google.com/store/apps/details?id=com.museumai.artsnap",
+            "https://www.museum-ai.app/"
+          ],
+          "summary": "Listed AI museum guides: Artlas (Metti AI companion), ArtSnap, Museo, Artiou and MuseumAI. Also mentioned Smartify as an established option.",
+          "domains": {
+            "Artlas": "artlasapp.com",
+            "ArtSnap": "museum-ai.app",
+            "Museo": "codigee.com",
+            "Artiou": "apps.apple.com",
+            "MuseumAI": "museum-ai.app",
+            "Smartify": "smartify.org"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Museum Guide: AI Powered",
+            "Artevo",
+            "Smartify",
+            "Bloomberg Connects",
+            "AnyArt",
+            "SmartGuide"
+          ],
+          "citations": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFkm7J_oX4v4Qjrfyi0rtzm5i6Z5EZyEFl197M1Y7kWSvudnBOKwbvWsD0uMn-jz7pzsJfRkRGtv56N33H7zrOFAJSiQ2oDmdVZMpD_0gP1-QyOxyAMdatSlWJ8KRS1Tw==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGMhdrtOeAWLxcbyInQ5yV1gBky33QhphvSE1_GqSgfvTu-fxs_G_WJ21YE7aN2wjJxlXpI5dav3VBoooKBKjk9xepQIRbnpfS6JF3dM8wBoMhgg49MQeZd5WIdfD0YpjBbmYN6706pV3JBC-1JNUZgWa7A_qDPBlW3AOo=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE8vbs4S5au1kebrDI3HJ7rCeMlc1tkN4aZVL0vZwscbvV1qnsZ0Dp5O6a-JyRdhwLlp0NB6sqw1rExebMfRCbqDmrSGQ4RilCisb4D-h0wZ2a2hEqPjy74NUcNVzWYI7UZmvZqo05sZlQh8AuHwGDNX325vpAbY68=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGEIKaUymNY0DX4PIrcM-gtZ_KujCwADBy4pjahQTel5EE6wymKE9bwfgaXrRs-VtsHDVs6dhd1zjdXZZ58WZT5GMaY3yTvz6VRJOZxc80sQJaadjuWTBe-Ydmw",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGPfz2R9GOz37oSo3by-REvyY3INaLcO48xwFWYDhH8BKvqX1xhyOVKPnSjeMWeQXEE0gkls23SUv-ehHQeePRIUbfSbM_zQj97GeJfb28msywa8qwG5jmc"
+          ],
+          "summary": "Highlighted AI museum guide apps including Museum Guide, Artevo, Smartify, Bloomberg Connects, AnyArt, and SmartGuide for interactive audio commentary and art identification.",
+          "domains": {
+            "Museum Guide: AI Powered": "apple.com",
+            "Artevo": "play.google.com",
+            "Smartify": "smartify.org",
+            "Bloomberg Connects": "bloombergconnects.org",
+            "AnyArt": "anyart.app",
+            "SmartGuide": "smartguide.app"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "museum artwork scanner app",
+      "intent": "Art & museum recognition",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Smartify",
+            "ArtSnap AI",
+            "Artlog: Museum Art Scanner"
+          ],
+          "citations": [
+            "https://play.google.com/store/apps/details?hl=en_US&id=com.mobgen.smartify",
+            "https://apps.apple.com/us/app/artsnap-ai/id6743003187?utm_source=openai",
+            "https://apps.apple.com/us/app/artlog-museum-art-scanner/id6815466893?utm_source=openai"
+          ],
+          "summary": "Try Smartify first for supported museums; ArtSnap AI and Artlog also advertise camera-based artwork scans and explanations.",
+          "domains": {
+            "Smartify": "smartify.org"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "ArtSnap",
+            "artscan: Museum Photos",
+            "Artiou",
+            "Smartify",
+            "Google Arts & Culture"
+          ],
+          "citations": [
+            "https://play.google.com/store/apps/details?id=com.museumai.artsnap",
+            "https://apps.apple.com/us/app/artscan-museum-photos/id6746695414",
+            "https://apps.apple.com/us/app/artiou-ai-museum-guide/id6759812990"
+          ],
+          "summary": "Recommended ArtSnap, artscan, Artiou, Smartify and Google Arts & Culture for scanning artworks in museums and getting audio or text explanations.",
+          "domains": {
+            "ArtSnap": "museum-ai.app",
+            "artscan: Museum Photos": "apps.apple.com",
+            "Artiou": "apps.apple.com",
+            "Smartify": "smartify.org",
+            "Google Arts & Culture": "artsandculture.google.com"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Smartify",
+            "ArtScan",
+            "Art Scanner with AI",
+            "Muzea",
+            "Bloomberg Connects"
+          ],
+          "citations": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFc6N6AZcfepNYuBpRE3KeMcAmGIQh3AdtLbJKPQyAmUg-bA9dBn48zRrVOasmnXC0uKCGegE-owj-PRK4nvQF2-KV1CK-wVkWBvwOskd4rDhiEX4sWkcmeY5JC-buZ",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH93c5r374Nl0v4Q5dALcJ1FTuR3dlFteAUeGck4Uj3CU3reil7JyImMM4FgSGWCpFCYQQXcAxBGph-CXOVVkb8agbF14URMVMIuvxFIOCgUKtZfpMkWbPeWq8XZVm7_Id3qVEJulTK6jpG9GDvP0pIKNpsNIR_HWX95gA0",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHg1J5GnIalJxd9e1NcVJfYZp7sY7s0vx7iyFMdWRbyzfpu-UhCmqaTjfPvblB5VsEGS7QQyBsMsRM_LkDOXWuaaiuV0Dmz-tX4FTCu1hYaA2_9rHCsJjEvUB-U1F5MqO28uVqTa0IpBCtQdVqEvE2JYwhBXBU=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE7GWrZY1jM2WZjreJ_QOrLQkYWoAGBTXEqdudgCMbRxxMVq-XOUETIxnRyn-BYm6yUKFSsmT4UTT8y4SpOCJQ7b0n5ev3Y8uNQ",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHTRGOuA9u3eQoXmj-GvBGA6FHi24W0uqeky_UMDgB0VSgkSsCkag56j9S-0_-n1MfkCPzwI_REhl-qDosJprVkfdUA1jBRYbVtYZJllAoq0jtgEb7edA6GkzZd6xHiNA3HnhF0Z4KyOcGwbIafkO7KgkihPnbV0wqOnZ3N0RmwwU-rb8QJskDc"
+          ],
+          "summary": "Recommended Smartify and ArtScan as primary museum artwork scanner apps, along with Art Scanner with AI, Muzea, and Bloomberg Connects for comprehensive museum guidance.",
+          "domains": {
+            "Smartify": "smartify.org",
+            "ArtScan": "paintingrecognition.com",
+            "Art Scanner with AI": "play.google.com",
+            "Muzea": "play.google.com",
+            "Bloomberg Connects": "bloombergconnects.org"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "what app identifies art in museums",
+      "intent": "Art & museum recognition",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Smartify",
+            "Google Arts & Culture"
+          ],
+          "citations": [
+            "https://play.google.com/store/apps/details?hl=en_US&id=com.mobgen.smartify",
+            "https://play.google.com/store/apps/details?id=com.google.android.apps.cultural"
+          ],
+          "summary": "Smartify identifies works at partner museums; Google Arts & Culture’s Art Recogniser works at select museums. Neither recognizes everything.",
+          "domains": {
+            "Smartify": "smartify.org",
+            "Google Arts & Culture": "artsandculture.google.com"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Smartify",
+            "Google Arts & Culture",
+            "Artlas",
+            "Magnus"
+          ],
+          "citations": [
+            "https://apps.apple.com/us/app/artlas-museums-ai-companion/id6476963918"
+          ],
+          "summary": "Smartify is the best-known museum art-identification app. Also suggested Google Arts & Culture, Artlas and Magnus, and advised checking whether your museum has its own app.",
+          "domains": {
+            "Smartify": "smartify.org",
+            "Google Arts & Culture": "artsandculture.google.com",
+            "Artlas": "artlasapp.com",
+            "Magnus": "magnus.app"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Smartify",
+            "ArtScan",
+            "Google Lens",
+            "Magnus"
+          ],
+          "citations": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFWZGbaKcjJ5IdIUZPO4QtZ6qtka2K1Xb9TOo7Sf-MsP0hRpLCeUyxVVPhnDiaQsZUJw4IWh-VoJD9_TqSYgrcMT9gCeb9E2bF40zzBZb3RTYJmJ5v4Wi_O9_B8RXeBIBbTs5EEAZIQBUEEvs6HFmuRucxvX_xAClR5vZkOJZO4nA==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF83OzwpMFXk9FEIm3ivpRnFLtHurEz5UR7JuvPeebXKXbWCe3GAgn3uq_gbeQUZz1YRJEYKQNt2Ox3HNaNgzi4uZ2UpoM6kq5vH5h5NV08JLzC1lUeBqjezy4YyMShvg==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG8CoJfQX_KT8OZ3BarvuWyVudq7LPq2AmMAK48yBE6Q69Va3-eX7gTKzEYDumnZxeASS6VuEV-KYFvdCH3ke1aTDT_bdtFrHxQsv-26RP0CJfLJg2WW3Ambro9MWU1k1JrMNlAG5HRoAay-2vyyTK7FLr44cAl49lOcvgRK9RLI0YyU8K5das=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHlNw_ogGQCFD4BUD79IQp96Hu-Oa2ft8ykl_el9MDME5JSdMorxeL-rkr0tUViZU478tLhANHgsiEh5ECafZ2o1EingGNRZkwhWzc_-AuBdOo5WTbhDG21eE_7FJasEsnl-WVwRBViUBVIg3LiitHrAsIeJL26",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH8AiXkJqooJ-9jhuf90qPbU4DyBdG-roPeOX-vjrAeQyW3-NAgDfFb-MGwjeLArkJejQpX2TsPnbHPR619x1eATY42rHJOewlGexFFQM0QiCFBK0YsLEj2-4KnSq08-5pQfLstdC5-Bz3cswFR"
+          ],
+          "summary": "Identified Smartify as the primary app for museum artworks, accompanied by ArtScan for detailed AI insights, Google Lens for quick recognition, and Magnus for contemporary pieces.",
+          "domains": {
+            "Smartify": "smartify.org",
+            "ArtScan": "paintingrecognition.com",
+            "Google Lens": "lens.google.com",
+            "Magnus": "magnus.net"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "audio tour guide app",
+      "intent": "Self-guided sightseeing & landmark tours",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "VoiceMap",
+            "izi.TRAVEL",
+            "Rick Steves Audio Europe"
+          ],
+          "citations": [
+            "https://voicemap.me/walking-tour-app?utm_source=openai",
+            "https://www.izi.travel/en/app?utm_source=openai",
+            "https://www.ricksteves.com/watch-read-listen/audio/audio-europe?utm_source=openai"
+          ],
+          "summary": "For self-guided city walks, VoiceMap has GPS-triggered narration; izi.TRAVEL covers cities and museums, while Rick Steves Audio Europe focuses on European sights.",
+          "domains": {
+            "VoiceMap": "voicemap.me",
+            "izi.TRAVEL": "izi.travel",
+            "Rick Steves Audio Europe": "ricksteves.com"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "VoiceMap",
+            "Rick Steves Audio Europe",
+            "GPSmyCity",
+            "WalknTours",
+            "Action Tour Guide"
+          ],
+          "citations": [
+            "https://voicemap.me/",
+            "https://freewalking.tours/blog/best-apps-walking-tours/",
+            "https://tourinabox.com/blog/best-self-guided-tour-apps/"
+          ],
+          "summary": "Recommended VoiceMap for self-guided GPS audio tours, Rick Steves Audio Europe (free) for European cities, then GPSmyCity, WalknTours and Action Tour Guide.",
+          "domains": {
+            "VoiceMap": "voicemap.me",
+            "Rick Steves Audio Europe": "ricksteves.com",
+            "GPSmyCity": "gpsmycity.com",
+            "WalknTours": "walkntours.com",
+            "Action Tour Guide": "actiontourguide.com"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "izi.TRAVEL",
+            "VoiceMap",
+            "SmartGuide",
+            "Rick Steves Audio Europe",
+            "Action Tour Guide",
+            "Shaka Guide"
+          ],
+          "citations": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFg8bpsHJWmbbSjUtOFruCfUK1L9teiq-v4qjT-t8Uglugs4h9u1NdB26uJz7YLPWjKABV8Y_StCNVF_sWKBYuCDYSPl6i94LLsPLmEKnM0W8OOxfGdaUs4Dpr03COx0JQHRw4sMlxjL-zw7DYEAW7vZTdz7JV6k1sZ8DiV",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFJLm5sbP3qC5ucYFx4ucArjmYx439z2aEFt7UAs8vaJvczG_vPG4Lv1ixzF4NOvVFFnu4Wh-fkSakgbD-v3o-3j7tpdlPareAHbu2TkjUqWkMwF1dltd2W-urNpjdSAirRkFIlvlYAwkNfENrIWwxJ-BZZQYTpnNHDdNKjEANt-g==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE75VhDqFMPZ-yXGa6EIzE-u4FiCC4F2Vo5Mv24Aca8asr59CZ5LZmwXoy00CZRXTtQokZpMrOT5eREm2hZn9ja4hQ9eeSDn5Y42FXQmc8YGierL9Q9dNdCR9LC51VMCnqbY1lej-GR_-3K72z_k81TwYsRtFIv4QAJ914=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHOoju1JTfpGfVHjsFev-vcQYlWRsGMSeRD_qxsEseF807wQ8qGK6-_jTWpFfZ7NmzA8zkpv6fwHCJSAuG7WfU5PGrcpBOu7n3y4xBuswLqo0g=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHc2gqkTOfgVBPes3h3IjrS07VMO2YdJ8y3nF3AO7jbEA-RcANtc3cx7mbek4Mm9FfkYrfikGt8RPC93yDVP2nrRj7tM6V0tcQBKMdpaa6KYtEsOM8Ie9Uv6rr_C4SpAGx6-0SwiGL4J1zHnR86"
+          ],
+          "summary": "Recommended izi.TRAVEL, VoiceMap, and SmartGuide as the top audio tour guide apps, along with Rick Steves Audio Europe and Action Tour Guide.",
+          "domains": {
+            "izi.TRAVEL": "izi.travel",
+            "VoiceMap": "voicemap.me",
+            "SmartGuide": "smart-guide.org",
+            "Rick Steves Audio Europe": "ricksteves.com",
+            "Action Tour Guide": "actiontourguide.com",
+            "Shaka Guide": "shakaguide.com"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "walking tour audio app",
+      "intent": "Self-guided sightseeing & landmark tours",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "VoiceMap",
+            "izi.TRAVEL",
+            "Rick Steves Audio Europe"
+          ],
+          "citations": [
+            "https://voicemap.me/walking-tour-app?utm_source=openai",
+            "https://www.izi.travel/en/app?utm_source=openai",
+            "https://www.ricksteves.com/watch-read-listen/audio/audio-europe?utm_source=openai"
+          ],
+          "summary": "VoiceMap is a strong choice for GPS-triggered walking tours with offline maps. izi.TRAVEL has city tours, and Rick Steves Audio Europe offers European walks.",
+          "domains": {
+            "VoiceMap": "voicemap.me",
+            "izi.TRAVEL": "izi.travel",
+            "Rick Steves Audio Europe": "ricksteves.com"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "VoiceMap",
+            "Rick Steves Audio Europe",
+            "WalknTours",
+            "GPSmyCity",
+            "iWander"
+          ],
+          "citations": [
+            "https://voicemap.me/walking-tour-app",
+            "https://apps.apple.com/us/app/walkntours/id1457662600",
+            "https://iwander.io/free-walking-tour-apps"
+          ],
+          "summary": "Suggested VoiceMap (1,900+ tours), Rick Steves Audio Europe, WalknTours, GPSmyCity and iWander (AI-generated tour for any city). GPS triggers the audio and most work offline.",
+          "domains": {
+            "VoiceMap": "voicemap.me",
+            "Rick Steves Audio Europe": "ricksteves.com",
+            "WalknTours": "walkntours.com",
+            "GPSmyCity": "gpsmycity.com",
+            "iWander": "iwander.io"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "VoiceMap",
+            "Action Tour Guide",
+            "Rick Steves Audio Europe",
+            "izi.TRAVEL",
+            "GPSmyCity",
+            "SmartGuide"
+          ],
+          "citations": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHRJ3mNpefBl5Ynunb0D6soWkpawA6uF4PKC5Y8VPguS4pAYKhMZqnMByJ13ipnUKJnJiI3LB19rYP7CmIj0qo-ZEvZ3mo75AizXwJ3zCpggghOSP6Y00n-HSPz-bgsx3vkkfPY4a7f_uEcydzFBcr5YqTyzdzO7vIYAAcrhw==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQElVls7l8xNYXRqFg7jICuVm2VqkMoSs4QKH4SewCTPSMW74pibIPwDRtDBnw11Pyd3RTgDxKtdiq3YcB1yb31JvLpjYKWyM_vUWeyLbX19N56Cal4u8pHBXjFLwzWy2A5_Q6moeJC9F9V6ixlw",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE4oksIyGq93pgHamuikjUN5t99l5VJjkWKg5zXn980Vc3TdVsAktRAS6eGd-_TZ7MbwcU2PpI_WioNoiGbtlOpXn30AYPxImfd4CCRh5PVzJBInaPZiwLhLrt_2zVS5yCnv1yfCT8lyHBFYE3Gc6F5YuuMNp3gZvhE",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE77kXjcQ53cBRX9lk6FdRBDa--rf8G0XOmEqR5Aun7Vj_2yeeo1GD7JlCtq3buaSyu1mdRTHDS8EfgWJKuUxXCsmkMjF4QngXIYmyhLAe6Jzl56_iY51qaHy4shg6WwjMCksQRg02LWR1HF4_nuuT59X7q6_o9Tdfz3smMO0mcZ4ZOkKN3nz8=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHKBzFUfPUDRVwJ_QFK99gOcIK-42pp334UyYxgAM0rJ6nAs7hx-zijoEKOZ9twOC3Vs2QzM9HfrGP6PIhnPManIh2KIqY0mnIKswxWN6yf8DM="
+          ],
+          "summary": "Suggested VoiceMap, Action Tour Guide, Rick Steves Audio Europe, and izi.TRAVEL for GPS-guided walking tours, plus GPSmyCity and SmartGuide.",
+          "domains": {
+            "VoiceMap": "voicemap.me",
+            "Action Tour Guide": "actiontourguide.com",
+            "Rick Steves Audio Europe": "ricksteves.com",
+            "izi.TRAVEL": "izi.travel",
+            "GPSmyCity": "gpsmycity.com",
+            "SmartGuide": "smartguide.app"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "best audio guide app for landmarks",
+      "intent": "Self-guided sightseeing & landmark tours",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "VoiceMap",
+            "izi.TRAVEL",
+            "Rick Steves Audio Europe"
+          ],
+          "citations": [
+            "https://voicemap.me/walking-tour-app?utm_source=openai",
+            "https://www.izi.travel/en/app?utm_source=openai",
+            "https://www.ricksteves.com/watch-read-listen/audio/audio-europe?utm_source=openai"
+          ],
+          "summary": "For narrated landmark walks, start with VoiceMap. izi.TRAVEL is useful for city and museum guides; Rick Steves Audio Europe is a free Europe-focused option.",
+          "domains": {
+            "VoiceMap": "voicemap.me",
+            "izi.TRAVEL": "izi.travel",
+            "Rick Steves Audio Europe": "ricksteves.com"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "VoiceMap",
+            "Rick Steves Audio Europe",
+            "WalknTours",
+            "GPSmyCity",
+            "Odyssey Guide"
+          ],
+          "citations": [
+            "https://voicemap.me/",
+            "https://freewalking.tours/blog/best-apps-walking-tours/"
+          ],
+          "summary": "VoiceMap is the top pick for landmark audio tours. Rick Steves Audio Europe is best for European capitals. Also suggested WalknTours, GPSmyCity and Odyssey Guide for identifying landmarks.",
+          "domains": {
+            "VoiceMap": "voicemap.me",
+            "Rick Steves Audio Europe": "ricksteves.com",
+            "WalknTours": "walkntours.com",
+            "GPSmyCity": "gpsmycity.com",
+            "Odyssey Guide": "theodysseyguide.com"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "izi.TRAVEL",
+            "VoiceMap",
+            "Rick Steves Audio Europe",
+            "Action Tour Guide",
+            "SmartGuide",
+            "Shaka Guide"
+          ],
+          "citations": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFj4xq0VoT_53iFw9vgCwrv60bo_LFXBdwDJzb4KG3S78tVKqpIcdhXPy5V6u7BIdMqRqZ3AoUiTbSsroYtkxmCRVrgm2v7QJa5kpJWKKKt2dJOnZmG8813oOr4Z9J0qkRrWPNogRe2E2_zZE66SNeVEIjF5QmyypplHYhK",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGvE4KTSFiLKf0cnsXvm3PxU38gAx2p7dfIObUnz_IUYsHj5e2pl_Z7-aVOsnshs0XcQTynLklS-jVEes6zlOA8_ejpuk4G5rUC6aEHwM24pG_TpGfiCvuDbkfYDw_UvQ==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGSDXzKMGCz0nPmFHo4Se7pYGc9hhUCZVGFNYT0fq3JkP_zsvnRzj0lHfX8ClMvyeQCmlh9gbSBjFgV-iqPj5yep_LCHAjv3yy0eCz0Bpm9VDpFNZP0hww1b23MiNft00XSi6c9CsqbUIHRw3n9-eQWpFwavkyLMk8s",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFbfNRnkO1wqXypuTy44m9NNL_mz4HPvdGAMmx5pzjEy6iNHpVJs-xSqVw5LMFYFGc7nzYAmnUd3C_WIhnFYKfp94_fRjBN8Dh_zcKl5peRKdpqrWzYkliYwxzHPfV7cH1fVt23"
+          ],
+          "summary": "Recommended izi.TRAVEL and VoiceMap as the best audio guides for landmarks, alongside Rick Steves Audio Europe, Action Tour Guide, and SmartGuide.",
+          "domains": {
+            "izi.TRAVEL": "izi.travel",
+            "VoiceMap": "voicemap.me",
+            "Rick Steves Audio Europe": "ricksteves.com",
+            "Action Tour Guide": "actiontourguide.com",
+            "SmartGuide": "smartguide.app",
+            "Shaka Guide": "shakaguide.com"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "self guided city tour app",
+      "intent": "Self-guided sightseeing & landmark tours",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "VoiceMap",
+            "izi.TRAVEL",
+            "Rick Steves Audio Europe"
+          ],
+          "citations": [
+            "https://voicemap.me/walking-tour-app?utm_source=openai",
+            "https://www.izi.travel/en/app?utm_source=openai",
+            "https://www.ricksteves.com/watch-read-listen/audio/audio-europe?utm_source=openai"
+          ],
+          "summary": "VoiceMap offers GPS-triggered self-guided city walks and offline maps. Try izi.TRAVEL for city guides or Rick Steves Audio Europe for European routes.",
+          "domains": {
+            "VoiceMap": "voicemap.me",
+            "izi.TRAVEL": "izi.travel",
+            "Rick Steves Audio Europe": "ricksteves.com"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "VoiceMap",
+            "GPSmyCity",
+            "WalknTours",
+            "Action Tour Guide",
+            "Rick Steves Audio Europe",
+            "iWander"
+          ],
+          "citations": [
+            "https://tourinabox.com/blog/best-self-guided-tour-apps/",
+            "https://voicemap.me/walking-tour-app",
+            "https://iwander.io/free-walking-tour-apps"
+          ],
+          "summary": "Recommended VoiceMap, GPSmyCity (offline maps, pay per city), WalknTours, Action Tour Guide, Rick Steves Audio Europe and iWander. I compared them on price, coverage and offline use.",
+          "domains": {
+            "VoiceMap": "voicemap.me",
+            "GPSmyCity": "gpsmycity.com",
+            "WalknTours": "walkntours.com",
+            "Action Tour Guide": "actiontourguide.com",
+            "Rick Steves Audio Europe": "ricksteves.com",
+            "iWander": "iwander.io"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "VoiceMap",
+            "GPSmyCity",
+            "Rick Steves Audio Europe",
+            "SmartGuide",
+            "Action Tour Guide",
+            "Questo",
+            "izi.TRAVEL"
+          ],
+          "citations": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFpK9vddGaCSsfszF1Jdp9ZEXP4Sz_zhRRNadPWNvCuOxo7whcj6HFdeZRQX8V8Mfk0KShqg0tA4aChqKd0BCnYihyuVpqlMCzC5N_UssaLVw11HZrLdUF2PPW28eaM0rQ1ARgnFruZrmoWa0kp",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHsLlNjyD5LBDMgn5bmzPhXCVHwp9ZDY6xFOZ7rnfAHNbg8v2bWyp9CBVoitSPFRh-y2E6beQBYLXd8o8ewo6pdtb2zljzMXboBndBmjSYcuRgQVIY_MhS6hK9Mswoq-WtGaDhoS_54IWr5U6NihT_VWsHrpCfOvXTxsaLa7I-12fMafPgNJjaZhKA-UQ==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGawJ8HOPa-lrIvXMfaVGDQytyIVOqsRvniH1E9uhXaWT_lmv3QQANZkVDMoh-5DNeaB7fUFutcNweyfhAzSOXWsISPWBlCM1wmYHzj1jsVa__XWg-pjT4jypefoIgdMO23BAiqfvntdsf-IZB95LDZfMjD",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFA3Fvf5e7ijiNTGy4dsJCnruJzWfXMWpMkGM6qY6iReqT2kXvb6eBbf4e1w9GrINkgDqN-Cp0hBUE1NAo5qfKlEFTkJoRKi94SmhDzMUQLNw==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEM8KURUiVh7mGlXT55skdejvIkFjFhW2YvZ9CXMbkJgrltInZgDiZ4N71HUiMKBwBf0PAy-9qoAB-BZxf9zSmB8Ou8DSTmbjFZMVHyilcTNB_Y5ztFj0u7-DIN-L38bgI2gPcVnD4xhJi10j1vqpY-efseqTaIS1c="
+          ],
+          "summary": "Highlighted VoiceMap, GPSmyCity, and Rick Steves Audio Europe as top self-guided city tour apps, along with SmartGuide, Action Tour Guide, and Questo.",
+          "domains": {
+            "VoiceMap": "voicemap.me",
+            "GPSmyCity": "gpsmycity.com",
+            "Rick Steves Audio Europe": "ricksteves.com",
+            "SmartGuide": "smartguide.app",
+            "Action Tour Guide": "actiontourguide.com",
+            "Questo": "questoapp.com",
+            "izi.TRAVEL": "izi.travel"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "app that tells you about buildings you photograph",
+      "intent": "Self-guided sightseeing & landmark tours",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Google Lens",
+            "Archie: Identify Architecture",
+            "Citypik"
+          ],
+          "citations": [
+            "https://support.google.com/photos/answer/7539151?co=GENIE.Platform%3DAndroid&hl%3Den%26co%3DGENIE.Platform%3DAndroid=&utm_source=openai",
+            "https://apps.apple.com/us/app/archie-identify-architecture/id6503988435?utm_source=openai",
+            "https://www.citypik.com/en/?utm_source=openai"
+          ],
+          "summary": "Google Lens can identify landmarks in photos. For architecture-focused information, try Archie or Citypik; identification of obscure buildings may be uncertain.",
+          "domains": {
+            "Google Lens": "lens.google",
+            "Citypik": "citypik.com"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Google Lens",
+            "Apple Visual Look Up",
+            "Odyssey Guide",
+            "Landmark Identifier: Travel",
+            "LandSnap",
+            "Lens AI App"
+          ],
+          "citations": [
+            "https://www.theodysseyguide.com/features/photo-landmark-id/",
+            "https://apps.apple.com/us/app/landmark-identifier-travel/id6738227163",
+            "https://apps.apple.com/us/app/landsnap-identify-landmarks/id6466759233",
+            "https://lensapp.io/"
+          ],
+          "summary": "Suggested Google Lens and iPhone Visual Look Up as built-ins. Dedicated apps: Odyssey Guide, Landmark Identifier, LandSnap, Lens App and Building Identify.",
+          "domains": {
+            "Google Lens": "lens.google",
+            "Apple Visual Look Up": "apple.com",
+            "Odyssey Guide": "theodysseyguide.com",
+            "Landmark Identifier: Travel": "apps.apple.com",
+            "LandSnap": "apps.apple.com",
+            "Lens AI App": "lensapp.io"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "LABYL",
+            "Building ID: AI Scanner",
+            "Building Lore",
+            "Citypik",
+            "GeoTale",
+            "PicAGo",
+            "Google Lens"
+          ],
+          "citations": [
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEZghyKjqfbr-T-39iOGKg-YalXbQiFoAemkrF4EpXuYFfoOS7ft11dmV8AzETkAjA2gAsSdC5VnNVDFS52AdtyqmxgjjjYop9exSgGLW3G_tOluj602p7IuTp-i5270rv64I0X8dJQACY4C32iyI2yDZiAUJ6fmwyMQYPYRe7fI2V6qQ==",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE-DJZ1p6uOqIVTF-6Nv1i36thou3q02ceUqY_pKtEQeuYlrgHWy-2YgfxQVNTLSMbXws6638Lph7Q16vEo23sC5K5j-yi0-d2Viz3W4WVpi329Xdejba6KlAm8P5xzPgEDpi6CVgvPbKR5tLB_JLsw1Uwhur7DIeVC2yY=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEzjEbstb0dx8ze-oxpYAhwZag__4VIv940kueu9we7k_nRG_FNYVp1cx8B09G_4ijMEuZ2LyYrGvg2Vod8pxyDvtkXZaxfyXCRbzZQCywQfi0mj-UNld8DBY6kIkWqnE0yhSd6I0cys0yP-Kn_Qws=",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEauNGMHF6he9vD8R5UeBVLvH1ivl-e2yUFKIAt-D1RCvTaVOfzwSetWqGbRuuXiizpxt-FBRCGyCzpPLCVY3ezmXdLgB78Qy7DYSiusymzx-im-1bHOmpPZuDH4O0Wvim0s1qcgHpSfqCBlR6FgNpC4M0QThT76hk3QccX",
+            "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHfhEtFtVu_DbVUPpoMq4VvpNwHmOrk6vNzbAtF098HuMHl5rxbOdB0p-h44odw-SOyATufMNM7fre7bNY5q1PFp4IvubKImxCVejkboVRKaSjJ6Yv60HzR8nngzfc4MovMzX4M2XGoRGImBp2QtiqKPl0NXcDo-kfaLA=="
+          ],
+          "summary": "Recommended architectural visual recognition apps including LABYL, Building ID: AI Scanner, Building Lore, Citypik, GeoTale, and Google Lens to identify photographed buildings.",
+          "domains": {
+            "LABYL": "ndny.co",
+            "Building ID: AI Scanner": "apple.com",
+            "Building Lore": "buildinglores.com",
+            "Citypik": "citypik.com",
+            "GeoTale": "play.google.com",
+            "PicAGo": "picago.app",
+            "Google Lens": "lens.google.com"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "interactive audio guide app",
+      "intent": "Interactive & conversational guides",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Convo Guide",
+            "Dex: Audio Tours & City Guides"
+          ],
+          "citations": [
+            "https://apps.apple.com/us/app/convo-guide/id6642643377",
+            "https://play.google.com/store/apps/details?id=com.headout.dex"
+          ],
+          "summary": "For an interactive museum audio guide, try Convo Guide for voice or text questions about exhibits; Dex is another option for contextual tours. Check venue coverage first.",
+          "domains": {
+            "Convo Guide": "apps.apple.com",
+            "Dex: Audio Tours & City Guides": "play.google.com"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "izi.TRAVEL",
+            "Musetory",
+            "Bloomberg Connects",
+            "Smartify",
+            "Locatify",
+            "Tourient"
+          ],
+          "citations": [
+            "https://izi.travel/en/app",
+            "https://apps.apple.com/us/app/musetory-museum-audio-guide/id6761122184",
+            "https://tourient.app/blog/5-best-apps-for-creating-audio-tours",
+            "https://locatify.com/solutions-for-museums/"
+          ],
+          "summary": "Recommended izi.TRAVEL, Musetory, Bloomberg Connects and Smartify for museum and city audio guides. Mentioned Locatify and Tourient as tools for building guides.",
+          "domains": {
+            "izi.TRAVEL": "izi.travel",
+            "Bloomberg Connects": "bloombergconnects.org",
+            "Smartify": "smartify.org",
+            "Locatify": "locatify.com",
+            "Tourient": "tourient.app"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "VoiceMap",
+            "SmartGuide",
+            "Action Tour Guide",
+            "Questo",
+            "Shaka Guide",
+            "Tour in a Box",
+            "Rick Steves Audio Europe",
+            "STQRY",
+            "Tourient",
+            "YourAudioTour"
+          ],
+          "citations": [
+            "https://voicemap.me",
+            "https://tourinabox.com",
+            "https://smartguide.app",
+            "https://tourient.app"
+          ],
+          "summary": "I recommended GPS-triggered and interactive audio tour apps including VoiceMap, SmartGuide, Action Tour Guide, Questo, Shaka Guide, Tour in a Box, and Rick Steves Audio Europe, as well as institutional guide platforms STQRY and Tourient.",
+          "domains": {
+            "VoiceMap": "voicemap.me",
+            "SmartGuide": "smartguide.app",
+            "Action Tour Guide": "actiontourguide.com",
+            "Questo": "questoapp.com",
+            "Shaka Guide": "shakaguide.com",
+            "Tour in a Box": "tourinabox.com",
+            "Rick Steves Audio Europe": "ricksteves.com",
+            "STQRY": "stqry.com",
+            "Tourient": "tourient.app",
+            "YourAudioTour": "youraudiotour.com"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "conversational AI tour guide",
+      "intent": "Interactive & conversational guides",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Guidude",
+            "Nextour"
+          ],
+          "citations": [
+            "https://play.google.com/store/apps/details?id=com.inithere.guidude",
+            "https://apps.apple.com/us/app/nextour-gps-audio-tour-guide/id6747329621"
+          ],
+          "summary": "Guidude offers conversational voice tours of landmarks; Nextour combines a live AI guide with GPS-aware sightseeing. Confirm coverage for your destination.",
+          "domains": {
+            "Guidude": "play.google.com",
+            "Nextour": "apps.apple.com"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Musa",
+            "Artlas",
+            "FuTour",
+            "SeeMuseums",
+            "AITourPilot",
+            "SimplyArt"
+          ],
+          "citations": [
+            "https://www.musa.guide/en",
+            "https://www.artlas.art/en",
+            "https://futour.app/",
+            "https://studioforcreativeinquiry.org/project/seemuseums-an-ai-tour-guide",
+            "https://www.aitourpilot.com/",
+            "https://simplyart.ai/"
+          ],
+          "summary": "Listed AI guides you can talk to or ask questions: Musa, Artlas, FuTour, SeeMuseums, AITourPilot and SimplyArt. Said most are aimed at museums.",
+          "domains": {
+            "Musa": "musa.guide",
+            "Artlas": "artlas.art",
+            "FuTour": "futour.app",
+            "SeeMuseums": "studioforcreativeinquiry.org",
+            "AITourPilot": "aitourpilot.com",
+            "SimplyArt": "simplyart.ai"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "GuideGeek",
+            "Kompa",
+            "AITourPilot",
+            "Herodot AI",
+            "Personal-guide.ai",
+            "GuruWalk"
+          ],
+          "citations": [
+            "https://guidegeek.com",
+            "https://trykompa.com",
+            "https://aitourpilot.com",
+            "https://personal-guide.ai",
+            "https://herodot.ai"
+          ],
+          "summary": "I highlighted conversational AI guides that answer spoken or text questions on the go, notably GuideGeek by Matador Network, Kompa, AITourPilot, Herodot AI, Personal-guide.ai, and GuruWalk's AI integration.",
+          "domains": {
+            "GuideGeek": "guidegeek.com",
+            "Kompa": "trykompa.com",
+            "AITourPilot": "aitourpilot.com",
+            "Herodot AI": "herodot.ai",
+            "Personal-guide.ai": "personal-guide.ai",
+            "GuruWalk": "guruwalk.com"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "ask questions about museum exhibits app",
+      "intent": "Interactive & conversational guides",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Convo Guide",
+            "SeeMuseums"
+          ],
+          "citations": [
+            "https://apps.apple.com/us/app/convo-guide/id6642643377",
+            "https://apps.apple.com/us/app/seemuseums/id6743142285"
+          ],
+          "summary": "Convo Guide lets you ask voice or text questions about museum exhibits; SeeMuseums also offers an AI tour guide that answers visitor questions.",
+          "domains": {
+            "Convo Guide": "apps.apple.com",
+            "SeeMuseums": "apps.apple.com"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "FuTour",
+            "Musa",
+            "SeeMuseums",
+            "Artlas",
+            "SimplyArt"
+          ],
+          "citations": [
+            "https://futour.app/",
+            "https://www.musa.guide/en",
+            "https://studioforcreativeinquiry.org/project/seemuseums-an-ai-tour-guide",
+            "https://www.artlas.art/en",
+            "https://simplyart.ai/"
+          ],
+          "summary": "Suggested apps with a Q&A AI guide: FuTour, Musa, SeeMuseums, Artlas and SimplyArt. Said to check whether your museum supports them.",
+          "domains": {
+            "FuTour": "futour.app",
+            "Musa": "musa.guide",
+            "SeeMuseums": "studioforcreativeinquiry.org",
+            "Artlas": "artlas.art",
+            "SimplyArt": "simplyart.ai"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "ASK Brooklyn Museum",
+            "AI Museum Pal",
+            "Artlas",
+            "SmartGuide",
+            "Musa Guide",
+            "amuseapp",
+            "Ask Mona"
+          ],
+          "citations": [
+            "https://artlas.art",
+            "https://smartguide.app",
+            "https://musa.guide",
+            "https://amuseapp.art"
+          ],
+          "summary": "I recommended apps that allow visitors to ask real-time exhibit questions, including ASK Brooklyn Museum for live human docents, plus AI-driven tools like AI Museum Pal, Artlas with Metti, SmartGuide, Musa Guide, and amuseapp.",
+          "domains": {
+            "ASK Brooklyn Museum": "brooklynmuseum.org",
+            "AI Museum Pal": "apple.com",
+            "Artlas": "artlas.art",
+            "SmartGuide": "smartguide.app",
+            "Musa Guide": "musa.guide",
+            "amuseapp": "amuseapp.art",
+            "Ask Mona": "askmona.net"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "app to ask questions about paintings",
+      "intent": "Interactive & conversational guides",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Musaium",
+            "VibeMuse"
+          ],
+          "citations": [
+            "https://musaium.com/en",
+            "https://vibemuse.app/"
+          ],
+          "summary": "Try Musaium: photograph an artwork or ask aloud, then follow up conversationally. VibeMuse likewise supports questions about paintings and sculptures.",
+          "domains": {
+            "Musaium": "musaium.com",
+            "VibeMuse": "vibemuse.app"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "SeeMuseums",
+            "Artlas",
+            "FuTour",
+            "SimplyArt",
+            "Smartify"
+          ],
+          "citations": [
+            "https://studioforcreativeinquiry.org/project/seemuseums-an-ai-tour-guide",
+            "https://www.artlas.art/en",
+            "https://futour.app/",
+            "https://simplyart.ai/"
+          ],
+          "summary": "Recommended SeeMuseums, Artlas, FuTour and SimplyArt for asking an AI about artworks. Said Smartify is also worth trying for scanning artworks.",
+          "domains": {
+            "SeeMuseums": "studioforcreativeinquiry.org",
+            "Artlas": "artlas.art",
+            "FuTour": "futour.app",
+            "SimplyArt": "simplyart.ai",
+            "Smartify": "smartify.org"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "ArtScan",
+            "Artlas",
+            "G(ai)le",
+            "ArtDecode",
+            "MollyFinishArt"
+          ],
+          "citations": [
+            "https://paintingrecognition.com",
+            "https://artlas.art",
+            "https://artdecode.app"
+          ],
+          "summary": "I suggested ArtScan with its AI art chat, Artlas featuring conversational companion Metti, Singapore National Gallery's G(ai)le, ArtDecode for artistic analysis, and creator feedback apps MollyFinishArt and Coartist.",
+          "domains": {
+            "ArtScan": "paintingrecognition.com",
+            "Artlas": "artlas.art",
+            "G(ai)le": "nationalgallery.sg",
+            "ArtDecode": "artdecode.app",
+            "MollyFinishArt": "google.com"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "AI assistant for historic landmark information",
+      "intent": "Interactive & conversational guides",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Guidude",
+            "If The Past Could Talk"
+          ],
+          "citations": [
+            "https://play.google.com/store/apps/details?id=com.inithere.guidude",
+            "https://ifthepastcouldtalk.com/about"
+          ],
+          "summary": "Guidude covers historic landmarks with conversational audio; If The Past Could Talk focuses on heritage-site identification and narrated information. Verify historical claims against site sources.",
+          "domains": {
+            "Guidude": "play.google.com",
+            "If The Past Could Talk": "ifthepastcouldtalk.com"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Audiala",
+            "City Guide: AI Walking Tours",
+            "AI TourMate",
+            "Stanza"
+          ],
+          "citations": [
+            "https://apps.apple.com/us/app/audiala-ai-audio-tour-guide/id6446038181",
+            "https://apps.apple.com/us/app/city-guide-ai-walking-tours/id6738431029",
+            "https://aitourmate.eu/audio-guide/barcelona"
+          ],
+          "summary": "Suggested AI audio guides for landmarks: Audiala, City Guide: AI Walking Tours, AI TourMate and Stanza. Said general chatbots also work for landmark questions.",
+          "domains": {
+            "Audiala": "audiala.com",
+            "AI TourMate": "aitourmate.eu"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Herodot AI",
+            "History Found AI",
+            "LandmarkLens",
+            "Vestigia",
+            "History AI",
+            "Preserve AI"
+          ],
+          "citations": [
+            "https://herodot.ai",
+            "https://landmarklens.app",
+            "https://vestigia-ai.com"
+          ],
+          "summary": "I suggested Herodot AI for multilingual landmark narratives, History Found AI for GPS virtual historians, LandmarkLens for monument scanning, Vestigia for gamified discovery, and the World History Encyclopedia's History AI research assistant.",
+          "domains": {
+            "Herodot AI": "herodot.ai",
+            "History Found AI": "historyfound.com",
+            "LandmarkLens": "landmarklens.app",
+            "Vestigia": "vestigia-ai.com",
+            "History AI": "worldhistory.org"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "multilingual audio tour app",
+      "intent": "Multilingual travel audio",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Stanza",
+            "Audiala"
+          ],
+          "citations": [
+            "https://stanzapp.com/",
+            "https://apps.apple.com/us/app/audiala-ai-audio-tour-guide/id6446038181"
+          ],
+          "summary": "Stanza offers multilingual museum and landmark audio guides with offline tours; Audiala is another broad-coverage option. Check language availability for the specific stop.",
+          "domains": {
+            "Stanza": "stanzapp.com",
+            "Audiala": "apps.apple.com"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "izi.TRAVEL",
+            "SmartGuide",
+            "Musetory",
+            "VoiceMap",
+            "Votura",
+            "PocketGuide"
+          ],
+          "citations": [
+            "https://play.google.com/store/apps/details?id=travel.opas.client&hl=en",
+            "https://blog.smart-guide.org/en/best-tour-guide-apps-for-travelers-in-2026",
+            "https://votura.app/blog/votura-multi-language-tours/",
+            "https://apps.apple.com/us/app/musetory-museum-audio-guide/id6761122184"
+          ],
+          "summary": "Recommended izi.TRAVEL (50+ languages), SmartGuide (about 100 languages), Musetory (74 languages), VoiceMap, Votura and PocketGuide. Compared language coverage for each.",
+          "domains": {
+            "izi.TRAVEL": "izi.travel",
+            "SmartGuide": "smart-guide.org",
+            "VoiceMap": "voicemap.me",
+            "Votura": "votura.app",
+            "PocketGuide": "pocketguide.com"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "izi.TRAVEL",
+            "SmartGuide",
+            "Herodot AI",
+            "VoiceMap",
+            "AudioTour",
+            "GuideLive"
+          ],
+          "citations": [
+            "https://izi.travel",
+            "https://smartguide.app",
+            "https://herodot.ai",
+            "https://voicemap.me"
+          ],
+          "summary": "I recommended top multilingual audio tour apps including izi.TRAVEL with 30,000+ tours across 166 countries, SmartGuide in 30+ languages, Herodot AI in 20+ languages, VoiceMap, AudioTour, and GuideLive for local Wi-Fi broadcasts.",
+          "domains": {
+            "izi.TRAVEL": "izi.travel",
+            "SmartGuide": "smartguide.app",
+            "Herodot AI": "herodot.ai",
+            "VoiceMap": "voicemap.me"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "museum guide in my language",
+      "intent": "Multilingual travel audio",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Stanza"
+          ],
+          "citations": [
+            "https://stanzapp.com/"
+          ],
+          "summary": "Try Stanza for museum audio in different languages, or check the museum’s official guide for your language before visiting.",
+          "domains": {
+            "Stanza": "stanzapp.com"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Musetory",
+            "izi.TRAVEL",
+            "Bloomberg Connects",
+            "Musa",
+            "Artlas"
+          ],
+          "citations": [
+            "https://apps.apple.com/us/app/musetory-museum-audio-guide/id6761122184",
+            "https://izi.travel/en/app",
+            "https://www.musa.guide/en",
+            "https://www.artlas.art/en"
+          ],
+          "summary": "Suggested Musetory, izi.TRAVEL, Bloomberg Connects and Musa for museum guides in many languages. Said to check the museum's own app for your language.",
+          "domains": {
+            "izi.TRAVEL": "izi.travel",
+            "Bloomberg Connects": "bloombergconnects.org",
+            "Musa": "musa.guide",
+            "Artlas": "artlas.art"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Bloomberg Connects",
+            "Smartify",
+            "Museum Guide",
+            "amuseapp",
+            "Journey Pal",
+            "SmartGuide"
+          ],
+          "citations": [
+            "https://bloombergconnects.org",
+            "https://smartify.org",
+            "https://museum-guide.com",
+            "https://amuseapp.art",
+            "https://journeypal.app",
+            "https://smartguide.app"
+          ],
+          "summary": "I recommended Bloomberg Connects for free multi-language museum guides across 1,250+ institutions, Smartify for image recognition, Museum Guide, amuseapp with up to 47 languages, Journey Pal via QR codes, and SmartGuide.",
+          "domains": {
+            "Bloomberg Connects": "bloombergconnects.org",
+            "Smartify": "smartify.org",
+            "Museum Guide": "museum-guide.com",
+            "amuseapp": "amuseapp.art",
+            "Journey Pal": "journeypal.app",
+            "SmartGuide": "smartguide.app"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "travel guide app in multiple languages",
+      "intent": "Multilingual travel audio",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Stanza",
+            "Audiala",
+            "TourTour"
+          ],
+          "citations": [
+            "https://stanzapp.com/",
+            "https://apps.apple.com/us/app/audiala-ai-audio-tour-guide/id6446038181",
+            "https://tourtour.app/"
+          ],
+          "summary": "Stanza, Audiala and TourTour offer multilingual sightseeing audio guides; destination and language coverage differ, so check your itinerary in each app.",
+          "domains": {
+            "Stanza": "stanzapp.com",
+            "Audiala": "apps.apple.com",
+            "TourTour": "tourtour.app"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "SmartGuide",
+            "izi.TRAVEL",
+            "GuideSofia",
+            "VoiceMap",
+            "PocketGuide"
+          ],
+          "citations": [
+            "https://blog.smart-guide.org/en/best-tour-guide-apps-for-travelers-in-2026",
+            "https://play.google.com/store/apps/details?id=travel.opas.client&hl=en"
+          ],
+          "summary": "Recommended SmartGuide, izi.TRAVEL, GuideSofia, VoiceMap and PocketGuide as GPS travel guide apps. Compared language counts and coverage of destinations.",
+          "domains": {
+            "SmartGuide": "smart-guide.org",
+            "izi.TRAVEL": "izi.travel",
+            "VoiceMap": "voicemap.me",
+            "PocketGuide": "pocketguide.com"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "SmartGuide",
+            "VoiceMap",
+            "GetYourGuide",
+            "GPSmyCity",
+            "Action Tour Guide",
+            "Travel Phrasebook"
+          ],
+          "citations": [
+            "https://smartguide.app",
+            "https://voicemap.me",
+            "https://getyourguide.com",
+            "https://gpsmycity.com",
+            "https://actiontourguide.com"
+          ],
+          "summary": "I recommended SmartGuide for multilingual audio tours across 1,600+ destinations, VoiceMap for local walking audio, GetYourGuide for booking activities with multilingual support, GPSmyCity for self-guided walks, and Action Tour Guide.",
+          "domains": {
+            "SmartGuide": "smartguide.app",
+            "VoiceMap": "voicemap.me",
+            "GetYourGuide": "getyourguide.com",
+            "GPSmyCity": "gpsmycity.com",
+            "Action Tour Guide": "actiontourguide.com",
+            "Travel Phrasebook": "bravolol.com"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "foreign language audio guide for sightseeing",
+      "intent": "Multilingual travel audio",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Stanza",
+            "TourTour"
+          ],
+          "citations": [
+            "https://stanzapp.com/",
+            "https://tourtour.app/"
+          ],
+          "summary": "For sightseeing in another language, check Stanza’s downloadable landmark guides or TourTour’s city audio tours; confirm the language and destination before downloading.",
+          "domains": {
+            "Stanza": "stanzapp.com",
+            "TourTour": "tourtour.app"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "izi.TRAVEL",
+            "SmartGuide",
+            "VoiceMap",
+            "Votura",
+            "AudioMe Tours"
+          ],
+          "citations": [
+            "https://play.google.com/store/apps/details?id=travel.opas.client&hl=en",
+            "https://blog.smart-guide.org/en/best-tour-guide-apps-for-travelers-in-2026",
+            "https://votura.app/blog/votura-multi-language-tours/",
+            "https://audiometours.com/ailanguages/"
+          ],
+          "summary": "Suggested izi.TRAVEL, SmartGuide, VoiceMap, Votura and AudioMe Tours for GPS audio guides in different languages. Said some tours are only in English.",
+          "domains": {
+            "izi.TRAVEL": "izi.travel",
+            "SmartGuide": "smart-guide.org",
+            "VoiceMap": "voicemap.me",
+            "Votura": "votura.app",
+            "AudioMe Tours": "audiometours.com"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "SmartGuide",
+            "Walkie Talkie",
+            "Musa Guide",
+            "Hellenic Heritage Digital Guide",
+            "World Tour Audio Guide",
+            "Sycomore Audiopen"
+          ],
+          "citations": [
+            "https://smartguide.app",
+            "https://walkietalk.ie",
+            "https://musa.guide"
+          ],
+          "summary": "I outlined multilingual sightseeing options including SmartGuide (30+ languages), Walkie Talkie (up to 35 languages), Musa Guide, the Hellenic Heritage Digital Guide for Greece, and World Tour Audio Guide for international city walking tours.",
+          "domains": {
+            "SmartGuide": "smartguide.app",
+            "Walkie Talkie": "walkietalk.ie",
+            "Musa Guide": "musa.guide",
+            "Sycomore Audiopen": "sycomore.eu"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "app that explains monuments in Spanish",
+      "intent": "Multilingual travel audio",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "TourTour",
+            "Stanza"
+          ],
+          "citations": [
+            "https://tourtour.app/",
+            "https://stanzapp.com/"
+          ],
+          "summary": "TourTour lists monuments and Spanish-language audio; Stanza also offers Spanish guides for landmarks. Check whether the specific monument is covered.",
+          "domains": {
+            "TourTour": "tourtour.app",
+            "Stanza": "stanzapp.com"
+          }
+        },
+        "claude": {
+          "mentioned": true,
+          "cited": true,
+          "rank": 3,
+          "brands": [
+            "Audiala",
+            "AI TourMate",
+            "Chiaro",
+            "GuideSofia",
+            "Stanza",
+            "City Guide: AI Walking Tours"
+          ],
+          "citations": [
+            "https://apps.apple.com/us/app/audiala-ai-audio-tour-guide/id6446038181",
+            "https://aitourmate.eu/audio-guide/barcelona",
+            "https://chiaro.ai/",
+            "https://apps.apple.com/us/app/city-guide-ai-walking-tours/id6738431029"
+          ],
+          "summary": "Recommended Audiala, AI TourMate, Chiaro, GuideSofia, Stanza and City Guide for monument narration with Spanish support. Noted Chiaro offers Spanish guides from a photo, in 18 languages.",
+          "domains": {
+            "Audiala": "audiala.com",
+            "AI TourMate": "aitourmate.eu",
+            "Chiaro": "chiaro.ai"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Whatizis",
+            "Monuments – Spain Guide",
+            "Votura",
+            "History Guide City Madrid",
+            "REPAHIS Audioguías",
+            "Hellenic Heritage Digital Guide"
+          ],
+          "citations": [
+            "https://whatizis.com",
+            "https://votura.app"
+          ],
+          "summary": "I recommended Whatizis for photo recognition and Spanish audio commentary on monuments, Monuments – Spain Guide for Spanish heritage landmarks, Votura with AI Q&A in Spanish, History Guide City Madrid, and REPAHIS Audioguías.",
+          "domains": {
+            "Whatizis": "whatizis.com",
+            "Votura": "votura.app"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "travel recap app",
+      "intent": "Trip summaries & photo recaps",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Polarsteps",
+            "FindPenguins"
+          ],
+          "citations": [
+            "https://www.pebbls.com/blog/best-travel-journal-apps"
+          ],
+          "summary": "Polarsteps tracks your route and photos for a shareable trip recap; FindPenguins offers a similar travel diary and flyover video. Neither is specifically an audio recap.",
+          "domains": {
+            "Polarsteps": "polarsteps.com",
+            "FindPenguins": "findpenguins.com"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Polarsteps",
+            "Journo",
+            "Day One",
+            "Travel Animator",
+            "Journi"
+          ],
+          "citations": [
+            "https://stardrift.ai/resources/best-travel-apps",
+            "https://monkeyeatingmango.com/blog/best-travel-apps-2026/",
+            "https://www.journohq.com/blog/best-travel-journal-apps/",
+            "https://www.travelanimator.com/travel-recap",
+            "https://stampie.app/blog/best-travel-tracker-apps"
+          ],
+          "summary": "Recommended Polarsteps for route-based recaps and printed books, plus Journo, Day One, Travel Animator for recap videos, and Journi for photo books.",
+          "domains": {
+            "Polarsteps": "polarsteps.com",
+            "Journo": "journohq.com",
+            "Day One": "dayoneapp.com",
+            "Travel Animator": "travelanimator.com",
+            "Journi": "journiapp.com"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Polarsteps",
+            "Journi Blog",
+            "Wanderlog",
+            "1 Second Everyday"
+          ],
+          "citations": [
+            "https://www.polarsteps.com",
+            "https://www.journiapp.com",
+            "https://wanderlog.com"
+          ],
+          "summary": "Top travel recap apps include Polarsteps for automated GPS routes and video recaps, Journi Blog for photo-timeline albums, Wanderlog for itinerary-based summaries, and 1 Second Everyday for quick daily video snippets.",
+          "domains": {
+            "Polarsteps": "polarsteps.com",
+            "Journi Blog": "journiapp.com",
+            "Wanderlog": "wanderlog.com",
+            "1 Second Everyday": "1se.co"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "daily trip summary audio",
+      "intent": "Trip summaries & photo recaps",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Triplium",
+            "Reisespur"
+          ],
+          "citations": [
+            "https://apps.apple.com/be/app/triplium-ai-travel-journal/id6791799724",
+            "https://apps.apple.com/gh/app/reisespur-travel-journal/id6816966588"
+          ],
+          "summary": "Triplium can assemble a short daily story from photos, notes and route data, but its listing does not establish an automatically narrated daily audio summary. Reisespur lets you preserve voice notes.",
+          "domains": {}
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Audiala",
+            "Autio",
+            "City Stories",
+            "Polarsteps",
+            "TripMemo"
+          ],
+          "citations": [
+            "https://audiala.com/",
+            "https://apps.apple.com/us/app/autio-road-trip-travel-app/id1300494609",
+            "https://city-stories.replit.app/"
+          ],
+          "summary": "Few apps do exactly this; suggested audio-story travel apps like Audiala, Autio and City Stories, or journaling apps (Polarsteps, TripMemo) for daily summaries, with text-to-speech to listen.",
+          "domains": {
+            "Audiala": "audiala.com",
+            "Polarsteps": "polarsteps.com",
+            "TripMemo": "tripmemo.app"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Autio",
+            "VoiceMap",
+            "AudioPen",
+            "Day One"
+          ],
+          "citations": [
+            "https://autio.com",
+            "https://voicemap.me",
+            "https://audiopen.ai"
+          ],
+          "summary": "To generate or listen to daily trip audio summaries, travelers use Autio for location-based audio storytelling, VoiceMap for audio-guided walks, and audio voice-memo apps like AudioPen or Day One to record spoken daily recaps.",
+          "domains": {
+            "Autio": "autio.com",
+            "VoiceMap": "voicemap.me",
+            "AudioPen": "audiopen.ai",
+            "Day One": "dayoneapp.com"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "automatic travel journal from vacation photos",
+      "intent": "Trip summaries & photo recaps",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Triplium",
+            "Polarsteps",
+            "FindPenguins"
+          ],
+          "citations": [
+            "https://apps.apple.com/be/app/triplium-ai-travel-journal/id6791799724",
+            "https://www.pebbls.com/blog/best-travel-journal-apps"
+          ],
+          "summary": "Triplium assembles photos and notes into a daily story and recap video. Polarsteps and FindPenguins are established alternatives for map-based photo travel journals.",
+          "domains": {
+            "Polarsteps": "polarsteps.com",
+            "FindPenguins": "findpenguins.com"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Trippy Taless",
+            "Travel Facets",
+            "Journi",
+            "TripMemo",
+            "Tripcast",
+            "Polarsteps",
+            "Traverous"
+          ],
+          "citations": [
+            "https://trippytaless.com/blogs/best-travel-journal-apps-2026/",
+            "https://www.makeuseof.com/free-travel-journal-apps-create-trip-diary/",
+            "https://tripmemo.app/best-travel-journal-apps",
+            "https://tripmemo.app/travel-photo-journal-app",
+            "https://tripcast.co/use-cases/location-journal/",
+            "https://alittleadrift.com/travel-journal-apps/"
+          ],
+          "summary": "Listed apps that build journals from camera roll photos: Trippy Taless, Travel Facets, Journi, TripMemo, Tripcast, plus Polarsteps and Traverous for GPS tracking.",
+          "domains": {
+            "Trippy Taless": "trippytaless.com",
+            "Journi": "journiapp.com",
+            "TripMemo": "tripmemo.app",
+            "Tripcast": "tripcast.co",
+            "Polarsteps": "polarsteps.com"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Journi Blog",
+            "Polarsteps",
+            "Google Photos",
+            "Apple Photos"
+          ],
+          "citations": [
+            "https://www.journiapp.com",
+            "https://www.polarsteps.com",
+            "https://photos.google.com"
+          ],
+          "summary": "Journi Blog and Polarsteps automatically organize vacation photos into mapped timelines using EXIF timestamps and geotags. Google Photos and Apple Photos also auto-create interactive trip memory albums and recap reels.",
+          "domains": {
+            "Journi Blog": "journiapp.com",
+            "Polarsteps": "polarsteps.com",
+            "Google Photos": "photos.google.com",
+            "Apple Photos": "apple.com"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "app to log and summarize visited landmarks",
+      "intent": "Trip summaries & photo recaps",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "MeTrail",
+            "Traveled"
+          ],
+          "citations": [
+            "https://apps.apple.com/by/app/metrail-location-journal/id1611186060",
+            "https://apps.apple.com/us/app/traveled-history-timeline/id1445625132"
+          ],
+          "summary": "MeTrail records places and daily timelines; Traveled logs landmarks and creates place-based journal pages. Check location permissions and edit logged visits for accuracy.",
+          "domains": {}
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Travelog: Travel Map Tracker",
+            "Polarsteps",
+            "AdventureLog",
+            "Driftlog",
+            "Logpop"
+          ],
+          "citations": [
+            "https://apps.apple.com/us/app/travelog-travel-map-tracker/id6760092556",
+            "https://www.keepgo.com/blogs/articles/top-10-apps-for-trip-logging",
+            "https://adventurelog.app/",
+            "https://getdriftlog.com/"
+          ],
+          "summary": "Suggested Travelog, Polarsteps, AdventureLog (open source), Driftlog and Logpop for logging places; Polarsteps and Travelog offer summaries or AI journaling.",
+          "domains": {
+            "Polarsteps": "polarsteps.com",
+            "AdventureLog": "adventurelog.app",
+            "Driftlog": "getdriftlog.com"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Wanderlog",
+            "Polarsteps",
+            "Visited",
+            "Fog of World"
+          ],
+          "citations": [
+            "https://wanderlog.com",
+            "https://visitedapp.com",
+            "https://fogofworld.com"
+          ],
+          "summary": "Wanderlog and Polarsteps track landmark visits with maps and trip stats. Visited highlights countries and sights on personalized maps, while Fog of World turns exploring landmarks into a gamified discovery log.",
+          "domains": {
+            "Wanderlog": "wanderlog.com",
+            "Polarsteps": "polarsteps.com",
+            "Visited": "visitedapp.com",
+            "Fog of World": "fogofworld.com"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "create daily audio story of vacation itinerary",
+      "intent": "Trip summaries & photo recaps",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Walky",
+            "Tellby"
+          ],
+          "citations": [
+            "https://apps.apple.com/us/app/walky-trip-itinerary-planner/id6651862709",
+            "https://tellby.us/"
+          ],
+          "summary": "Walky offers day-by-day itineraries and narrated stops, but not a confirmed personalized daily audio recap. Tellby offers location audio stories and trip books; check whether it meets your recap needs.",
+          "domains": {
+            "Tellby": "tellby.us"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Audiala",
+            "WanderLens",
+            "TravelStorys",
+            "Autio",
+            "City Stories"
+          ],
+          "citations": [
+            "https://audiala.com/",
+            "https://wanderlens.ai/",
+            "https://mwm.ai/apps/travelstorys-audio-tours/543710299",
+            "https://apps.apple.com/us/app/autio-road-trip-travel-app/id1300494609",
+            "https://city-stories.replit.app/"
+          ],
+          "summary": "Recommended Audiala (AI trip planner plus audio stories), WanderLens (podcast-style guides and itineraries), TravelStorys, Autio and City Stories. Noted none turns your own itinerary into a recap.",
+          "domains": {
+            "Audiala": "audiala.com",
+            "WanderLens": "wanderlens.ai"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Autio",
+            "VoiceMap",
+            "Day One",
+            "Wanderlog"
+          ],
+          "citations": [
+            "https://autio.com",
+            "https://voicemap.me",
+            "https://dayoneapp.com"
+          ],
+          "summary": "For turning daily vacation itineraries into audio stories, Autio delivers curated audio snippets for regional routes, VoiceMap provides scripted GPS-triggered itineraries, and voice journaling tools like Day One help log daily reflections.",
+          "domains": {
+            "Autio": "autio.com",
+            "VoiceMap": "voicemap.me",
+            "Day One": "dayoneapp.com",
+            "Wanderlog": "wanderlog.com"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "smartify alternatives",
+      "intent": "Competitor comparisons & alternatives",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "izi.TRAVEL",
+            "Bloomberg Connects",
+            "VoiceMap",
+            "Smartify"
+          ],
+          "citations": [
+            "https://www.izi.travel/en/app",
+            "https://bpb-us-w2.wpmucdn.com/wp.wpi.edu/dist/2/96/files/2024/04/Audio-Guide-Development-and-Visitor-Research-at-the-Brunel-Museum-9e935bb74a140802.pdf",
+            "https://voicemap.me/walking-tour-app",
+            "https://apps.apple.com/us/app/smartify-arts-and-culture/id1102736524"
+          ],
+          "summary": "Try izi.TRAVEL for museum and city audio guides, Bloomberg Connects for participating museums, or VoiceMap for self-guided audio walks. Artwork scanning may differ from Smartify.",
+          "domains": {
+            "izi.TRAVEL": "izi.travel",
+            "Bloomberg Connects": "bloombergconnects.org",
+            "VoiceMap": "voicemap.me",
+            "Smartify": "smartify.org"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Bloomberg Connects",
+            "izi.TRAVEL",
+            "Hearonymus",
+            "Locatify",
+            "SmartGuide",
+            "AITourPilot"
+          ],
+          "citations": [
+            "https://mooseum.app/blog/best-museum-apps",
+            "https://getstrolio.com/blog/voicemap-alternatives",
+            "https://www.musa.guide/en/resources/hearonymus-alternatives",
+            "https://locatify.com/native-museum-app/",
+            "https://www.cbinsights.com/company/smartify/alternatives-competitors"
+          ],
+          "summary": "Alternatives to Smartify: Bloomberg Connects (1,250+ museums), izi.TRAVEL, Hearonymus, Locatify, SmartGuide and AITourPilot, plus Musa for institutions.",
+          "domains": {
+            "Bloomberg Connects": "bloombergconnects.org",
+            "izi.TRAVEL": "izi.travel",
+            "Hearonymus": "hearonymus.com",
+            "Locatify": "locatify.com",
+            "SmartGuide": "smart-guide.org"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Bloomberg Connects",
+            "Google Arts & Culture",
+            "DailyArt",
+            "Magnus"
+          ],
+          "citations": [
+            "https://www.bloombergconnects.org",
+            "https://artsandculture.google.com",
+            "https://www.getdailyart.com"
+          ],
+          "summary": "Key alternatives to Smartify include Bloomberg Connects for digital museum guides, Google Arts & Culture for comprehensive artwork exploration, DailyArt for daily artwork discoveries, and Magnus for contemporary art identification.",
+          "domains": {
+            "Bloomberg Connects": "bloombergconnects.org",
+            "Google Arts & Culture": "artsandculture.google.com",
+            "DailyArt": "getdailyart.com",
+            "Magnus": "magnus.net"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "apps like izi travel",
+      "intent": "Competitor comparisons & alternatives",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Bloomberg Connects",
+            "Smartify",
+            "VoiceMap",
+            "SmartGuide"
+          ],
+          "citations": [
+            "https://bpb-us-w2.wpmucdn.com/wp.wpi.edu/dist/2/96/files/2024/04/Audio-Guide-Development-and-Visitor-Research-at-the-Brunel-Museum-9e935bb74a140802.pdf",
+            "https://apps.apple.com/us/app/smartify-arts-and-culture/id1102736524",
+            "https://voicemap.me/walking-tour-app",
+            "https://www.smartguide.app/faq"
+          ],
+          "summary": "Bloomberg Connects is useful for participating museums; Smartify adds art discovery, while VoiceMap and SmartGuide cover self-guided audio tours. Availability depends on the venue and city.",
+          "domains": {
+            "Bloomberg Connects": "bloombergconnects.org",
+            "Smartify": "smartify.org",
+            "VoiceMap": "voicemap.me",
+            "SmartGuide": "smartguide.app"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "VoiceMap",
+            "SmartGuide",
+            "Rick Steves Audio Europe",
+            "PocketGuide",
+            "GPSmyCity",
+            "WeGoTrip",
+            "CloudGuide"
+          ],
+          "citations": [
+            "https://www.cbinsights.com/company/izitravel/alternatives-competitors",
+            "https://blog.smart-guide.org/en/5-best-tour-guide-apps-for-travelers-in-2025",
+            "https://getstrolio.com/blog/voicemap-alternatives",
+            "https://apps.apple.com/us/app/izi-travel-audio-tour-guide/id554726752?see-all=customers-also-bought-apps&platform=iphone"
+          ],
+          "summary": "Similar apps: VoiceMap, SmartGuide, Rick Steves Audio Europe (free), PocketGuide, GPSmyCity, WeGoTrip, plus CloudGuide as a platform competitor.",
+          "domains": {
+            "VoiceMap": "voicemap.me",
+            "SmartGuide": "smart-guide.org",
+            "Rick Steves Audio Europe": "ricksteves.com",
+            "PocketGuide": "pocketguide.com",
+            "GPSmyCity": "gpsmycity.com",
+            "WeGoTrip": "wegotrip.com"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "VoiceMap",
+            "Smartify",
+            "Bloomberg Connects",
+            "PocketSights",
+            "Guidigo"
+          ],
+          "citations": [
+            "https://voicemap.me",
+            "https://smartify.org",
+            "https://pocketsights.com"
+          ],
+          "summary": "Popular apps similar to izi.TRAVEL include VoiceMap for self-guided GPS audio walking tours, Smartify and Bloomberg Connects for cultural site guides, PocketSights for community walking tours, and Guidigo for museum experiences.",
+          "domains": {
+            "VoiceMap": "voicemap.me",
+            "Smartify": "smartify.org",
+            "Bloomberg Connects": "bloombergconnects.org",
+            "PocketSights": "pocketsights.com",
+            "Guidigo": "guidigo.com"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "top alternatives to museum audio devices",
+      "intent": "Competitor comparisons & alternatives",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Bloomberg Connects",
+            "izi.TRAVEL",
+            "Smartify"
+          ],
+          "citations": [
+            "https://bpb-us-w2.wpmucdn.com/wp.wpi.edu/dist/2/96/files/2024/04/Audio-Guide-Development-and-Visitor-Research-at-the-Brunel-Museum-9e935bb74a140802.pdf",
+            "https://www.izi.travel/en/app",
+            "https://apps.apple.com/us/app/smartify-arts-and-culture/id1102736524"
+          ],
+          "summary": "Start with the museum’s own mobile guide, then try Bloomberg Connects or izi.TRAVEL for supported collections; Smartify is another option for art discovery and audio tours. Bring headphones and check venue coverage.",
+          "domains": {
+            "Bloomberg Connects": "bloombergconnects.org",
+            "izi.TRAVEL": "izi.travel",
+            "Smartify": "smartify.org"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Musa",
+            "Nubart GUIDE",
+            "Pathoura",
+            "Bloomberg Connects",
+            "izi.TRAVEL"
+          ],
+          "citations": [
+            "https://www.musa.guide/en/resources/acoustiguide-alternatives",
+            "https://www.nubart.eu/audio-guides/",
+            "https://pathoura.com/best-museum-audio-guide-equipment/",
+            "https://www.musa.guide/en/resources/hearonymus-alternatives"
+          ],
+          "summary": "Best alternative is bring-your-own-device: QR-code web guides (Nubart GUIDE, Pathoura, Musa) or apps like Bloomberg Connects and izi.TRAVEL; hardware headsets remain for accessibility.",
+          "domains": {
+            "Musa": "musa.guide",
+            "Nubart GUIDE": "nubart.eu",
+            "Pathoura": "pathoura.com",
+            "Bloomberg Connects": "bloombergconnects.org",
+            "izi.TRAVEL": "izi.travel"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Bloomberg Connects",
+            "Smartify",
+            "izi.TRAVEL",
+            "Rick Steves Audio Europe"
+          ],
+          "citations": [
+            "https://www.bloombergconnects.org",
+            "https://smartify.org",
+            "https://izi.travel"
+          ],
+          "summary": "Instead of renting handheld museum audio devices, visitors use Bloomberg Connects and Smartify on their own smartphones, official museum mobile apps, or audio platforms like izi.TRAVEL and Rick Steves Audio Europe.",
+          "domains": {
+            "Bloomberg Connects": "bloombergconnects.org",
+            "Smartify": "smartify.org",
+            "izi.TRAVEL": "izi.travel",
+            "Rick Steves Audio Europe": "ricksteves.com"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "free museum audio guides",
+      "intent": "Competitor comparisons & alternatives",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "izi.TRAVEL",
+            "Bloomberg Connects"
+          ],
+          "citations": [
+            "https://americanart.si.edu/visit/tours/audio-guides",
+            "https://www.izi.travel/en/app",
+            "https://bpb-us-w2.wpmucdn.com/wp.wpi.edu/dist/2/96/files/2024/04/Audio-Guide-Development-and-Visitor-Research-at-the-Brunel-Museum-9e935bb74a140802.pdf"
+          ],
+          "summary": "Check the museum’s own website or QR codes first. izi.TRAVEL has free museum guides, and Bloomberg Connects offers guides at participating venues; confirm the specific exhibition is covered.",
+          "domains": {
+            "izi.TRAVEL": "izi.travel",
+            "Bloomberg Connects": "bloombergconnects.org"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Bloomberg Connects",
+            "Hearonymus",
+            "Rick Steves Audio Europe",
+            "Rijksmuseum App",
+            "British Museum Audio App",
+            "Musetory",
+            "Musly"
+          ],
+          "citations": [
+            "https://www.hearonymus.com/en/",
+            "https://tourient.app/blog/5-best-apps-for-creating-audio-tours",
+            "https://www.rijksmuseum.nl/en/whats-on/app",
+            "https://www.britishmuseum.org/visit/audio-app",
+            "https://apps.apple.com/us/app/musetory-museum-audio-guide/id6761122184"
+          ],
+          "summary": "Free options: Bloomberg Connects, Hearonymus, Rick Steves Audio Europe, Rijksmuseum app, British Museum audio app (65 free intros), Musetory and Musly.",
+          "domains": {
+            "Bloomberg Connects": "bloombergconnects.org",
+            "Hearonymus": "hearonymus.com",
+            "Rick Steves Audio Europe": "ricksteves.com",
+            "Rijksmuseum App": "rijksmuseum.nl",
+            "British Museum Audio App": "britishmuseum.org"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Bloomberg Connects",
+            "Google Arts & Culture",
+            "Rick Steves Audio Europe",
+            "izi.TRAVEL"
+          ],
+          "citations": [
+            "https://www.bloombergconnects.org",
+            "https://artsandculture.google.com",
+            "https://www.ricksteves.com"
+          ],
+          "summary": "Top free museum audio guide apps include Bloomberg Connects, which hosts guides for hundreds of institutions worldwide, Google Arts & Culture, Rick Steves Audio Europe for major European sights, and free tours on izi.TRAVEL.",
+          "domains": {
+            "Bloomberg Connects": "bloombergconnects.org",
+            "Google Arts & Culture": "artsandculture.google.com",
+            "Rick Steves Audio Europe": "ricksteves.com",
+            "izi.TRAVEL": "izi.travel"
+          }
+        }
+      }
+    },
+    {
+      "prompt": "cheap alternative to private tour guide",
+      "intent": "Competitor comparisons & alternatives",
+      "results": {
+        "chatgpt": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "izi.TRAVEL",
+            "Rick Steves Audio Europe",
+            "VoiceMap"
+          ],
+          "citations": [
+            "https://www.izi.travel/en/app",
+            "https://www.ricksteves.com/watch-read-listen/audio/audio-europe",
+            "https://voicemap.me/walking-tour-app"
+          ],
+          "summary": "Try free self-guided tours in izi.TRAVEL or Rick Steves Audio Europe where available. VoiceMap offers paid audio walks and some free tours; none replaces a live guide for personal questions.",
+          "domains": {
+            "izi.TRAVEL": "izi.travel",
+            "Rick Steves Audio Europe": "ricksteves.com",
+            "VoiceMap": "voicemap.me"
+          }
+        },
+        "claude": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "Rick Steves Audio Europe",
+            "iWander",
+            "VoiceMap",
+            "GPSmyCity",
+            "AudaTours",
+            "Detour",
+            "Action Tour Guide",
+            "WalknTours"
+          ],
+          "citations": [
+            "https://audatours.com/blog/best-audio-tour-apps",
+            "https://freewalking.tours/blog/best-apps-walking-tours/",
+            "https://iwander.io/free-walking-tour-apps",
+            "https://www.gamana.app/blog/best-tour-guide-apps-for-travelers/",
+            "https://tourinabox.com/blog/best-self-guided-tour-apps/",
+            "https://www.walkntours.us/"
+          ],
+          "summary": "Self-guided audio tour apps: free Rick Steves Audio Europe and iWander; cheap paid VoiceMap, GPSmyCity, AudaTours, Detour; pricier Action Tour Guide and WalknTours.",
+          "domains": {
+            "Rick Steves Audio Europe": "ricksteves.com",
+            "iWander": "iwander.io",
+            "VoiceMap": "voicemap.me",
+            "GPSmyCity": "gpsmycity.com",
+            "AudaTours": "audatours.com",
+            "WalknTours": "walkntours.us"
+          }
+        },
+        "gemini": {
+          "mentioned": false,
+          "cited": false,
+          "rank": null,
+          "brands": [
+            "VoiceMap",
+            "GPSmyCity",
+            "GuruWalk",
+            "Rick Steves Audio Europe"
+          ],
+          "citations": [
+            "https://voicemap.me",
+            "https://www.gpsmycity.com",
+            "https://www.guruwalk.com"
+          ],
+          "summary": "Affordable alternatives to hiring a private guide include GPS audio walking tour apps like VoiceMap and GPSmyCity, joining pay-what-you-wish walking tours via GuruWalk, or using free audio guides from Rick Steves.",
+          "domains": {
+            "VoiceMap": "voicemap.me",
+            "GPSmyCity": "gpsmycity.com",
+            "GuruWalk": "guruwalk.com",
+            "Rick Steves Audio Europe": "ricksteves.com"
+          }
+        }
+      }
+    }
+  ],
+  "sentiment": [
+    {
+      "brand": "Chiaro",
+      "by_engine": {
+        "chatgpt": {
+          "likelihood": 89,
+          "tone": "positive",
+          "description": "An AI museum and travel guide that turns photos of artworks or landmarks into spoken explanations and supports follow-up questions in multiple languages.",
+          "pros": [
+            "Photo-based identification",
+            "Multilingual audio and follow-ups"
+          ],
+          "cons": [
+            "iPhone app",
+            "May require subscription"
+          ]
+        },
+        "claude": {
+          "likelihood": 8,
+          "tone": "unknown",
+          "description": "I don't know this product well; it may be a newer or niche art/travel guide app, but I can't describe it reliably.",
+          "pros": [],
+          "cons": [
+            "little known to me",
+            "unverified features"
+          ]
+        },
+        "gemini": {
+          "likelihood": 92,
+          "tone": "positive",
+          "description": "An AI-powered audio guide that uses your camera to identify museum artworks and city landmarks, narrating instant personalized audio explanations across multiple languages.",
+          "pros": [
+            "Instant camera-based sight identification",
+            "Personalized spoken audio in multiple languages"
+          ],
+          "cons": [
+            "iOS-only availability",
+            "Requires a paid subscription after trial"
+          ]
+        }
+      },
+      "index": 63,
+      "tone": "positive",
+      "is_target": true
+    },
+    {
+      "brand": "VoiceMap",
+      "by_engine": {
+        "chatgpt": {
+          "likelihood": 49,
+          "tone": "neutral",
+          "description": "A GPS-triggered audio-tour app with guided walks created by local publishers, rather than an on-demand photo-identification guide.",
+          "pros": [
+            "Strong walking tours",
+            "Offline maps"
+          ],
+          "cons": [
+            "No established photo identification",
+            "Languages vary by tour"
+          ]
+        },
+        "claude": {
+          "likelihood": 55,
+          "tone": "positive",
+          "description": "A GPS-triggered audio walking tour app with tours by local guides and storytellers in many cities worldwide.",
+          "pros": [
+            "high-quality narrated tours",
+            "works offline"
+          ],
+          "cons": [
+            "no photo recognition",
+            "fixed tours, not personalized"
+          ]
+        },
+        "gemini": {
+          "likelihood": 45,
+          "tone": "neutral",
+          "description": "A GPS-driven walking tour app delivering immersive audio stories from local guides as you move through cities.",
+          "pros": [
+            "High-quality storytelling by locals",
+            "Automatic hands-free GPS playback"
+          ],
+          "cons": [
+            "Lacks camera or photo identification",
+            "Pre-recorded routes without generative AI personalization"
+          ]
+        }
+      },
+      "index": 50,
+      "tone": "neutral",
+      "is_target": false
+    },
+    {
+      "brand": "Smartify",
+      "by_engine": {
+        "chatgpt": {
+          "likelihood": 78,
+          "tone": "positive",
+          "description": "A museum-focused app that recognizes artworks and offers audio guides, with content and language availability varying by institution.",
+          "pros": [
+            "Artwork recognition",
+            "Museum audio guides"
+          ],
+          "cons": [
+            "Museum-oriented",
+            "Coverage varies by institution"
+          ]
+        },
+        "claude": {
+          "likelihood": 80,
+          "tone": "positive",
+          "description": "A museum and gallery app that identifies artworks by scanning them and gives audio and text guides at partner institutions.",
+          "pros": [
+            "artwork scanning",
+            "wide museum partnerships"
+          ],
+          "cons": [
+            "limited to partner venues",
+            "little AI personalization"
+          ]
+        },
+        "gemini": {
+          "likelihood": 78,
+          "tone": "positive",
+          "description": "An established museum app that scans artworks with your phone camera to deliver curated museum audio commentary and background details.",
+          "pros": [
+            "Reliable image recognition for museum art",
+            "Extensive global partner museum network"
+          ],
+          "cons": [
+            "Limited coverage for outdoor city sights",
+            "Relies mostly on static museum catalog audio"
+          ]
+        }
+      },
+      "index": 79,
+      "tone": "positive",
+      "is_target": false
+    },
+    {
+      "brand": "izi.TRAVEL",
+      "by_engine": {
+        "chatgpt": {
+          "likelihood": 43,
+          "tone": "neutral",
+          "description": "A platform for self-guided museum and city audio tours, with languages selected by each guide's creator.",
+          "pros": [
+            "Broad tour catalog",
+            "Museum and city coverage"
+          ],
+          "cons": [
+            "No established AI photo identification",
+            "Languages vary by guide"
+          ]
+        },
+        "claude": {
+          "likelihood": 50,
+          "tone": "neutral",
+          "description": "A free platform of audio guides and tours for museums and cities, created by institutions and community contributors in many languages.",
+          "pros": [
+            "free and multilingual",
+            "wide coverage"
+          ],
+          "cons": [
+            "uneven content quality",
+            "no photo-based identification"
+          ]
+        },
+        "gemini": {
+          "likelihood": 40,
+          "tone": "neutral",
+          "description": "A global open platform offering thousands of free and paid audio tours for museums and city walks.",
+          "pros": [
+            "Massive collection of global tours",
+            "Flexible museum and city walk coverage"
+          ],
+          "cons": [
+            "No AI photo recognition feature",
+            "Quality varies widely between creator uploads"
+          ]
+        }
+      },
+      "index": 44,
+      "tone": "neutral",
+      "is_target": false
+    },
+    {
+      "brand": "Rick Steves Audio Europe",
+      "by_engine": {
+        "chatgpt": {
+          "likelihood": 24,
+          "tone": "neutral",
+          "description": "A free collection of downloadable European walking tours and travel audio, not a photo-responsive AI guide.",
+          "pros": [
+            "Free tours",
+            "Offline listening"
+          ],
+          "cons": [
+            "Europe-focused",
+            "No photo-based explanations"
+          ]
+        },
+        "claude": {
+          "likelihood": 60,
+          "tone": "positive",
+          "description": "A free app with Rick Steves' audio tours of major European museums and sights, plus walking tours and travel talks.",
+          "pros": [
+            "engaging expert narration",
+            "free"
+          ],
+          "cons": [
+            "Europe only, mostly English",
+            "not interactive or AI-driven"
+          ]
+        },
+        "gemini": {
+          "likelihood": 25,
+          "tone": "neutral",
+          "description": "A travel app providing classic, curated audio walking tours and cultural insights for major European destinations.",
+          "pros": [
+            "Engaging, expert-curated commentary",
+            "Completely free with offline downloads"
+          ],
+          "cons": [
+            "No camera recognition or AI capability",
+            "English-only and limited to major European sights"
+          ]
+        }
+      },
+      "index": 36,
+      "tone": "neutral",
+      "is_target": false
+    },
+    {
+      "brand": "SmartGuide",
+      "by_engine": {
+        "chatgpt": {
+          "likelihood": 66,
+          "tone": "positive",
+          "description": "An AI-assisted travel guide with audio, maps, chat, itinerary planning and broad language support; photo identification is less clear.",
+          "pros": [
+            "AI chat and planning",
+            "Many languages"
+          ],
+          "cons": [
+            "Photo identification unconfirmed",
+            "Feature availability may vary"
+          ]
+        },
+        "claude": {
+          "likelihood": 15,
+          "tone": "unknown",
+          "description": "I'm not sure of this one. It may be an audio guide or tour app, but I can't confirm its features.",
+          "pros": [
+            "possibly an audio guide"
+          ],
+          "cons": [
+            "unclear offering",
+            "low recognition"
+          ]
+        },
+        "gemini": {
+          "likelihood": 50,
+          "tone": "neutral",
+          "description": "A digital travel guide app offering GPS-triggered audio guides and curated self-guided tours worldwide.",
+          "pros": [
+            "Reliable location-based audio triggers",
+            "Extensive catalog of destinations"
+          ],
+          "cons": [
+            "No photo-based AI visual recognition",
+            "Fixed pre-written tour narration"
+          ]
+        }
+      },
+      "index": 44,
+      "tone": "positive",
+      "is_target": false
+    }
+  ],
+  "insights": [
+    "ChatGPT and Gemini completely ignore Chiaro (0.0% visibility across 30 prompts each), while Claude yields only a single mention (3.3% visibility, rank 3).",
+    "Chiaro is entirely absent from 5 out of 6 intents (0.0% visibility), surfacing solely under 'Multilingual travel audio' (6.7% visibility) on the prompt 'app that explains monuments in Spanish'.",
+    "VoiceMap leads overall with 27 mentions (24.5% share of voice) and owns 'Self-guided sightseeing & landmark tours' (12 mentions there); Smartify dominates 'Art & museum recognition' (15 mentions there, 23 overall).",
+    "SmartGuide leads 'Multilingual travel audio' (7 mentions) and Bloomberg Connects leads 'Competitor comparisons & alternatives' (11 mentions).",
+    "Chiaro's sentiment index (63) is strong and second only to Smartify (79), powered by high purchase intent on ChatGPT (89) and Gemini (92), but hindered by near-zero recognition on Claude (likelihood 8, tone unknown).",
+    "The most valuable fix is building authoritative web presence and comparison content around museum art recognition and offline walking tours to bridge the gap between high product fit and zero organic discovery."
+  ],
+  "notes": [
+    "49 of 118 Gemini citations are search-redirect links, not source URLs, so a citation of chiaro.ai could be missed there; mentions are unaffected."
+  ],
+  "visibility": {
+    "overall_pct": 1.1,
+    "mentions_pct": 1.1,
+    "citations_pct": 1.1,
+    "avg_rank": 3.0,
+    "answers": 90,
+    "pts_per_answer": 1.1,
+    "by_engine": {
+      "chatgpt": {
+        "pct": 0.0,
+        "mentioned": 0,
+        "cited": 0,
+        "answered": 30
+      },
+      "claude": {
+        "pct": 3.3,
+        "mentioned": 1,
+        "cited": 1,
+        "answered": 30
+      },
+      "gemini": {
+        "pct": 0.0,
+        "mentioned": 0,
+        "cited": 0,
+        "answered": 30
+      }
+    }
+  },
+  "by_intent": [
+    {
+      "intent": "Art & museum recognition",
+      "prompts": 5,
+      "answers": 15,
+      "pct": 0.0,
+      "leader": "Smartify"
+    },
+    {
+      "intent": "Self-guided sightseeing & landmark tours",
+      "prompts": 5,
+      "answers": 15,
+      "pct": 0.0,
+      "leader": "VoiceMap"
+    },
+    {
+      "intent": "Interactive & conversational guides",
+      "prompts": 5,
+      "answers": 15,
+      "pct": 0.0,
+      "leader": "Artlas"
+    },
+    {
+      "intent": "Multilingual travel audio",
+      "prompts": 5,
+      "answers": 15,
+      "pct": 6.7,
+      "leader": "SmartGuide"
+    },
+    {
+      "intent": "Trip summaries & photo recaps",
+      "prompts": 5,
+      "answers": 15,
+      "pct": 0.0,
+      "leader": "Polarsteps"
+    },
+    {
+      "intent": "Competitor comparisons & alternatives",
+      "prompts": 5,
+      "answers": 15,
+      "pct": 0.0,
+      "leader": "Bloomberg Connects"
+    }
+  ],
+  "leaderboard": [
+    {
+      "brand": "VoiceMap",
+      "domain": "voicemap.me",
+      "is_target": false,
+      "mentions": 27,
+      "share_of_voice_pct": 24.5,
+      "mention_rate_pct": 30.0,
+      "sentiment_index": 50
+    },
+    {
+      "brand": "Smartify",
+      "domain": "smartify.org",
+      "is_target": false,
+      "mentions": 23,
+      "share_of_voice_pct": 20.9,
+      "mention_rate_pct": 25.6,
+      "sentiment_index": 79
+    },
+    {
+      "brand": "izi.TRAVEL",
+      "domain": "izi.travel",
+      "is_target": false,
+      "mentions": 22,
+      "share_of_voice_pct": 20.0,
+      "mention_rate_pct": 24.4,
+      "sentiment_index": 44
+    },
+    {
+      "brand": "Rick Steves Audio Europe",
+      "domain": "ricksteves.com",
+      "is_target": false,
+      "mentions": 20,
+      "share_of_voice_pct": 18.2,
+      "mention_rate_pct": 22.2,
+      "sentiment_index": 36
+    },
+    {
+      "brand": "SmartGuide",
+      "domain": "smartguide.app",
+      "is_target": false,
+      "mentions": 17,
+      "share_of_voice_pct": 15.5,
+      "mention_rate_pct": 18.9,
+      "sentiment_index": 44
+    },
+    {
+      "brand": "Chiaro",
+      "domain": "chiaro.ai",
+      "is_target": true,
+      "mentions": 1,
+      "share_of_voice_pct": 0.9,
+      "mention_rate_pct": 1.1,
+      "sentiment_index": 63
+    }
+  ]
+}

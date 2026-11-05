@@ -1,0 +1,351 @@
+{
+  "mode": "visibility",
+  "batch": "b1",
+  "engine": "claude",
+  "results": [
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Google Arts & Culture",
+          "domain": "artsandculture.google.com"
+        },
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "Google Lens",
+          "domain": "lens.google"
+        },
+        {
+          "name": "Magnus",
+          "domain": "magnus.app"
+        },
+        {
+          "name": "ArtScan",
+          "domain": "paintingrecognition.com"
+        }
+      ],
+      "prompt": "app to recognize artworks",
+      "citations": [
+        "https://paintingrecognition.com/blog/best-painting-recognition-apps-compared.html",
+        "https://cypaint.com/article/is-there-an-app-that-can-identify-paintings-and-prints"
+      ],
+      "mentioned": false,
+      "answer_summary": "Recommended Google Arts & Culture, Smartify, Google Lens, Magnus and ArtScan for photo-based artwork recognition, with extra context on artists and museum coverage."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Google Lens",
+          "domain": "lens.google"
+        },
+        {
+          "name": "ArtScan",
+          "domain": "paintingrecognition.com"
+        },
+        {
+          "name": "Art Identifier",
+          "domain": "apps.apple.com"
+        },
+        {
+          "name": "Google Arts & Culture",
+          "domain": "artsandculture.google.com"
+        },
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        }
+      ],
+      "prompt": "identify paintings by photo",
+      "citations": [
+        "https://paintingrecognition.com/",
+        "https://apps.apple.com/us/app/art-identifier/id6747607478"
+      ],
+      "mentioned": false,
+      "answer_summary": "Suggested Google Lens for quick photo matches, ArtScan and Art Identifier for dedicated painting ID, and Google Arts & Culture or Smartify for museum-collection matches."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Artlas",
+          "domain": "artlasapp.com"
+        },
+        {
+          "name": "ArtSnap",
+          "domain": "museum-ai.app"
+        },
+        {
+          "name": "Museo",
+          "domain": "codigee.com"
+        },
+        {
+          "name": "Artiou",
+          "domain": "apps.apple.com"
+        },
+        {
+          "name": "MuseumAI",
+          "domain": "museum-ai.app"
+        },
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        }
+      ],
+      "prompt": "AI museum guide app",
+      "citations": [
+        "https://apps.apple.com/us/app/artlas-museums-ai-companion/id6476963918",
+        "https://play.google.com/store/apps/details?id=com.museumai.artsnap",
+        "https://www.museum-ai.app/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Listed AI museum guides: Artlas (Metti AI companion), ArtSnap, Museo, Artiou and MuseumAI. Also mentioned Smartify as an established option."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "ArtSnap",
+          "domain": "museum-ai.app"
+        },
+        {
+          "name": "artscan: Museum Photos",
+          "domain": "apps.apple.com"
+        },
+        {
+          "name": "Artiou",
+          "domain": "apps.apple.com"
+        },
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "Google Arts & Culture",
+          "domain": "artsandculture.google.com"
+        }
+      ],
+      "prompt": "museum artwork scanner app",
+      "citations": [
+        "https://play.google.com/store/apps/details?id=com.museumai.artsnap",
+        "https://apps.apple.com/us/app/artscan-museum-photos/id6746695414",
+        "https://apps.apple.com/us/app/artiou-ai-museum-guide/id6759812990"
+      ],
+      "mentioned": false,
+      "answer_summary": "Recommended ArtSnap, artscan, Artiou, Smartify and Google Arts & Culture for scanning artworks in museums and getting audio or text explanations."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "Google Arts & Culture",
+          "domain": "artsandculture.google.com"
+        },
+        {
+          "name": "Artlas",
+          "domain": "artlasapp.com"
+        },
+        {
+          "name": "Magnus",
+          "domain": "magnus.app"
+        }
+      ],
+      "prompt": "what app identifies art in museums",
+      "citations": [
+        "https://apps.apple.com/us/app/artlas-museums-ai-companion/id6476963918"
+      ],
+      "mentioned": false,
+      "answer_summary": "Smartify is the best-known museum art-identification app. Also suggested Google Arts & Culture, Artlas and Magnus, and advised checking whether your museum has its own app."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        },
+        {
+          "name": "GPSmyCity",
+          "domain": "gpsmycity.com"
+        },
+        {
+          "name": "WalknTours",
+          "domain": "walkntours.com"
+        },
+        {
+          "name": "Action Tour Guide",
+          "domain": "actiontourguide.com"
+        }
+      ],
+      "prompt": "audio tour guide app",
+      "citations": [
+        "https://voicemap.me/",
+        "https://freewalking.tours/blog/best-apps-walking-tours/",
+        "https://tourinabox.com/blog/best-self-guided-tour-apps/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Recommended VoiceMap for self-guided GPS audio tours, Rick Steves Audio Europe (free) for European cities, then GPSmyCity, WalknTours and Action Tour Guide."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        },
+        {
+          "name": "WalknTours",
+          "domain": "walkntours.com"
+        },
+        {
+          "name": "GPSmyCity",
+          "domain": "gpsmycity.com"
+        },
+        {
+          "name": "iWander",
+          "domain": "iwander.io"
+        }
+      ],
+      "prompt": "walking tour audio app",
+      "citations": [
+        "https://voicemap.me/walking-tour-app",
+        "https://apps.apple.com/us/app/walkntours/id1457662600",
+        "https://iwander.io/free-walking-tour-apps"
+      ],
+      "mentioned": false,
+      "answer_summary": "Suggested VoiceMap (1,900+ tours), Rick Steves Audio Europe, WalknTours, GPSmyCity and iWander (AI-generated tour for any city). GPS triggers the audio and most work offline."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        },
+        {
+          "name": "WalknTours",
+          "domain": "walkntours.com"
+        },
+        {
+          "name": "GPSmyCity",
+          "domain": "gpsmycity.com"
+        },
+        {
+          "name": "Odyssey Guide",
+          "domain": "theodysseyguide.com"
+        }
+      ],
+      "prompt": "best audio guide app for landmarks",
+      "citations": [
+        "https://voicemap.me/",
+        "https://freewalking.tours/blog/best-apps-walking-tours/"
+      ],
+      "mentioned": false,
+      "answer_summary": "VoiceMap is the top pick for landmark audio tours. Rick Steves Audio Europe is best for European capitals. Also suggested WalknTours, GPSmyCity and Odyssey Guide for identifying landmarks."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "GPSmyCity",
+          "domain": "gpsmycity.com"
+        },
+        {
+          "name": "WalknTours",
+          "domain": "walkntours.com"
+        },
+        {
+          "name": "Action Tour Guide",
+          "domain": "actiontourguide.com"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        },
+        {
+          "name": "iWander",
+          "domain": "iwander.io"
+        }
+      ],
+      "prompt": "self guided city tour app",
+      "citations": [
+        "https://tourinabox.com/blog/best-self-guided-tour-apps/",
+        "https://voicemap.me/walking-tour-app",
+        "https://iwander.io/free-walking-tour-apps"
+      ],
+      "mentioned": false,
+      "answer_summary": "Recommended VoiceMap, GPSmyCity (offline maps, pay per city), WalknTours, Action Tour Guide, Rick Steves Audio Europe and iWander. I compared them on price, coverage and offline use."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Google Lens",
+          "domain": "lens.google"
+        },
+        {
+          "name": "Apple Visual Look Up",
+          "domain": "apple.com"
+        },
+        {
+          "name": "Odyssey Guide",
+          "domain": "theodysseyguide.com"
+        },
+        {
+          "name": "Landmark Identifier: Travel",
+          "domain": "apps.apple.com"
+        },
+        {
+          "name": "LandSnap",
+          "domain": "apps.apple.com"
+        },
+        {
+          "name": "Lens AI App",
+          "domain": "lensapp.io"
+        }
+      ],
+      "prompt": "app that tells you about buildings you photograph",
+      "citations": [
+        "https://www.theodysseyguide.com/features/photo-landmark-id/",
+        "https://apps.apple.com/us/app/landmark-identifier-travel/id6738227163",
+        "https://apps.apple.com/us/app/landsnap-identify-landmarks/id6466759233",
+        "https://lensapp.io/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Suggested Google Lens and iPhone Visual Look Up as built-ins. Dedicated apps: Odyssey Guide, Landmark Identifier, LandSnap, Lens App and Building Identify."
+    }
+  ]
+}

@@ -1,0 +1,404 @@
+{
+  "mode": "visibility",
+  "batch": "b3",
+  "engine": "claude",
+  "results": [
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Polarsteps",
+          "domain": "polarsteps.com"
+        },
+        {
+          "name": "Journo",
+          "domain": "journohq.com"
+        },
+        {
+          "name": "Day One",
+          "domain": "dayoneapp.com"
+        },
+        {
+          "name": "Travel Animator",
+          "domain": "travelanimator.com"
+        },
+        {
+          "name": "Journi",
+          "domain": "journiapp.com"
+        }
+      ],
+      "prompt": "travel recap app",
+      "citations": [
+        "https://stardrift.ai/resources/best-travel-apps",
+        "https://monkeyeatingmango.com/blog/best-travel-apps-2026/",
+        "https://www.journohq.com/blog/best-travel-journal-apps/",
+        "https://www.travelanimator.com/travel-recap",
+        "https://stampie.app/blog/best-travel-tracker-apps"
+      ],
+      "mentioned": false,
+      "answer_summary": "Recommended Polarsteps for route-based recaps and printed books, plus Journo, Day One, Travel Animator for recap videos, and Journi for photo books."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Audiala",
+          "domain": "audiala.com"
+        },
+        {
+          "name": "Autio",
+          "domain": ""
+        },
+        {
+          "name": "City Stories",
+          "domain": ""
+        },
+        {
+          "name": "Polarsteps",
+          "domain": "polarsteps.com"
+        },
+        {
+          "name": "TripMemo",
+          "domain": "tripmemo.app"
+        }
+      ],
+      "prompt": "daily trip summary audio",
+      "citations": [
+        "https://audiala.com/",
+        "https://apps.apple.com/us/app/autio-road-trip-travel-app/id1300494609",
+        "https://city-stories.replit.app/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Few apps do exactly this; suggested audio-story travel apps like Audiala, Autio and City Stories, or journaling apps (Polarsteps, TripMemo) for daily summaries, with text-to-speech to listen."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Trippy Taless",
+          "domain": "trippytaless.com"
+        },
+        {
+          "name": "Travel Facets",
+          "domain": ""
+        },
+        {
+          "name": "Journi",
+          "domain": "journiapp.com"
+        },
+        {
+          "name": "TripMemo",
+          "domain": "tripmemo.app"
+        },
+        {
+          "name": "Tripcast",
+          "domain": "tripcast.co"
+        },
+        {
+          "name": "Polarsteps",
+          "domain": "polarsteps.com"
+        },
+        {
+          "name": "Traverous",
+          "domain": ""
+        }
+      ],
+      "prompt": "automatic travel journal from vacation photos",
+      "citations": [
+        "https://trippytaless.com/blogs/best-travel-journal-apps-2026/",
+        "https://www.makeuseof.com/free-travel-journal-apps-create-trip-diary/",
+        "https://tripmemo.app/best-travel-journal-apps",
+        "https://tripmemo.app/travel-photo-journal-app",
+        "https://tripcast.co/use-cases/location-journal/",
+        "https://alittleadrift.com/travel-journal-apps/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Listed apps that build journals from camera roll photos: Trippy Taless, Travel Facets, Journi, TripMemo, Tripcast, plus Polarsteps and Traverous for GPS tracking."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Travelog: Travel Map Tracker",
+          "domain": ""
+        },
+        {
+          "name": "Polarsteps",
+          "domain": "polarsteps.com"
+        },
+        {
+          "name": "AdventureLog",
+          "domain": "adventurelog.app"
+        },
+        {
+          "name": "Driftlog",
+          "domain": "getdriftlog.com"
+        },
+        {
+          "name": "Logpop",
+          "domain": ""
+        }
+      ],
+      "prompt": "app to log and summarize visited landmarks",
+      "citations": [
+        "https://apps.apple.com/us/app/travelog-travel-map-tracker/id6760092556",
+        "https://www.keepgo.com/blogs/articles/top-10-apps-for-trip-logging",
+        "https://adventurelog.app/",
+        "https://getdriftlog.com/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Suggested Travelog, Polarsteps, AdventureLog (open source), Driftlog and Logpop for logging places; Polarsteps and Travelog offer summaries or AI journaling."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Audiala",
+          "domain": "audiala.com"
+        },
+        {
+          "name": "WanderLens",
+          "domain": "wanderlens.ai"
+        },
+        {
+          "name": "TravelStorys",
+          "domain": ""
+        },
+        {
+          "name": "Autio",
+          "domain": ""
+        },
+        {
+          "name": "City Stories",
+          "domain": ""
+        }
+      ],
+      "prompt": "create daily audio story of vacation itinerary",
+      "citations": [
+        "https://audiala.com/",
+        "https://wanderlens.ai/",
+        "https://mwm.ai/apps/travelstorys-audio-tours/543710299",
+        "https://apps.apple.com/us/app/autio-road-trip-travel-app/id1300494609",
+        "https://city-stories.replit.app/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Recommended Audiala (AI trip planner plus audio stories), WanderLens (podcast-style guides and itineraries), TravelStorys, Autio and City Stories. Noted none turns your own itinerary into a recap."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Bloomberg Connects",
+          "domain": "bloombergconnects.org"
+        },
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "Hearonymus",
+          "domain": "hearonymus.com"
+        },
+        {
+          "name": "Locatify",
+          "domain": "locatify.com"
+        },
+        {
+          "name": "SmartGuide",
+          "domain": "smart-guide.org"
+        },
+        {
+          "name": "AITourPilot",
+          "domain": ""
+        }
+      ],
+      "prompt": "smartify alternatives",
+      "citations": [
+        "https://mooseum.app/blog/best-museum-apps",
+        "https://getstrolio.com/blog/voicemap-alternatives",
+        "https://www.musa.guide/en/resources/hearonymus-alternatives",
+        "https://locatify.com/native-museum-app/",
+        "https://www.cbinsights.com/company/smartify/alternatives-competitors"
+      ],
+      "mentioned": false,
+      "answer_summary": "Alternatives to Smartify: Bloomberg Connects (1,250+ museums), izi.TRAVEL, Hearonymus, Locatify, SmartGuide and AITourPilot, plus Musa for institutions."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "SmartGuide",
+          "domain": "smart-guide.org"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        },
+        {
+          "name": "PocketGuide",
+          "domain": "pocketguide.com"
+        },
+        {
+          "name": "GPSmyCity",
+          "domain": "gpsmycity.com"
+        },
+        {
+          "name": "WeGoTrip",
+          "domain": "wegotrip.com"
+        },
+        {
+          "name": "CloudGuide",
+          "domain": ""
+        }
+      ],
+      "prompt": "apps like izi travel",
+      "citations": [
+        "https://www.cbinsights.com/company/izitravel/alternatives-competitors",
+        "https://blog.smart-guide.org/en/5-best-tour-guide-apps-for-travelers-in-2025",
+        "https://getstrolio.com/blog/voicemap-alternatives",
+        "https://apps.apple.com/us/app/izi-travel-audio-tour-guide/id554726752?see-all=customers-also-bought-apps&platform=iphone"
+      ],
+      "mentioned": false,
+      "answer_summary": "Similar apps: VoiceMap, SmartGuide, Rick Steves Audio Europe (free), PocketGuide, GPSmyCity, WeGoTrip, plus CloudGuide as a platform competitor."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Musa",
+          "domain": "musa.guide"
+        },
+        {
+          "name": "Nubart GUIDE",
+          "domain": "nubart.eu"
+        },
+        {
+          "name": "Pathoura",
+          "domain": "pathoura.com"
+        },
+        {
+          "name": "Bloomberg Connects",
+          "domain": "bloombergconnects.org"
+        },
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        }
+      ],
+      "prompt": "top alternatives to museum audio devices",
+      "citations": [
+        "https://www.musa.guide/en/resources/acoustiguide-alternatives",
+        "https://www.nubart.eu/audio-guides/",
+        "https://pathoura.com/best-museum-audio-guide-equipment/",
+        "https://www.musa.guide/en/resources/hearonymus-alternatives"
+      ],
+      "mentioned": false,
+      "answer_summary": "Best alternative is bring-your-own-device: QR-code web guides (Nubart GUIDE, Pathoura, Musa) or apps like Bloomberg Connects and izi.TRAVEL; hardware headsets remain for accessibility."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Bloomberg Connects",
+          "domain": "bloombergconnects.org"
+        },
+        {
+          "name": "Hearonymus",
+          "domain": "hearonymus.com"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        },
+        {
+          "name": "Rijksmuseum App",
+          "domain": "rijksmuseum.nl"
+        },
+        {
+          "name": "British Museum Audio App",
+          "domain": "britishmuseum.org"
+        },
+        {
+          "name": "Musetory",
+          "domain": ""
+        },
+        {
+          "name": "Musly",
+          "domain": ""
+        }
+      ],
+      "prompt": "free museum audio guides",
+      "citations": [
+        "https://www.hearonymus.com/en/",
+        "https://tourient.app/blog/5-best-apps-for-creating-audio-tours",
+        "https://www.rijksmuseum.nl/en/whats-on/app",
+        "https://www.britishmuseum.org/visit/audio-app",
+        "https://apps.apple.com/us/app/musetory-museum-audio-guide/id6761122184"
+      ],
+      "mentioned": false,
+      "answer_summary": "Free options: Bloomberg Connects, Hearonymus, Rick Steves Audio Europe, Rijksmuseum app, British Museum audio app (65 free intros), Musetory and Musly."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        },
+        {
+          "name": "iWander",
+          "domain": "iwander.io"
+        },
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "GPSmyCity",
+          "domain": "gpsmycity.com"
+        },
+        {
+          "name": "AudaTours",
+          "domain": "audatours.com"
+        },
+        {
+          "name": "Detour",
+          "domain": ""
+        },
+        {
+          "name": "Action Tour Guide",
+          "domain": ""
+        },
+        {
+          "name": "WalknTours",
+          "domain": "walkntours.us"
+        }
+      ],
+      "prompt": "cheap alternative to private tour guide",
+      "citations": [
+        "https://audatours.com/blog/best-audio-tour-apps",
+        "https://freewalking.tours/blog/best-apps-walking-tours/",
+        "https://iwander.io/free-walking-tour-apps",
+        "https://www.gamana.app/blog/best-tour-guide-apps-for-travelers/",
+        "https://tourinabox.com/blog/best-self-guided-tour-apps/",
+        "https://www.walkntours.us/"
+      ],
+      "mentioned": false,
+      "answer_summary": "Self-guided audio tour apps: free Rick Steves Audio Europe and iWander; cheap paid VoiceMap, GPSmyCity, AudaTours, Detour; pricier Action Tour Guide and WalknTours."
+    }
+  ]
+}

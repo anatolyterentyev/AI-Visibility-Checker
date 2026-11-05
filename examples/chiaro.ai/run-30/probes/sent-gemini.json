@@ -1,0 +1,88 @@
+{
+  "scores": [
+    {
+      "cons": [
+        "iOS-only availability",
+        "Requires a paid subscription after trial"
+      ],
+      "pros": [
+        "Instant camera-based sight identification",
+        "Personalized spoken audio in multiple languages"
+      ],
+      "tone": "positive",
+      "brand": "Chiaro",
+      "likelihood": 92,
+      "description": "An AI-powered audio guide that uses your camera to identify museum artworks and city landmarks, narrating instant personalized audio explanations across multiple languages."
+    },
+    {
+      "cons": [
+        "Lacks camera or photo identification",
+        "Pre-recorded routes without generative AI personalization"
+      ],
+      "pros": [
+        "High-quality storytelling by locals",
+        "Automatic hands-free GPS playback"
+      ],
+      "tone": "neutral",
+      "brand": "VoiceMap",
+      "likelihood": 45,
+      "description": "A GPS-driven walking tour app delivering immersive audio stories from local guides as you move through cities."
+    },
+    {
+      "cons": [
+        "Limited coverage for outdoor city sights",
+        "Relies mostly on static museum catalog audio"
+      ],
+      "pros": [
+        "Reliable image recognition for museum art",
+        "Extensive global partner museum network"
+      ],
+      "tone": "positive",
+      "brand": "Smartify",
+      "likelihood": 78,
+      "description": "An established museum app that scans artworks with your phone camera to deliver curated museum audio commentary and background details."
+    },
+    {
+      "cons": [
+        "No AI photo recognition feature",
+        "Quality varies widely between creator uploads"
+      ],
+      "pros": [
+        "Massive collection of global tours",
+        "Flexible museum and city walk coverage"
+      ],
+      "tone": "neutral",
+      "brand": "izi.TRAVEL",
+      "likelihood": 40,
+      "description": "A global open platform offering thousands of free and paid audio tours for museums and city walks."
+    },
+    {
+      "cons": [
+        "No camera recognition or AI capability",
+        "English-only and limited to major European sights"
+      ],
+      "pros": [
+        "Engaging, expert-curated commentary",
+        "Completely free with offline downloads"
+      ],
+      "tone": "neutral",
+      "brand": "Rick Steves Audio Europe",
+      "likelihood": 25,
+      "description": "A travel app providing classic, curated audio walking tours and cultural insights for major European destinations."
+    },
+    {
+      "cons": [
+        "No photo-based AI visual recognition",
+        "Fixed pre-written tour narration"
+      ],
+      "pros": [
+        "Reliable location-based audio triggers",
+        "Extensive catalog of destinations"
+      ],
+      "tone": "neutral",
+      "brand": "SmartGuide",
+      "likelihood": 50,
+      "description": "A digital travel guide app offering GPS-triggered audio guides and curated self-guided tours worldwide."
+    }
+  ]
+}

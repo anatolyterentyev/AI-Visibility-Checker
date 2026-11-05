@@ -1,0 +1,412 @@
+{
+  "mode": "visibility",
+  "batch": "b2",
+  "engine": "gemini",
+  "results": [
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "SmartGuide",
+          "domain": "smartguide.app"
+        },
+        {
+          "name": "Action Tour Guide",
+          "domain": "actiontourguide.com"
+        },
+        {
+          "name": "Questo",
+          "domain": "questoapp.com"
+        },
+        {
+          "name": "Shaka Guide",
+          "domain": "shakaguide.com"
+        },
+        {
+          "name": "Tour in a Box",
+          "domain": "tourinabox.com"
+        },
+        {
+          "name": "Rick Steves Audio Europe",
+          "domain": "ricksteves.com"
+        },
+        {
+          "name": "STQRY",
+          "domain": "stqry.com"
+        },
+        {
+          "name": "Tourient",
+          "domain": "tourient.app"
+        },
+        {
+          "name": "YourAudioTour",
+          "domain": "youraudiotour.com"
+        }
+      ],
+      "prompt": "interactive audio guide app",
+      "citations": [
+        "https://voicemap.me",
+        "https://tourinabox.com",
+        "https://smartguide.app",
+        "https://tourient.app"
+      ],
+      "mentioned": false,
+      "answer_summary": "I recommended GPS-triggered and interactive audio tour apps including VoiceMap, SmartGuide, Action Tour Guide, Questo, Shaka Guide, Tour in a Box, and Rick Steves Audio Europe, as well as institutional guide platforms STQRY and Tourient."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "GuideGeek",
+          "domain": "guidegeek.com"
+        },
+        {
+          "name": "Kompa",
+          "domain": "trykompa.com"
+        },
+        {
+          "name": "AITourPilot",
+          "domain": "aitourpilot.com"
+        },
+        {
+          "name": "Herodot AI",
+          "domain": "herodot.ai"
+        },
+        {
+          "name": "Personal-guide.ai",
+          "domain": "personal-guide.ai"
+        },
+        {
+          "name": "GuruWalk",
+          "domain": "guruwalk.com"
+        }
+      ],
+      "prompt": "conversational AI tour guide",
+      "citations": [
+        "https://guidegeek.com",
+        "https://trykompa.com",
+        "https://aitourpilot.com",
+        "https://personal-guide.ai",
+        "https://herodot.ai"
+      ],
+      "mentioned": false,
+      "answer_summary": "I highlighted conversational AI guides that answer spoken or text questions on the go, notably GuideGeek by Matador Network, Kompa, AITourPilot, Herodot AI, Personal-guide.ai, and GuruWalk's AI integration."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "ASK Brooklyn Museum",
+          "domain": "brooklynmuseum.org"
+        },
+        {
+          "name": "AI Museum Pal",
+          "domain": "apple.com"
+        },
+        {
+          "name": "Artlas",
+          "domain": "artlas.art"
+        },
+        {
+          "name": "SmartGuide",
+          "domain": "smartguide.app"
+        },
+        {
+          "name": "Musa Guide",
+          "domain": "musa.guide"
+        },
+        {
+          "name": "amuseapp",
+          "domain": "amuseapp.art"
+        },
+        {
+          "name": "Ask Mona",
+          "domain": "askmona.net"
+        }
+      ],
+      "prompt": "ask questions about museum exhibits app",
+      "citations": [
+        "https://artlas.art",
+        "https://smartguide.app",
+        "https://musa.guide",
+        "https://amuseapp.art"
+      ],
+      "mentioned": false,
+      "answer_summary": "I recommended apps that allow visitors to ask real-time exhibit questions, including ASK Brooklyn Museum for live human docents, plus AI-driven tools like AI Museum Pal, Artlas with Metti, SmartGuide, Musa Guide, and amuseapp."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "ArtScan",
+          "domain": "paintingrecognition.com"
+        },
+        {
+          "name": "Artlas",
+          "domain": "artlas.art"
+        },
+        {
+          "name": "G(ai)le",
+          "domain": "nationalgallery.sg"
+        },
+        {
+          "name": "ArtDecode",
+          "domain": "artdecode.app"
+        },
+        {
+          "name": "MollyFinishArt",
+          "domain": "google.com"
+        }
+      ],
+      "prompt": "app to ask questions about paintings",
+      "citations": [
+        "https://paintingrecognition.com",
+        "https://artlas.art",
+        "https://artdecode.app"
+      ],
+      "mentioned": false,
+      "answer_summary": "I suggested ArtScan with its AI art chat, Artlas featuring conversational companion Metti, Singapore National Gallery's G(ai)le, ArtDecode for artistic analysis, and creator feedback apps MollyFinishArt and Coartist."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Herodot AI",
+          "domain": "herodot.ai"
+        },
+        {
+          "name": "History Found AI",
+          "domain": "historyfound.com"
+        },
+        {
+          "name": "LandmarkLens",
+          "domain": "landmarklens.app"
+        },
+        {
+          "name": "Vestigia",
+          "domain": "vestigia-ai.com"
+        },
+        {
+          "name": "History AI",
+          "domain": "worldhistory.org"
+        },
+        {
+          "name": "Preserve AI",
+          "domain": null
+        }
+      ],
+      "prompt": "AI assistant for historic landmark information",
+      "citations": [
+        "https://herodot.ai",
+        "https://landmarklens.app",
+        "https://vestigia-ai.com"
+      ],
+      "mentioned": false,
+      "answer_summary": "I suggested Herodot AI for multilingual landmark narratives, History Found AI for GPS virtual historians, LandmarkLens for monument scanning, Vestigia for gamified discovery, and the World History Encyclopedia's History AI research assistant."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "izi.TRAVEL",
+          "domain": "izi.travel"
+        },
+        {
+          "name": "SmartGuide",
+          "domain": "smartguide.app"
+        },
+        {
+          "name": "Herodot AI",
+          "domain": "herodot.ai"
+        },
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "AudioTour",
+          "domain": null
+        },
+        {
+          "name": "GuideLive",
+          "domain": null
+        }
+      ],
+      "prompt": "multilingual audio tour app",
+      "citations": [
+        "https://izi.travel",
+        "https://smartguide.app",
+        "https://herodot.ai",
+        "https://voicemap.me"
+      ],
+      "mentioned": false,
+      "answer_summary": "I recommended top multilingual audio tour apps including izi.TRAVEL with 30,000+ tours across 166 countries, SmartGuide in 30+ languages, Herodot AI in 20+ languages, VoiceMap, AudioTour, and GuideLive for local Wi-Fi broadcasts."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Bloomberg Connects",
+          "domain": "bloombergconnects.org"
+        },
+        {
+          "name": "Smartify",
+          "domain": "smartify.org"
+        },
+        {
+          "name": "Museum Guide",
+          "domain": "museum-guide.com"
+        },
+        {
+          "name": "amuseapp",
+          "domain": "amuseapp.art"
+        },
+        {
+          "name": "Journey Pal",
+          "domain": "journeypal.app"
+        },
+        {
+          "name": "SmartGuide",
+          "domain": "smartguide.app"
+        }
+      ],
+      "prompt": "museum guide in my language",
+      "citations": [
+        "https://bloombergconnects.org",
+        "https://smartify.org",
+        "https://museum-guide.com",
+        "https://amuseapp.art",
+        "https://journeypal.app",
+        "https://smartguide.app"
+      ],
+      "mentioned": false,
+      "answer_summary": "I recommended Bloomberg Connects for free multi-language museum guides across 1,250+ institutions, Smartify for image recognition, Museum Guide, amuseapp with up to 47 languages, Journey Pal via QR codes, and SmartGuide."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "SmartGuide",
+          "domain": "smartguide.app"
+        },
+        {
+          "name": "VoiceMap",
+          "domain": "voicemap.me"
+        },
+        {
+          "name": "GetYourGuide",
+          "domain": "getyourguide.com"
+        },
+        {
+          "name": "GPSmyCity",
+          "domain": "gpsmycity.com"
+        },
+        {
+          "name": "Action Tour Guide",
+          "domain": "actiontourguide.com"
+        },
+        {
+          "name": "Travel Phrasebook",
+          "domain": "bravolol.com"
+        }
+      ],
+      "prompt": "travel guide app in multiple languages",
+      "citations": [
+        "https://smartguide.app",
+        "https://voicemap.me",
+        "https://getyourguide.com",
+        "https://gpsmycity.com",
+        "https://actiontourguide.com"
+      ],
+      "mentioned": false,
+      "answer_summary": "I recommended SmartGuide for multilingual audio tours across 1,600+ destinations, VoiceMap for local walking audio, GetYourGuide for booking activities with multilingual support, GPSmyCity for self-guided walks, and Action Tour Guide."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "SmartGuide",
+          "domain": "smartguide.app"
+        },
+        {
+          "name": "Walkie Talkie",
+          "domain": "walkietalk.ie"
+        },
+        {
+          "name": "Musa Guide",
+          "domain": "musa.guide"
+        },
+        {
+          "name": "Hellenic Heritage Digital Guide",
+          "domain": null
+        },
+        {
+          "name": "World Tour Audio Guide",
+          "domain": null
+        },
+        {
+          "name": "Sycomore Audiopen",
+          "domain": "sycomore.eu"
+        }
+      ],
+      "prompt": "foreign language audio guide for sightseeing",
+      "citations": [
+        "https://smartguide.app",
+        "https://walkietalk.ie",
+        "https://musa.guide"
+      ],
+      "mentioned": false,
+      "answer_summary": "I outlined multilingual sightseeing options including SmartGuide (30+ languages), Walkie Talkie (up to 35 languages), Musa Guide, the Hellenic Heritage Digital Guide for Greece, and World Tour Audio Guide for international city walking tours."
+    },
+    {
+      "rank": null,
+      "cited": false,
+      "brands": [
+        {
+          "name": "Whatizis",
+          "domain": "whatizis.com"
+        },
+        {
+          "name": "Monuments – Spain Guide",
+          "domain": null
+        },
+        {
+          "name": "Votura",
+          "domain": "votura.app"
+        },
+        {
+          "name": "History Guide City Madrid",
+          "domain": null
+        },
+        {
+          "name": "REPAHIS Audioguías",
+          "domain": null
+        },
+        {
+          "name": "Hellenic Heritage Digital Guide",
+          "domain": null
+        }
+      ],
+      "prompt": "app that explains monuments in Spanish",
+      "citations": [
+        "https://whatizis.com",
+        "https://votura.app"
+      ],
+      "mentioned": false,
+      "answer_summary": "I recommended Whatizis for photo recognition and Spanish audio commentary on monuments, Monuments – Spain Guide for Spanish heritage landmarks, Votura with AI Q&A in Spanish, History Guide City Madrid, and REPAHIS Audioguías."
+    }
+  ]
+}
