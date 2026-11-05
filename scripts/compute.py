@@ -351,8 +351,9 @@ def insights(r: dict) -> list:
             line += f"; {' and '.join(lows)} barely know{'s' if len(lows) == 1 else ''} {t}"
         out.append(line + ".")
         if v["overall_pct"] < 10 and highs:
-            out.append(f"Discovery, not reputation, is the gap: {' and '.join(highs)} rate {t} highly when asked "
-                       f"about it, but rarely bring it up for buyer questions.")
+            one = len(highs) == 1
+            out.append(f"Discovery, not reputation, is the gap: {' and '.join(highs)} rate{'s' if one else ''} {t} "
+                       f"highly when asked about it, but rarely bring{'s' if one else ''} it up for buyer questions.")
         elif mine["index"] < 40:
             out.append(f"Reputation is a gap too: engines rate {t} low for this use case, so a clear, consistent "
                        f"product description across the web is the first fix.")
@@ -400,10 +401,10 @@ def main(argv) -> None:
         plan, engines = load(pos[0]), load(pos[1])
         engines = engines.get("engines", engines) if isinstance(engines, dict) else engines
         outputs = [load_probe(f) for f in sorted(Path(pos[2]).glob("*.json"))]
-        insights = load(opt("--insights")) if opt("--insights") else None
-        if isinstance(insights, dict):
-            insights = insights.get("insights", [])
-        report = assemble(plan, engines, outputs, insights)
+        given = load(opt("--insights")) if opt("--insights") else None
+        if isinstance(given, dict):
+            given = given.get("insights", [])
+        report = assemble(plan, engines, outputs, given)
         Path(pos[3]).write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
         print(f"assembled {len(report['prompts'])} prompts, "
               f"{sum(len(p['results']) for p in report['prompts'])} answers, "
