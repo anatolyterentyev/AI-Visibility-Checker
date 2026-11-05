@@ -169,7 +169,7 @@
 
   <section class="card">
     <h2>Sentiment — how likely is each AI to recommend you?</h2>
-    <p class="sub">Each engine scored every brand 0–100 for this use case: <em>${esc(R.use_case || t.category || '')}</em>. Index = average across engines.</p>
+    <p class="sub">Each engine scored every brand 0–100 for this use case: <em>${esc((R.use_case || t.category || '').replace(/\.$/, ''))}</em>. Index = average across engines.</p>
     <div class="scroll"><table>
       <thead><tr><th>Brand</th>${sEngines.map(e => `<th>${esc(e.label)}</th>`).join('')}<th>Index</th></tr></thead>
       <tbody>${(R.sentiment || []).slice().sort((a, b) => b.index - a.index).map(s => {

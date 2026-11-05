@@ -15,10 +15,17 @@ All models are reached through **[FlyMyAI](https://flymy.ai)**: one account,
 one balance, no OpenAI / Anthropic / Google keys. The report is published as a
 **FlyMyAI artifact** (a shareable web page).
 
-**Example — [chiaro.ai](examples/chiaro.ai/):** 5.6% AI visibility (ChatGPT 0%,
-Claude 8.3%, Gemini 8.3%), 3.4% share of voice against Smartify's 31%, and a
-sentiment index of 72/100 against Smartify's 85. The engines like the product
-when asked about it, but rarely bring it up on their own.
+**Example — [chiaro.ai](examples/chiaro.ai/)**, 30 prompts × ChatGPT (GPT-6 Sol),
+Claude (Sonnet 5.5) and Gemini (3.8 Flash):
+[**see the report**](https://app.flymy.ai/artifacts/s/81qPErOZ9CjIQl_6)
+
+- **AI visibility 1.1%**: named in 1 of 90 answers (Claude, #3 for "app that
+  explains monuments in Spanish"). ChatGPT and Gemini never named it.
+- **Share of voice 0.9%** against VoiceMap 24.5%, Smartify 20.9% and
+  izi.TRAVEL 20.0%.
+- **Sentiment index 63/100**, second only to Smartify's 79. ChatGPT (89) and
+  Gemini (92) rate it highly once asked, but Claude doesn't know it yet (8).
+  It's a discovery problem, not a reputation problem.
 
 ---
 
@@ -30,9 +37,9 @@ when asked about it, but rarely bring it up on their own.
 3. Paste it into the assistant. It creates the agents on your FlyMyAI account,
    runs the check, and returns a link to your report artifact.
 
-The default check is 30 prompts × 3 engines = 90 AI answers. On the flagship
-models that's an estimated $8–12 of FlyMyAI balance; the assistant reports the
-real cost at the end. `prompt_count` can go from 10 to 100.
+The default check is 30 prompts × 3 engines = 90 AI answers on the flagship
+models. It costs about $5 of FlyMyAI balance (the chiaro.ai run cost $4.64)
+and takes about 20 minutes. `prompt_count` can go from 10 to 100.
 
 ---
 

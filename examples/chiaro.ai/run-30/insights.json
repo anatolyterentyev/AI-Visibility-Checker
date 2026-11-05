@@ -1,0 +1,12 @@
+{
+  "source": "lead agent, phase analyze, execution yns-iqvm-jlc",
+  "insights": [
+    "ChatGPT and Gemini completely ignore Chiaro (0.0% visibility across 30 prompts each), while Claude yields only a single mention (3.3% visibility, rank 3).",
+    "Chiaro is entirely absent from 5 out of 6 intents (0.0% visibility), surfacing solely under 'Multilingual travel audio' (6.7% visibility) on the prompt 'app that explains monuments in Spanish'.",
+    "VoiceMap leads overall with 27 mentions (24.5% share of voice) and owns 'Self-guided sightseeing & landmark tours' (12 mentions there); Smartify dominates 'Art & museum recognition' (15 mentions there, 23 overall).",
+    "SmartGuide leads 'Multilingual travel audio' (7 mentions) and Bloomberg Connects leads 'Competitor comparisons & alternatives' (11 mentions).",
+    "Chiaro's sentiment index (63) is strong and second only to Smartify (79), powered by high purchase intent on ChatGPT (89) and Gemini (92), but hindered by near-zero recognition on Claude (likelihood 8, tone unknown).",
+    "The most valuable fix is building authoritative web presence and comparison content around museum art recognition and offline walking tours to bridge the gap between high product fit and zero organic discovery."
+  ],
+  "note": "Written by the lead agent; the per-intent counts in insights 3 and 4 were corrected against scripts/compute.py (the agent had 13, 14, 9 and 8)."
+}

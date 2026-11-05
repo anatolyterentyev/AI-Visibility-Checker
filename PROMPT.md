@@ -10,9 +10,9 @@ FlyMyAI account. Every model call (ChatGPT, Claude, Gemini) runs through your
 FlyMyAI balance — no OpenAI / Anthropic / Google keys needed.
 
 The default check is **30 prompts × 3 engines = 90 AI answers** on each
-vendor's flagship model. Expect it to cost roughly **$8–12** of FlyMyAI
-balance (an estimate — the assistant reports the real cost at the end).
-`prompt_count` goes from 10 (quick, noisy) to 100 (precise, ~3× the cost).
+vendor's flagship model. It costs about **$5** of FlyMyAI balance (the
+chiaro.ai run cost $4.64) and takes about 20 minutes. `prompt_count` goes
+from 10 (quick, noisy) to 100 (precise, roughly 3× the cost).
 
 ---
 

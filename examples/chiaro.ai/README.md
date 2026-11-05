@@ -14,7 +14,10 @@ vendor's own web search:
 | Claude | Claude Sonnet 5.5 (`claude-sonnet-5-5`) |
 | Gemini | Gemini 3.8 Flash (`gemini-3.8-flash`) |
 
-**Report artifact:** see the link in the repo's main README.
+**Report artifact:** https://app.flymy.ai/artifacts/s/81qPErOZ9CjIQl_6
+
+**Cost:** $4.64 of FlyMyAI balance for the whole run (plan, 9 visibility
+batches, 3 sentiment runs, analysis), about 20 minutes end to end.
 
 | | |
 |---|---|
@@ -47,12 +50,15 @@ missed. Mentions are unaffected, and Gemini never named Chiaro.
 
 - `plan.json`: the lead agent's site summary and 30-prompt mind map
 - `engines.json`: the engines and models used
+- `insights.json`: the lead agent's insights. Its per-intent counts in two
+  of them were wrong and are corrected against `compute.py`; the note in the
+  file says which.
 - `probes/`: every probe output exactly as returned: `vis-<engine>-<batch>.json`
   (9 visibility batches) and `sent-<engine>.json` (3 sentiment answers)
 - `report.raw.json`, `report.json`, `data.js`: rebuilt from `probes/` with
 
 ```bash
-python3 scripts/compute.py assemble examples/chiaro.ai/run-30/plan.json examples/chiaro.ai/run-30/engines.json examples/chiaro.ai/run-30/probes examples/chiaro.ai/run-30/report.raw.json
+python3 scripts/compute.py assemble examples/chiaro.ai/run-30/plan.json examples/chiaro.ai/run-30/engines.json examples/chiaro.ai/run-30/probes examples/chiaro.ai/run-30/report.raw.json --insights examples/chiaro.ai/run-30/insights.json
 ```
 
 ```bash

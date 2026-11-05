@@ -295,7 +295,15 @@ def compute(r: dict) -> dict:
 def write_outputs(report: dict, out: Path) -> None:
     out.mkdir(parents=True, exist_ok=True)
     (out / "report.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
-    compact = json.dumps(report, ensure_ascii=False, separators=(",", ":"))
+    # data.js feeds the page only: leave out per-answer citations, domains
+    # and summaries it never shows (report.json keeps everything)
+    lean = json.loads(json.dumps(report))
+    for p in lean.get("prompts", []):
+        for res in p.get("results", {}).values():
+            res.pop("citations", None)
+            res.pop("domains", None)
+            res.pop("summary", None)
+    compact = json.dumps(lean, ensure_ascii=False, separators=(",", ":"))
     (out / "data.js").write_text("window.REPORT = " + compact + ";\n")
 
 
