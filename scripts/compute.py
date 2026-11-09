@@ -11,10 +11,13 @@ in a report can be reproduced from the raw probe answers.
 
   assemble     plan.json engines.json probes_dir/ report.raw.json [--insights insights.json]
                Merge the plan and every probe output in probes_dir/ (*.json,
-               visibility batches and sentiment answers, any order) into one
-               raw report. Name files vis-<engine>-<batch>.json and
-               sent-<engine>.json so engine and batch are known even when a
-               model leaves them out of its JSON.
+               any order) into one raw report: one-question answers
+               (ask-<engine>-<n>.json), sentiment answers (sent-<engine>.json)
+               and, from older runs, visibility batches (vis-<engine>-<batch>.json).
+               The file name gives the engine when a model leaves it out.
+               Whether an answer names or cites the target is decided here,
+               from the brands and domains the probe reported - the probes
+               are never told the target.
 
   competitors  report.raw.json [--top 5]
                Print the brands the engines recommended most (the brands to
@@ -62,22 +65,50 @@ def load(path) -> dict:
     return obj
 
 
-def load_probe(path) -> dict:
-    """Load a probe output, filling in fields a model sometimes leaves out:
-    mode (from the content) and engine / batch (from a file name like
-    vis-claude-b2.json or sent-gemini.json)."""
-    obj = load(path)
+def normalize_probe(obj: dict) -> dict:
+    """Fill in the fields a probe answer may leave out: engine (from the short
+    key `e`) and mode (from the content)."""
+    obj = dict(obj)
+    if not obj.get("engine") and obj.get("e"):
+        obj["engine"] = obj["e"]
     if "mode" not in obj:
-        if ("scores" in obj and "results" in obj) or "r" in obj:
+        if "p" in obj and "r" not in obj and "results" not in obj:
+            obj["mode"] = "ask"
+        elif ("scores" in obj and "results" in obj) or "r" in obj:
             obj["mode"] = "full"
         else:
-            obj["mode"] = "sentiment" if "scores" in obj else "visibility"
-    m = re.match(r"(?:vis|sent|full)-([a-z0-9]+)(?:-(b\d+))?\.json$", Path(path).name)
+            obj["mode"] = "sentiment" if ("scores" in obj or "s" in obj) else "visibility"
+    return obj
+
+
+def load_probe(path) -> dict:
+    """Load a probe output, filling in fields a model sometimes leaves out:
+    mode (from the content) and engine / batch / number (from a file name like
+    ask-claude-7.json, sent-gemini.json or vis-claude-b2.json)."""
+    obj = load(path)
+    name = Path(path).name
+    m = re.match(r"ask-([a-z0-9]+)-(\d+)\.json$", name)
+    if m:
+        obj.setdefault("engine", m.group(1))
+        obj.setdefault("p", int(m.group(2)))
+        obj.setdefault("mode", "ask")
+    m = re.match(r"(?:vis|sent|full)-([a-z0-9]+)(?:-(b\d+))?\.json$", name)
     if m:
         obj.setdefault("engine", m.group(1))
         if m.group(2):
             obj.setdefault("batch", m.group(2))
-    return obj
+    return normalize_probe(obj)
+
+
+def domain_of(x: str) -> str:
+    x = str(x).strip().lower()
+    x = re.sub(r"^[a-z]+://", "", x).split("/")[0].split(":")[0]
+    return x[4:] if x.startswith("www.") else x
+
+
+def on_domain(d: str, target_domain: str) -> bool:
+    d, t = domain_of(d), domain_of(target_domain)
+    return bool(t) and (d == t or d.endswith("." + t))
 
 
 def expand_compact(out: dict, prompts: list) -> dict:
@@ -146,9 +177,29 @@ def assemble(plan: dict, engines: list, probe_outputs: list, insights=None) -> d
 
     flat = [p["prompt"] for p in prompts]
     for out in probe_outputs:
-        out = expand_compact(out, flat)
+        out = expand_compact(normalize_probe(out), flat)
         eid = out.get("engine")
         mode = out.get("mode")
+        if mode == "ask":  # one question in a fresh chat: the probe was never told the target
+            n = out.get("p")
+            text = out.get("prompt") or (flat[n - 1] if isinstance(n, int) and 0 < n <= len(flat) else None)
+            p = index.get(str(text or "").strip().lower())
+            if p is None:
+                notes.append(f"{eid}: answer for unknown question {n!r} ignored")
+                continue
+            if eid in p["results"]:
+                notes.append(f"{eid}: a second answer to question {n} was ignored")
+                continue
+            names = [brand_name(b) for b in out.get("b", out.get("brands", []))]
+            keys = [norm(x) for x in names]
+            domains = [domain_of(d) for d in out.get("d", out.get("domains", []))]
+            mentioned = tkey in keys
+            p["results"][eid] = {
+                "mentioned": mentioned, "cited": any(on_domain(d, target.get("domain", "")) for d in domains),
+                "rank": keys.index(tkey) + 1 if mentioned else None,
+                "brands": names, "citations": domains, "summary": "", "domains": {},
+            }
+            continue
         if mode in ("visibility", "full"):
             seen_batches.setdefault(eid, set()).add(out.get("batch"))
             for res in out.get("results", []):
