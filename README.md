@@ -61,7 +61,8 @@ Both show the same dashboard (`artifact/index.html` + `data.js`). Agents
 inside FlyMyAI can't create artifacts, which is why the Lab publishes a site.
 
 The default check is 30 prompts × 3 engines = 90 AI answers on the flagship
-models, in about 20–30 minutes. It costs about $3–5. The prompt caps the whole task at $20
+models, in about 30 minutes. It costs about $6–9: about $5 for the 90 isolated
+answers, the rest for planning, orchestrating and publishing. The prompt caps the whole task at $20
 (`budget_usd`).
 
 ---

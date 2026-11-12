@@ -14,7 +14,7 @@ Gemini) runs through your FlyMyAI balance — no OpenAI / Anthropic / Google
 keys — and nothing is saved to cloud storage.
 
 The default check is **30 prompts × 3 engines = 90 AI answers** on each
-vendor's flagship model. It costs about **$3–5** and takes about 20–30
+vendor's flagship model. It costs about **$6–9** and takes about 30
 minutes. Every question is asked on its own, in a fresh run per engine,
 without your site's name, so the numbers show what a real user would see.
 The prompt caps the whole task at **$20** (`budget_usd`).
@@ -89,8 +89,8 @@ BUDGET — budget_usd is a hard limit for the whole task
 - Note the spend at the start (ROUTE A: whoami balance minus pending_usd;
   ROUTE B: the project's spend from project_status). Check it before every
   step.
-- Expect about $0.10–0.15 per prompt for the three engines together, plus
-  about $0.50 for planning and publishing. If that is above budget_usd, lower
+- Expect about $0.20 per prompt for the three engines together, plus about
+  $2 for planning, orchestrating and publishing. If that is above budget_usd, lower
   prompt_count until it fits and tell me.
 - Start nothing that could take the task over budget_usd. At 80% of it,
   start nothing new: publish from what you have and say what is missing.
@@ -142,9 +142,19 @@ exactly this brief, nothing else (see ISOLATION):
   p: <the prompt's number>
   prompt: "<the prompt, exactly as written>"
   Return only the JSON described in your instructions.
-Start them all, then wait_subagents. Each answer is one short line like
-{"e":"claude","p":7,"b":["…","…"],"d":["…"]}. Retry a failed run once; if it
-fails again, leave that answer out and say so.
+Each answer is one short line like {"e":"claude","p":7,"b":["…","…"],"d":["…"]}.
+Keep this cheap — every turn of yours re-reads your whole context:
+- Start the runs in big batches: up to 30 delegate_agent calls in ONE turn
+  (all engines mixed), then ONE wait_subagents for the whole batch. The
+  platform queues them and runs 3 at a time; don't wait run by run, and
+  don't check a run with subagent_status unless wait_subagents left its
+  answer out.
+- Keep only each answer's one-line JSON. After each batch, append that
+  batch's answer lines to one memory item (put_memory_item), so a squeezed
+  context loses nothing; never copy whole tool results.
+- Never start the same engine and number twice: an answer you hold is final.
+  Retry a failed run once; if it fails again, leave it out and say so.
+- Check the spend (project_status) once per batch, not between runs.
 
 B4. Sentiment — one more run per engine, each with this brief (brands = the
 target's name then the plan's competitor names):
