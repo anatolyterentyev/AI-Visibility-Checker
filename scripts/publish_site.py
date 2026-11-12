@@ -10,7 +10,8 @@ CFG = {
   "branch":  "main",
   "plan":    {...},           # the planner's plan JSON (or its text)
   "engines": [{"id": "chatgpt", "label": "ChatGPT", "model": "gpt-6-sol"}, ...],
-  "probes":  [{...}, ...],    # each probe's answer, as returned (dict or text)
+  "answers": r'''...''',   # every probe answer as returned, pasted one after another
+  "probes":  [{...}, ...],    # or: a list of answers (dict or text)
   "budget_note": "...",       # optional line for the report's notes
 }
 
@@ -64,6 +65,23 @@ def as_obj(x):
     return obj
 
 
+def all_objects(text):
+    """Every top-level JSON object in a text, in order: the answers may be
+    pasted one per line, separated by commas or with prose between them."""
+    dec, out, i, s = json.JSONDecoder(), [], 0, str(text)
+    while True:
+        i = s.find("{", i)
+        if i < 0:
+            return out
+        try:
+            obj, end = dec.raw_decode(s, i)
+        except json.JSONDecodeError:
+            i += 1
+            continue
+        out.append(obj)
+        i = end
+
+
 def main(cfg):
     src = fetch(cfg, "scripts/compute.py")
     C = types.ModuleType("compute")
@@ -72,16 +90,20 @@ def main(cfg):
 
     plan = as_obj(cfg["plan"])
     engines = cfg["engines"]
+    raw = [as_obj(p) for p in cfg.get("probes") or []]
+    if cfg.get("answers"):
+        raw += [as_obj(o) for o in all_objects(cfg["answers"])]
     probes = []
-    for i, p in enumerate(cfg.get("probes") or []):
-        o = as_obj(p)
-        if "mode" not in o:
-            o["mode"] = "full" if (("results" in o and "scores" in o) or "r" in o) else ("sentiment" if "scores" in o else "visibility")
-        if not o.get("engine") and i < len(engines):
-            o["engine"] = engines[i]["id"]  # probes are passed in engine order
+    for i, o in enumerate(raw):
+        o = C.normalize_probe(o)
+        if not o.get("engine") and o["mode"] != "ask" and len(raw) == len(engines):
+            o["engine"] = engines[i]["id"]  # older runs passed one answer per engine, in engine order
         probes.append(o)
 
     report = C.assemble(plan, engines, probes)
+    if any(o["mode"] == "ask" for o in probes):
+        report["notes"].append("Each question was asked in its own fresh run per engine; "
+                               "the engines were never told which site is being checked.")
     report = C.compute(report)
     report["insights"] = C.insights(report)
     scored = {C.norm(s["brand"]) for s in report.get("sentiment", [])}

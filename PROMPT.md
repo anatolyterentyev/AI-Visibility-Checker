@@ -14,7 +14,9 @@ Gemini) runs through your FlyMyAI balance — no OpenAI / Anthropic / Google
 keys — and nothing is saved to cloud storage.
 
 The default check is **30 prompts × 3 engines = 90 AI answers** on each
-vendor's flagship model. It costs about **$3–5** and takes about 20 minutes.
+vendor's flagship model. It costs about **$6–9** and takes about 30
+minutes. Every question is asked on its own, in a fresh run per engine,
+without your site's name, so the numbers show what a real user would see.
 The prompt caps the whole task at **$20** (`budget_usd`).
 
 To pin the run to a branch, paste the prompt together with the link of this
@@ -57,20 +59,28 @@ RULES — these override anything else
   the FlyMyAI MCP). ROUTE B if you are an agent inside FlyMyAI that can
   create and run helpers (create_subagent / delegate_agent), for example the
   Lab chat. Follow only that route's steps.
+- ISOLATION — the measurement is only fair if every question is asked the
+  way a real user asks it: alone, in a fresh chat, without the site's name.
+  So every question goes to every engine in its OWN run (one question per
+  run, never several), and that run's brief holds only the engine id, the
+  question's number and the question. Never put the website, its name, the
+  use case or any brand name in a question's brief. Whether an answer names
+  or cites the site is decided afterwards by scripts/compute.py.
 - The deliverable is the dashboard page: ROUTE A an artifact
   (https://app.flymy.ai/artifacts/...), ROUTE B a site
   (https://app.flymy.ai/sites/...). Its page is artifact/index.html from the
   repo, unchanged, plus data.js. Nothing else counts as done.
 - NEVER save the report or any data to file storage: no Google Cloud
-  Storage, no storage.googleapis.com links, no execute_code_with_outputs, no
-  write_agent_chat_file or chat files, no download links, no Markdown / PDF /
-  CSV report files. Pass data between steps only as tool arguments and
-  results. Never put a storage link in your answer.
+  Storage, no storage.googleapis.com links, no write_agent_chat_file or chat
+  files, no download links, no Markdown / PDF / CSV report files. Pass data
+  between steps only as tool arguments and results. Never put a storage link
+  in your answer.
 - Use the engines' models above as AI agents with their own web search
   (web_search auto: OpenAI search for GPT, Google Search for Gemini, Claude
   web search for Claude). Never replace them with other models (Grok,
-  DeepSeek, Kimi, chat endpoints of run_model …) and never answer the prompts
-  yourself. If an engine can't run, leave it out and say so.
+  DeepSeek, Kimi, chat endpoints of run_model …) and never answer the
+  questions yourself. If an engine can't run, or can't get web search,
+  leave it out or run it without search and say so.
 - Follow the steps exactly. Do not write your own method, prompts, scoring
   or page. If a file can't be downloaded, stop and say which.
 - Keep the page private unless I ask you to share it.
@@ -79,8 +89,8 @@ BUDGET — budget_usd is a hard limit for the whole task
 - Note the spend at the start (ROUTE A: whoami balance minus pending_usd;
   ROUTE B: the project's spend from project_status). Check it before every
   step.
-- Expect about $0.10–0.15 per prompt for the three engines together, plus
-  about $0.50 for planning and publishing. If that is above budget_usd, lower
+- Expect about $0.20 per prompt for the three engines together, plus about
+  $2 for planning, orchestrating and publishing. If that is above budget_usd, lower
   prompt_count until it fits and tell me.
 - Start nothing that could take the task over budget_usd. At 80% of it,
   start nothing new: publish from what you have and say what is missing.
@@ -89,69 +99,102 @@ BUDGET — budget_usd is a hard limit for the whole task
 ================================================================
 ROUTE B — inside FlyMyAI (Lab chat / project agent)
 ================================================================
-You orchestrate yourself; helpers do the work. Do not hand the whole task to
-one helper: create exactly the helpers below. Exactly 5 helper runs:
-1 planner, 3 probes in parallel, 1 publisher. That fits the Lab's limits (6 helper runs
-and a $5 helper pool per chat).
+You orchestrate; helpers do the work. There is no limit on the number of
+helper runs: this check makes about 3 × prompt_count + 4 of them (the platform
+runs 3 at a time and queues the rest; 30 prompts take about 20–30 minutes).
 
 B1. Helpers. Call list_subagents first and reuse helpers with these names
-(update their model and instructions if they differ); otherwise create each
-once with create_subagent. Never give a helper the flymy-mcp toolkit.
-Each helper's instructions are this bootstrap text, with <URL> filled in:
+(update their model, web search and instructions if they differ); otherwise
+create each once with create_subagent. Never give a helper the flymy-mcp
+toolkit.
 
+  name                      model               web search  tools   instructions
+  "AIVC Planner"            gemini-3.8-flash    on          -       bootstrap of agents/lead.md
+  "AIVC Probe — ChatGPT"    gpt-6-sol           on          -       text of agents/probe.md
+  "AIVC Probe — Claude"     claude-sonnet-5-5   on          -       text of agents/probe.md
+  "AIVC Probe — Gemini"     gemini-3.8-flash    on          -       text of agents/probe.md
+  "AIVC Publisher"          claude-sonnet-5-5   off         sites   bootstrap of agents/publisher.md
+
+  "text of agents/probe.md": download that file ONCE yourself (one
+  custom--sandbox--execute_code call) and give its whole text, unchanged, as
+  the instructions of each probe helper, so a probe run never downloads
+  anything.
+  "bootstrap of <file>": this text, with <URL> = the raw link of that file:
   "Your instructions are the file <URL>. Before anything else, download it
    with one custom--sandbox--execute_code call (python:
    import urllib.request; print(urllib.request.urlopen('<URL>', timeout=60).read().decode()))
    and follow it exactly for the brief you are given. Never save files or
    upload anything; return only the JSON it describes."
-
-  name                      model               web search  tools   <URL> = raw file of
-  "AIVC Planner"            gemini-3.8-flash    on          -       agents/lead.md
-  "AIVC Probe — ChatGPT"    gpt-6-sol           on          -       agents/probe.md
-  "AIVC Probe — Claude"     claude-sonnet-5-5   on          -       agents/probe.md
-  "AIVC Probe — Gemini"     gemini-3.8-flash    on          -       agents/probe.md
-  "AIVC Publisher"          claude-sonnet-5-5   off         sites   agents/publisher.md
+  If create_subagent can't switch a helper's web search on, say so in your
+  final answer.
 
 B2. Plan — delegate_agent "AIVC Planner" with brief:
   {"phase": "plan", "website": "YOUR-SITE.com", "prompt_count": 30}
 → plan JSON: target, use_case, mindmap (prompt_count prompts), competitors.
-Show me the mind map (intent → prompts) in a few lines and continue.
+Number the mind map's prompts in mind-map order (1 = first). Show me the
+mind map (intent → prompts) in a few lines and continue.
 
-B3. Probe — in ONE turn, delegate_agent all three probes so they run in
-parallel, each with this brief (its own engine id; prompts = every prompt of
-the mind map, in mind-map order, exactly as written — the probes refer to
-them by their position, 1 = first; brands = the target's name then the
-plan's competitor names):
-  mode: full
+B3. Ask — for EVERY prompt and EVERY engine, one delegate_agent run of that
+engine's probe (3 × prompt_count runs), each with a new operation_key and
+exactly this brief, nothing else (see ISOLATION):
+  mode: ask
   engine: <chatgpt | claude | gemini>
-  target: {"name": "<plan.target.name>", "domain": "<plan.target.domain>"}
+  p: <the prompt's number>
+  prompt: "<the prompt, exactly as written>"
+  Return only the JSON described in your instructions.
+Each answer is one short line like {"e":"claude","p":7,"b":["…","…"],"d":["…"]}.
+Keep this cheap — every turn of yours re-reads your whole context:
+- Start the runs in big batches: up to 30 delegate_agent calls in ONE turn
+  (all engines mixed), then ONE wait_subagents for the whole batch. The
+  platform queues them and runs 3 at a time; don't wait run by run, and
+  don't check a run with subagent_status unless wait_subagents left its
+  answer out.
+- Keep only each answer's one-line JSON. After each batch, append that
+  batch's answer lines to one memory item (put_memory_item), so a squeezed
+  context loses nothing; never copy whole tool results.
+- Never start the same engine and number twice: an answer you hold is final.
+  Retry a failed run once; if it fails again, leave it out and say so.
+- Check the spend (project_status) once per batch, not between runs.
+
+B4. Sentiment — one more run per engine, each with this brief (brands = the
+target's name then the plan's competitor names):
+  mode: sentiment
+  engine: <chatgpt | claude | gemini>
   use_case: "<plan.use_case>"
-  prompts: [<all prompts>]
   brands: ["<plan.target.name>", "<competitor 1>", … "<competitor 5>"]
   Return only the JSON described in your instructions.
-Then wait_subagents. A probe that fails: say so and continue without it
-(do not start a replacement unless the 6-run limit and budget allow).
+You may start these together with the B3 runs; they are separate runs.
 
-B4. Publish — delegate_agent "AIVC Publisher" with a brief that contains,
-as plain text, unchanged: repo "anatolyterentyev/AI-Visibility-Checker",
-branch, engines [{"id","label","model"}…] in the order chatgpt, claude,
-gemini, the full plan JSON, and the three probe answers (each a small JSON
-object of about 3 KB) in that same order.
-- Paste the answers themselves. NEVER pass execution-resource references,
-  result ids or links instead: helpers cannot read each other's results
-  (the platform refuses it), and that is the one way this step fails.
-- If a delegate answer you hold is shortened, get the complete text with
-  subagent_status before you paste it.
-It runs scripts/publish_site.py, which recomputes every number and publishes
-the site, and returns {"site": {...}}. If it fails, read why with
-subagent_status, fix the brief and run the publisher once more (the 6th and
-last helper run).
+B5. Publish — run scripts/publish_site.py yourself with ONE
+custom--sandbox--execute_code call (python, timeout_seconds 300), pasting
+the plan and every answer from B3 and B4 character for character, one answer
+per line (if an answer you hold is shortened, get the complete text with
+subagent_status first):
+  CFG = {
+      "repo": "anatolyterentyev/AI-Visibility-Checker",
+      "branch": "<branch>",
+      "engines": [{"id": "chatgpt", "label": "ChatGPT", "model": "gpt-6-sol"},
+                  {"id": "claude", "label": "Claude", "model": "claude-sonnet-5-5"},
+                  {"id": "gemini", "label": "Gemini", "model": "gemini-3.8-flash"}],
+      "plan": r'''<the plan JSON>''',
+      "answers": r'''<every answer, one per line>''',
+  }
+  import urllib.request
+  url = f"https://raw.githubusercontent.com/{CFG['repo']}/{CFG['branch']}/scripts/publish_site.py"
+  src = urllib.request.urlopen(url, timeout=60).read().decode("utf-8")
+  exec(compile(src, "publish_site.py", "exec"), {"__name__": "__main__", "CFG": CFG})
+It recomputes every number, decides which answers name or cite the site,
+publishes the site and prints one line starting with <<<SITE>>>. Never
+compute anything yourself. Only if you can't run code, or the script says it
+can't publish from your sandbox: delegate "AIVC Publisher" once with the same
+repo, branch, engines, plan and answers as plain text in its brief (the
+answers themselves, never references or links; a brief holds at most 16 KB).
 
-B5. Answer me with: the site link (site_url, https://app.flymy.ai/sites/...),
+B6. Answer me with: the site link (site_url, https://app.flymy.ai/sites/...),
 the final spend against budget_usd, visibility % (and how many points one
 answer is worth), each engine's visibility, the share-of-voice leader, the
-sentiment index of the site vs. the best competitor, and the "summary" lines
-exactly as the publisher returned them.
+sentiment index of the site vs. the best competitor, the "summary" lines
+exactly as the script returned them, and how many answers are missing.
 
 ================================================================
 ROUTE A — an assistant connected to the FlyMyAI MCP
@@ -171,23 +214,25 @@ subagent_limits={"cap_usd": 0}), poll get_run with since=<next_since> until
 poll_complete=true, read truncated results with read_run_result.
 
 A2. Plan — run the lead: {"phase": "plan", "website": "YOUR-SITE.com",
-"prompt_count": 30}. Show me the mind map in a few lines and continue.
+"prompt_count": 30}. Number the prompts in mind-map order (1 = first). Show
+me the mind map in a few lines and continue.
 
-A3. Visibility — split the prompts, in order, into batches of 10 (b1, b2, …)
-and start one probe run per batch per engine (at most 6 running at a time):
-  mode: visibility
+A3. Ask — for EVERY prompt and EVERY engine, one probe run (3 × prompt_count
+runs, at most 6 running at a time), each with exactly this message, nothing
+else (see ISOLATION):
+  mode: ask
   engine: <chatgpt | claude | gemini>
-  batch: <b1 | b2 | …>
-  target: {"name": "<plan.target.name>", "domain": "<plan.target.domain>"}
-  prompts: [<the batch's prompts, exactly as written>]
+  p: <the prompt's number>
+  prompt: "<the prompt, exactly as written>"
   Return only the JSON described in your instructions.
 Retry a failed run once with a new operation_key; otherwise leave it out
 and say so.
 
 A4. Competitors — the 5 brands named in the most answers, excluding the
-site: run scripts/compute.py (assemble, then competitors) if you can run
-Python, otherwise run the lead with {"phase": "analyze", "plan": …,
-"engines": […], "visibility": [<every visibility answer>]}.
+site: if you can run Python, save the answers (A6) and run
+scripts/compute.py assemble, then competitors; otherwise run the lead with
+{"phase": "analyze", "plan": …, "engines": […], "visibility": [<every A3
+answer>]}.
 
 A5. Sentiment — one probe run per engine, in parallel:
   mode: sentiment
@@ -197,8 +242,8 @@ A5. Sentiment — one probe run per engine, in parallel:
   Return only the JSON described in your instructions.
 
 A6. Report — if you can run Python: save every probe answer, unchanged, as
-probes/vis-<engine>-<batch>.json and probes/sent-<engine>.json, plus
-plan.json and engines.json, then
+probes/ask-<engine>-<p>.json and probes/sent-<engine>.json, plus plan.json
+and engines.json, then
   python3 scripts/compute.py assemble plan.json engines.json probes/ raw.json
   python3 scripts/compute.py compute raw.json out/ --auto-insights
 and publish out/data.js. Otherwise run the lead with the A4 message plus
