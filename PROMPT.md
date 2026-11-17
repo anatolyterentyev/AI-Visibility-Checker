@@ -145,13 +145,16 @@ exactly this brief, nothing else (see ISOLATION):
 Each answer is one short line like {"e":"claude","p":7,"b":["…","…"],"d":["…"]}.
 Keep this cheap — every turn of yours re-reads your whole context:
 - Start the runs in big batches: up to 30 delegate_agent calls in ONE turn
-  (all engines mixed), then ONE wait_subagents for the whole batch. The
-  platform queues them and runs 3 at a time; don't wait run by run, and
-  don't check a run with subagent_status unless wait_subagents left its
-  answer out.
+  (all engines mixed), then ONE wait_subagents call for the whole batch.
+  The platform queues them and runs 3 at a time.
+- Collect answers ONLY with wait_subagents. Never call delegate_agent again
+  with a brief you already sent: that is not a way to check on a run, it
+  only repeats the call. Call subagent_status only for a run that
+  wait_subagents returned without its answer.
 - Keep only each answer's one-line JSON. After each batch, append that
   batch's answer lines to one memory item (put_memory_item), so a squeezed
-  context loses nothing; never copy whole tool results.
+  context loses nothing. Don't repeat the plan, the briefs or the answers
+  in your own messages; between batches write one short status line.
 - Never start the same engine and number twice: an answer you hold is final.
   Retry a failed run once; if it fails again, leave it out and say so.
 - Check the spend (project_status) once per batch, not between runs.
