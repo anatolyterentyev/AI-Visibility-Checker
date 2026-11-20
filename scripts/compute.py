@@ -374,6 +374,55 @@ def compute(r: dict) -> dict:
     return r
 
 
+# --------------------------------------------------------------------------- citations
+
+PLATFORM_LABEL = {"chat_gpt": "ChatGPT", "google": "Google AI Overviews"}
+
+
+def first_result(resp):
+    """The first task result of a raw AI-answers API response, wherever the
+    tool wrapped it ({"result": {"data": {...}}}, {"data": {...}} or bare)."""
+    stack = [resp]
+    while stack:
+        x = stack.pop()
+        if isinstance(x, dict):
+            if isinstance(x.get("tasks"), list):
+                for t in x["tasks"]:
+                    for r in (t or {}).get("result") or []:
+                        return r
+                return {}
+            stack.extend(x.values())
+        elif isinstance(x, list):
+            stack.extend(x)
+    return {}
+
+
+def citations_from(metrics, search, target: dict, top: int = 20) -> dict:
+    """Real questions people asked ChatGPT and Google AI Overviews where the AI
+    cited the target's domain, from the citation-metrics and citation-search
+    responses (both asked for the domain with search_scope ["sources"])."""
+    domain = target.get("domain", "")
+    agg = first_result(metrics).get("aggregated_metrics") or {}
+    total = agg.get("total") or {}
+    prompts, seen = [], set()
+    for it in first_result(search).get("items") or []:
+        if not any(on_domain(src.get("domain") or src.get("url") or "", domain)
+                   for src in it.get("sources") or []):
+            continue
+        q = " ".join(str(it.get("question") or "").split())
+        key = (q.lower(), it.get("platform"))
+        if not q or key in seen or norm(q) in (norm(target.get("name", "")), norm(domain)):
+            continue  # the bare brand word is not a buyer question
+        seen.add(key)
+        prompts.append({"q": q, "platform": PLATFORM_LABEL.get(it.get("platform"), it.get("platform") or ""),
+                        "lang": it.get("language_code") or "", "ai_search_volume": it.get("ai_search_volume")})
+    return {"domain": domain, "answers": int(total.get("mentions") or 0),
+            "ai_search_volume": int(total.get("ai_search_volume") or 0),
+            "by_platform": [{"label": PLATFORM_LABEL.get(x.get("key"), x.get("key")), "answers": x.get("mentions", 0)}
+                            for x in agg.get("platform") or []],
+            "prompts": prompts[:top]}
+
+
 # --------------------------------------------------------------------------- insights
 
 def insights(r: dict) -> list:

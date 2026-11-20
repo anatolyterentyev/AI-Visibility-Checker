@@ -90,7 +90,9 @@ answers, the rest for planning, orchestrating and publishing. The prompt caps th
    ├─ 5. Lead · analyze ──────▶ metrics + insights → JSON report
    │      (scripts/compute.py recomputes every number from the raw answers)
    │
-   └─ 6. FlyMyAI artifact: artifact/index.html + data.js
+   ├─ 6. Cited prompts: real AI answers that already cite your site
+   │
+   └─ 7. FlyMyAI page: artifact/index.html + data.js
 ```
 
 1. **Understand the site.** The lead agent reads the website and writes down
@@ -115,9 +117,19 @@ answers, the rest for planning, orchestrating and publishing. The prompt caps th
 5. **Sentiment probes.** Every engine describes you and each competitor and
    gives a 0–100 "would I recommend it for this use case" score, plus tone,
    pros and cons.
-6. **Report.** The lead computes the metrics (with code, not in its head) and
+6. **Your website is also cited for these prompts.** Separately from the
+   buyer questions, the report looks up real questions people already asked
+   ChatGPT and Google AI Overviews whose answers cite your domain as a
+   source: how many answers, how many monthly searches are behind them, and
+   the 20 most-asked of those questions. It is a different signal: a site
+   is often cited for its articles (for chiaro.ai: questions like "venus
+   florence" or "uffizi gallery reservations") without being recommended as
+   a product. In the Lab route `scripts/publish_site.py` fetches this
+   itself through FlyMyAI's tools (about $0.23 a run); if the tools aren't
+   available, the section is left out and a note says so.
+7. **Report.** The lead computes the metrics (with code, not in its head) and
    writes insights. `scripts/compute.py` can rebuild the same report from the
-   raw probe outputs, and the page is published as a FlyMyAI artifact.
+   raw probe outputs, and the page is published as a FlyMyAI page.
 
 **Two routes, one method.** From an assistant on the FlyMyAI MCP, the
 assistant drives the agents itself, and sentiment is a separate round on the
@@ -147,14 +159,14 @@ found on the web; the leaderboard is still built from the engines' answers.
 | [`agents/lead.md`](agents/lead.md) | Instructions of the lead agent: `plan` (site → mind map) and `analyze` (probe answers → competitors, metrics, insights) |
 | [`agents/probe.md`](agents/probe.md) | Instructions of the per-engine probe agent: `ask` (one question, never told the site) and `sentiment` |
 | [`agents/publisher.md`](agents/publisher.md) | Lab route: fallback helper that runs `publish_site.py` when the project agent can't |
-| [`scripts/publish_site.py`](scripts/publish_site.py) | Lab route: runs inside a FlyMyAI sandbox, recomputes every number with `compute.py`, writes the insights and publishes the page with the sites tool |
-| [`artifact/index.html`](artifact/index.html) | The report page; reads `window.REPORT` from `data.js` |
+| [`scripts/publish_site.py`](scripts/publish_site.py) | Lab route: runs inside a FlyMyAI sandbox, recomputes every number with `compute.py`, writes the insights, looks up the prompts whose AI answers cite the site, and publishes the page with the sites tool |
+| [`artifact/index.html`](artifact/index.html) | The report page; reads `window.REPORT` from `data.js`, and from an optional `citations.js` next to it (cited prompts added to an existing report) |
 | [`scripts/compute.py`](scripts/compute.py) | `assemble` probe outputs (and decide which answers name or cite the site), list `competitors`, `compute` every metric → `report.json` + `data.js` (standard library only) |
 | [`tests/`](tests/) | `python3 -m unittest discover tests`: round-trip of the chiaro.ai run through split → assemble → compute, and the Lab publish script end to end |
-| [`examples/chiaro.ai/`](examples/chiaro.ai/) | A real run on chiaro.ai: raw and recomputed JSON + `data.js` |
+| [`examples/chiaro.ai/`](examples/chiaro.ai/) | A real run on chiaro.ai: raw and recomputed JSON + `data.js`, and `citations.js` with the prompts whose AI answers cite chiaro.ai |
 
-Preview a report locally: copy an example's `data.js` next to
-`artifact/index.html` and open the HTML file in a browser.
+Preview a report locally: copy an example's `data.js` (and `citations.js`, if
+it has one) next to `artifact/index.html` and open the HTML file in a browser.
 
 ## Customising
 

@@ -208,5 +208,62 @@ class PublishSite(unittest.TestCase):
         self.assertTrue(any("second answer" in n for n in r["notes"]))
 
 
+def citation_responses(domain="chiaro.ai"):
+    """Raw responses shaped like the AI-answers index (citation metrics + search)."""
+    metrics = {"result": {"data": {"tasks": [{"result": [{"aggregated_metrics": {
+        "platform": [{"key": "google", "mentions": 17}, {"key": "chat_gpt", "mentions": 15}],
+        "total": {"mentions": 32, "ai_search_volume": 5418}}}]}]}}}
+    items = [
+        {"question": "venus florence", "platform": "google", "language_code": "en", "ai_search_volume": 590,
+         "sources": [{"domain": "www.uffizi.it"}, {"domain": "blog." + domain}]},
+        {"question": "chiaro", "platform": "google", "language_code": "fr", "ai_search_volume": 210,
+         "sources": [{"domain": domain}]},                                   # the brand word: dropped
+        {"question": "who painted the night watch", "platform": "chat_gpt", "ai_search_volume": 90,
+         "sources": [{"domain": "rijksmuseum.nl"}]},                         # not cited: dropped
+        {"question": "Venus  Florence", "platform": "google", "ai_search_volume": 50,
+         "sources": [{"url": "https://" + domain + "/x"}]},                  # duplicate: dropped
+        {"question": "uffizi gallery reservations", "platform": "chat_gpt", "language_code": "es",
+         "ai_search_volume": 390, "sources": [{"url": "https://" + domain + "/blog/uffizi"}]},
+    ]
+    search = {"data": {"tasks": [{"result": [{"total_count": 32, "items": items}]}]}}
+    return metrics, search
+
+
+class Citations(unittest.TestCase):
+    def test_cited_prompts_are_extracted(self):
+        metrics, search = citation_responses()
+        c = C.citations_from(metrics, search, {"name": "Chiaro", "domain": "chiaro.ai"})
+        self.assertEqual((c["answers"], c["ai_search_volume"]), (32, 5418))
+        self.assertEqual(c["by_platform"], [{"label": "Google AI Overviews", "answers": 17},
+                                            {"label": "ChatGPT", "answers": 15}])
+        self.assertEqual([(x["q"], x["platform"]) for x in c["prompts"]],
+                         [("venus florence", "Google AI Overviews"), ("uffizi gallery reservations", "ChatGPT")])
+
+    def test_empty_or_missing_responses(self):
+        c = C.citations_from(None, {}, {"name": "X", "domain": "x.com"})
+        self.assertEqual((c["answers"], c["prompts"]), (0, []))
+
+    def test_publish_site_adds_the_cited_prompts(self):
+        run = ROOT / "examples" / "chiaro.ai" / "run-30"
+        metrics, search = citation_responses()
+        cfg = {"base_url": str(ROOT), "plan": json.loads((run / "plan.json").read_text()),
+               "engines": json.loads((run / "engines.json").read_text()),
+               "probes": [C.load_probe(f) for f in sorted((run / "probes").glob("*.json"))],
+               "citations": {"metrics": metrics, "search": search}}
+        with tempfile.TemporaryDirectory() as d:
+            out = subprocess.run(
+                [sys.executable, "-c",
+                 "import json,sys;CFG=json.load(sys.stdin);"
+                 f"exec(compile(open({str(ROOT / 'scripts' / 'publish_site.py')!r}).read(),'p','exec'),"
+                 "{'__name__':'__main__','CFG':CFG})"],
+                input=json.dumps(cfg), capture_output=True, text=True, cwd=d, check=True).stdout
+            data = (Path(d) / "site_out" / "data.js").read_text()
+        site = json.loads(next(l for l in out.splitlines() if l.startswith("<<<SITE>>>"))[len("<<<SITE>>>"):])
+        self.assertEqual(site["cited_in"], 32)
+        self.assertIn("cited as a source in 32 AI answers", site["summary"][-1])
+        report = json.loads(data[len("window.REPORT = "):-2])
+        self.assertEqual(len(report["ai_citations"]["prompts"]), 2)
+
+
 if __name__ == "__main__":
     unittest.main()

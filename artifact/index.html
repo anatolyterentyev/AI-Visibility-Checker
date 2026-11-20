@@ -76,7 +76,7 @@
 <body>
 <div class="wrap" id="app"></div>
 <script src="data.js"></script>
-<script src="mentions.js"></script><!-- optional: DataForSEO LLM Mentions, see README -->
+<script src="citations.js"></script><!-- optional: cited prompts added after a run, see README -->
 <script>
 (function () {
   const R = window.REPORT;
@@ -112,7 +112,7 @@
     </svg>`;
   }
 
-  const M = R.llm_mentions && R.llm_mentions.total ? R.llm_mentions : null;
+  const CIT = R.ai_citations && R.ai_citations.answers ? R.ai_citations : null;
   const hitPrompts = new Set((R.prompts || []).filter(p => Object.values(p.results || {}).some(r => r.mentioned || r.cited)).map(p => p.prompt));
 
   app.innerHTML = `
@@ -144,33 +144,19 @@
     <p class="method">Mentioned in ${pct(R.visibility.mentions_pct)} of answers · cited (link to ${esc(t.domain)}) in ${pct(R.visibility.citations_pct)} · average position when mentioned: ${R.visibility.avg_rank ?? '—'}${R.visibility.answers ? ` · ${R.visibility.answers} answers, so one answer moves the score by ${R.visibility.pts_per_answer} pts` : ''}</p>
   </section>
 
-  ${M ? `<section class="card">
-    <h2>Second opinion — ${esc(M.source || 'LLM Mentions')}</h2>
-    <p class="sub">${esc(M.what || '')}</p>
+  ${CIT ? `<section class="card">
+    <h2>Your website is also cited for these prompts</h2>
+    <p class="sub">Real questions people asked ChatGPT and Google AI Overviews where the answer cited ${esc(CIT.domain || t.domain)} as a source, with how often each is asked per month.</p>
     <div class="kpis">
-      <div class="kpi"><div class="v">${M.total.answers}</div><div class="l">AI answers where ${esc(t.domain)} showed up at all</div></div>
-      <div class="kpi"><div class="v">${M.cited.answers}</div><div class="l">…that cite ${esc(t.domain)} as a source</div></div>
-      <div class="kpi"><div class="v">${M.named.answers}</div><div class="l">…that name ${esc(t.name)} as a product</div></div>
-      <div class="kpi"><div class="v">${Number(M.total.ai_search_volume || 0).toLocaleString('en')}</div><div class="l">Monthly AI searches behind those questions</div></div>
+      <div class="kpi"><div class="v">${CIT.answers}</div><div class="l">AI answers that cite ${esc(CIT.domain || t.domain)}</div></div>
+      <div class="kpi"><div class="v">${Number(CIT.ai_search_volume || 0).toLocaleString('en')}</div><div class="l">Monthly searches behind those questions</div></div>
+      ${(CIT.by_platform || []).slice(0, 2).map(x => `<div class="kpi"><div class="v">${x.answers}</div><div class="l">in ${esc(x.label)}</div></div>`).join('')}
     </div>
-    <div class="scroll"><table>
-      <thead><tr><th></th><th>This check</th><th>${esc(M.source || 'LLM Mentions')}</th></tr></thead>
-      <tbody>
-        <tr><td><b>Questions</b></td><td>${(R.prompts || []).length} buyer questions written for ${esc(t.name)}'s category, asked fresh</td><td>${esc(M.questions || '')}</td></tr>
-        <tr><td><b>Engines</b></td><td>${engines.map(e => esc(e.label)).join(', ')}</td><td>${(M.by_platform || []).map(p => esc(p.label)).join(', ')}</td></tr>
-        <tr><td><b>Named as a product</b></td><td>${Object.values(R.visibility.by_engine || {}).reduce((n, v) => n + (v.mentioned || 0), 0)} of ${R.visibility.answers} answers (${pct(R.visibility.mentions_pct)})</td><td>${M.named.answers} of ${M.total.answers} answers</td></tr>
-        <tr><td><b>Cited as a source</b></td><td>${pct(R.visibility.citations_pct)} of answers</td><td>${M.cited.answers} of ${M.total.answers} answers</td></tr>
-        ${(M.by_platform || []).map(p => `<tr><td><b>${esc(p.label)}</b></td><td>—</td><td>${p.answers} answers · cited in ${p.cited}</td></tr>`).join('')}
-        ${(M.languages || []).length ? `<tr><td><b>Languages</b></td><td>—</td><td>${M.languages.map(l => esc(l.key) + ' ' + l.answers).join(' · ')}</td></tr>` : ''}
-      </tbody></table></div>
-    ${(M.examples || []).length ? `<h2 style="margin-top:18px">Top questions where ${esc(t.domain)} showed up</h2>
-    <div class="scroll"><table>
-      <thead><tr><th>Question</th><th>Where</th><th>Monthly</th><th>${esc(t.domain)}</th><th>Brands it recommended</th></tr></thead>
-      <tbody>${M.examples.map(x => `<tr><td>${esc(x.q)}<div class="brands">${esc(x.lang || '')}</div></td><td>${esc(x.platform)}</td>
-        <td class="num">${x.ai_search_volume ?? '—'}</td><td><span class="${x.cited ? 'yes' : 'no'}">${x.cited ? 'cited' : 'read, not cited'}</span></td>
-        <td class="brands">${esc((x.brands || []).join(', ') || '—')}</td></tr>`).join('')}</tbody></table></div>` : ''}
-    ${M.takeaway ? `<ul class="ins" style="margin-top:14px">${[].concat(M.takeaway).map(i => `<li>${esc(i)}</li>`).join('')}</ul>` : ''}
-    <p class="method">${esc(M.note || '')}</p>
+    ${(CIT.prompts || []).length ? `<div class="scroll"><table>
+      <thead><tr><th>Prompt</th><th>Where</th><th>Monthly searches</th></tr></thead>
+      <tbody>${CIT.prompts.map(x => `<tr><td>${esc(x.q)}${x.lang ? `<div class="brands">${esc(x.lang)}</div>` : ''}</td><td>${esc(x.platform)}</td>
+        <td class="num">${x.ai_search_volume ?? '—'}</td></tr>`).join('')}</tbody></table></div>` : ''}
+    <p class="method">${(CIT.prompts || []).length ? `The ${CIT.prompts.length} most-asked of these questions. ` : ''}Being cited as a source is not the same as being recommended: the buyer prompts above measure that.</p>
   </section>` : ''}
 
   ${(R.by_intent || []).length ? `<section class="card">

@@ -196,7 +196,8 @@ answers themselves, never references or links; a brief holds at most 16 KB).
 B6. Answer me with: the site link (site_url, https://app.flymy.ai/sites/...),
 the final spend against budget_usd, visibility % (and how many points one
 answer is worth), each engine's visibility, the share-of-voice leader, the
-sentiment index of the site vs. the best competitor, the "summary" lines
+sentiment index of the site vs. the best competitor, in how many real AI
+answers the site is also cited as a source (cited_in), the "summary" lines
 exactly as the script returned them, and how many answers are missing.
 
 ================================================================
