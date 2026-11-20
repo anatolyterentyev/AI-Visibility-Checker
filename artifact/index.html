@@ -76,6 +76,7 @@
 <body>
 <div class="wrap" id="app"></div>
 <script src="data.js"></script>
+<script src="citations.js"></script><!-- optional: cited prompts added after a run, see README -->
 <script>
 (function () {
   const R = window.REPORT;
@@ -111,6 +112,7 @@
     </svg>`;
   }
 
+  const CIT = R.ai_citations && R.ai_citations.answers ? R.ai_citations : null;
   const hitPrompts = new Set((R.prompts || []).filter(p => Object.values(p.results || {}).some(r => r.mentioned || r.cited)).map(p => p.prompt));
 
   app.innerHTML = `
@@ -141,6 +143,21 @@
     </div>
     <p class="method">Mentioned in ${pct(R.visibility.mentions_pct)} of answers · cited (link to ${esc(t.domain)}) in ${pct(R.visibility.citations_pct)} · average position when mentioned: ${R.visibility.avg_rank ?? '—'}${R.visibility.answers ? ` · ${R.visibility.answers} answers, so one answer moves the score by ${R.visibility.pts_per_answer} pts` : ''}</p>
   </section>
+
+  ${CIT ? `<section class="card">
+    <h2>Your website is also cited for these prompts</h2>
+    <p class="sub">Real questions people asked ChatGPT and Google AI Overviews where the answer cited ${esc(CIT.domain || t.domain)} as a source, with how often each is asked per month.</p>
+    <div class="kpis">
+      <div class="kpi"><div class="v">${CIT.answers}</div><div class="l">AI answers that cite ${esc(CIT.domain || t.domain)}</div></div>
+      <div class="kpi"><div class="v">${Number(CIT.ai_search_volume || 0).toLocaleString('en')}</div><div class="l">Monthly searches behind those questions</div></div>
+      ${(CIT.by_platform || []).slice(0, 2).map(x => `<div class="kpi"><div class="v">${x.answers}</div><div class="l">in ${esc(x.label)}</div></div>`).join('')}
+    </div>
+    ${(CIT.prompts || []).length ? `<div class="scroll"><table>
+      <thead><tr><th>Prompt</th><th>Where</th><th>Monthly searches</th></tr></thead>
+      <tbody>${CIT.prompts.map(x => `<tr><td>${esc(x.q)}${x.lang ? `<div class="brands">${esc(x.lang)}</div>` : ''}</td><td>${esc(x.platform)}</td>
+        <td class="num">${x.ai_search_volume ?? '—'}</td></tr>`).join('')}</tbody></table></div>` : ''}
+    <p class="method">${(CIT.prompts || []).length ? `The ${CIT.prompts.length} most-asked of these questions. ` : ''}Being cited as a source is not the same as being recommended: the buyer prompts above measure that.</p>
+  </section>` : ''}
 
   ${(R.by_intent || []).length ? `<section class="card">
     <h2>Visibility by intent</h2>

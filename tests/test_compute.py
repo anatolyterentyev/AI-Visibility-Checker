@@ -157,6 +157,113 @@ class PublishSite(unittest.TestCase):
         report = json.loads(data[len("window.REPORT = "):-2])
         self.assertNotIn("citations", report["prompts"][0]["results"]["chatgpt"])
 
+    def test_isolated_answers_pasted_as_text(self):
+        """The isolated route: one {"e","p","b","d"} answer per question and engine,
+        plus a compact sentiment answer per engine, all pasted as one text."""
+        run = ROOT / "examples" / "chiaro.ai" / "run-30"
+        plan = json.loads((run / "plan.json").read_text())
+        engines = json.loads((run / "engines.json").read_text())
+        expected = json.loads((run / "report.json").read_text())
+        tname, tdom = expected["target"]["name"], expected["target"]["domain"]
+        number = {q: i + 1 for i, q in enumerate(C.flat_prompts_list(plan))}
+        lines = []
+        for prow in expected["prompts"]:
+            for eid, res in prow["results"].items():
+                b = [x for x in res["brands"] if C.norm(x) != C.norm(tname)]
+                if res["mentioned"]:  # the probe only reports names; compute.py finds the target
+                    b.insert((res["rank"] or 1) - 1, tname)
+                d = ["www." + tdom] if res["cited"] else ["example.org"]
+                lines.append(json.dumps({"e": eid, "p": number[prow["prompt"]], "b": b, "d": d}))
+        for e in engines:
+            lines.append(json.dumps({"mode": "sentiment", "e": e["id"], "s": [
+                {"n": x["brand"], "l": x["by_engine"][e["id"]]["likelihood"], "t": x["by_engine"][e["id"]]["tone"],
+                 "d": "short description"} for x in expected["sentiment"] if e["id"] in x["by_engine"]]}))
+        text = "Here are the answers:\n" + "\n".join(lines)
+        cfg = {"base_url": str(ROOT), "plan": plan, "engines": engines, "answers": text}
+        with tempfile.TemporaryDirectory() as d:
+            out = subprocess.run(
+                [sys.executable, "-c",
+                 "import json,sys;CFG=json.load(sys.stdin);"
+                 f"exec(compile(open({str(ROOT / 'scripts' / 'publish_site.py')!r}).read(),'p','exec'),"
+                 "{'__name__':'__main__','CFG':CFG})"],
+                input=json.dumps(cfg), capture_output=True, text=True, cwd=d, check=True).stdout
+        site = json.loads(next(l for l in out.splitlines() if l.startswith("<<<SITE>>>"))[len("<<<SITE>>>"):])
+        self.assertEqual(site["visibility_pct"], expected["visibility"]["overall_pct"])
+        self.assertEqual(site["by_engine"], {k: v["pct"] for k, v in expected["visibility"]["by_engine"].items()})
+        self.assertEqual(dict(site["sentiment"]), {x["brand"]: x["index"] for x in expected["sentiment"]})
+        self.assertTrue(any("never told" in n for n in site["notes"]))
+
+    def test_target_is_found_by_name_or_domain_only(self):
+        plan = {"target": {"name": "FlyMy.AI", "domain": "flymy.ai"}, "mindmap": {"root": "x", "branches": [
+            {"intent": "i", "prompts": ["q one", "q two", "q three"]}]}}
+        outs = [{"e": "x", "p": 1, "b": ["Other", "flymy.ai"], "d": []},       # named by its domain
+                {"e": "x", "p": 2, "b": ["Other"], "d": ["https://docs.flymy.ai/a"]},  # cited only
+                {"e": "x", "p": 3, "b": ["Other"], "d": ["notflymy.ai"]},      # neither
+                {"e": "x", "p": 3, "b": ["FlyMy.AI"], "d": []}]                # duplicate: ignored
+        r = C.compute(C.assemble(plan, [{"id": "x", "label": "X"}], outs))
+        res = [p["results"]["x"] for p in r["prompts"]]
+        self.assertEqual([(x["mentioned"], x["cited"], x["rank"]) for x in res],
+                         [(True, False, 2), (False, True, None), (False, False, None)])
+        self.assertEqual(r["visibility"]["hits"], 2)
+        self.assertTrue(any("second answer" in n for n in r["notes"]))
+
+
+def citation_responses(domain="chiaro.ai"):
+    """Raw responses shaped like the AI-answers index (citation metrics + search)."""
+    metrics = {"result": {"data": {"tasks": [{"result": [{"aggregated_metrics": {
+        "platform": [{"key": "google", "mentions": 17}, {"key": "chat_gpt", "mentions": 15}],
+        "total": {"mentions": 32, "ai_search_volume": 5418}}}]}]}}}
+    items = [
+        {"question": "venus florence", "platform": "google", "language_code": "en", "ai_search_volume": 590,
+         "sources": [{"domain": "www.uffizi.it"}, {"domain": "blog." + domain}]},
+        {"question": "chiaro", "platform": "google", "language_code": "fr", "ai_search_volume": 210,
+         "sources": [{"domain": domain}]},                                   # the brand word: dropped
+        {"question": "who painted the night watch", "platform": "chat_gpt", "ai_search_volume": 90,
+         "sources": [{"domain": "rijksmuseum.nl"}]},                         # not cited: dropped
+        {"question": "Venus  Florence", "platform": "google", "ai_search_volume": 50,
+         "sources": [{"url": "https://" + domain + "/x"}]},                  # duplicate: dropped
+        {"question": "uffizi gallery reservations", "platform": "chat_gpt", "language_code": "es",
+         "ai_search_volume": 390, "sources": [{"url": "https://" + domain + "/blog/uffizi"}]},
+    ]
+    search = {"data": {"tasks": [{"result": [{"total_count": 32, "items": items}]}]}}
+    return metrics, search
+
+
+class Citations(unittest.TestCase):
+    def test_cited_prompts_are_extracted(self):
+        metrics, search = citation_responses()
+        c = C.citations_from(metrics, search, {"name": "Chiaro", "domain": "chiaro.ai"})
+        self.assertEqual((c["answers"], c["ai_search_volume"]), (32, 5418))
+        self.assertEqual(c["by_platform"], [{"label": "Google AI Overviews", "answers": 17},
+                                            {"label": "ChatGPT", "answers": 15}])
+        self.assertEqual([(x["q"], x["platform"]) for x in c["prompts"]],
+                         [("venus florence", "Google AI Overviews"), ("uffizi gallery reservations", "ChatGPT")])
+
+    def test_empty_or_missing_responses(self):
+        c = C.citations_from(None, {}, {"name": "X", "domain": "x.com"})
+        self.assertEqual((c["answers"], c["prompts"]), (0, []))
+
+    def test_publish_site_adds_the_cited_prompts(self):
+        run = ROOT / "examples" / "chiaro.ai" / "run-30"
+        metrics, search = citation_responses()
+        cfg = {"base_url": str(ROOT), "plan": json.loads((run / "plan.json").read_text()),
+               "engines": json.loads((run / "engines.json").read_text()),
+               "probes": [C.load_probe(f) for f in sorted((run / "probes").glob("*.json"))],
+               "citations": {"metrics": metrics, "search": search}}
+        with tempfile.TemporaryDirectory() as d:
+            out = subprocess.run(
+                [sys.executable, "-c",
+                 "import json,sys;CFG=json.load(sys.stdin);"
+                 f"exec(compile(open({str(ROOT / 'scripts' / 'publish_site.py')!r}).read(),'p','exec'),"
+                 "{'__name__':'__main__','CFG':CFG})"],
+                input=json.dumps(cfg), capture_output=True, text=True, cwd=d, check=True).stdout
+            data = (Path(d) / "site_out" / "data.js").read_text()
+        site = json.loads(next(l for l in out.splitlines() if l.startswith("<<<SITE>>>"))[len("<<<SITE>>>"):])
+        self.assertEqual(site["cited_in"], 32)
+        self.assertIn("cited as a source in 32 AI answers", site["summary"][-1])
+        report = json.loads(data[len("window.REPORT = "):-2])
+        self.assertEqual(len(report["ai_citations"]["prompts"]), 2)
+
 
 if __name__ == "__main__":
     unittest.main()

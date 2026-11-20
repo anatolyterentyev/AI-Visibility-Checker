@@ -61,19 +61,24 @@ Output:
 ## phase: analyze
 
 Input: the `plan` JSON from the first phase, `engines`
-(`[{"id","label","model"}]`), `visibility` (a list of probe outputs with
-`mode: "visibility"`, several batches per engine), and optionally `sentiment`
-(probe outputs with `mode: "sentiment"`, one per engine).
+(`[{"id","label","model"}]`), `visibility` (the probes' one-question answers
+`{"e": engine, "p": n, "b": [brands], "d": [domains]}`, where `p` is the
+question's number in mind-map order, 1 = first; older runs send batches with
+`mode: "visibility"` instead), and optionally `sentiment` (one answer per
+engine: `{"mode": "sentiment", "e": engine, "s": [{"n": brand, "l":
+likelihood, "t": tone, "d": description}]}`).
 
 ### Step A — merge
 
 Build `prompts`: one entry per prompt of the mind map, in mind-map order,
 with `intent` and `results[engine_id] = {mentioned, cited, rank, brands
 (names only), citations, summary}` taken from the probe output that answered
-it. Match prompts by exact text. A prompt no probe answered for an engine is
-simply missing for that engine (do not invent it). If a probe's `mentioned`
-is false but the target's name is in its `brands`, set `mentioned` true and
-`rank` to its position.
+it. Match prompts by number (`p`) or exact text. A prompt no probe answered
+for an engine is simply missing for that engine (do not invent it). The
+probes were never told the target, so decide it here: `mentioned` = the
+target's key (Step B) is among the keys of `b`; `rank` = its position there;
+`cited` = a domain in `d` is the target's domain or one of its subdomains;
+`citations` = `d`.
 
 ### Step B — competitors
 

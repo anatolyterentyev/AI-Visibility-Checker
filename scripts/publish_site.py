@@ -10,13 +10,17 @@ CFG = {
   "branch":  "main",
   "plan":    {...},           # the planner's plan JSON (or its text)
   "engines": [{"id": "chatgpt", "label": "ChatGPT", "model": "gpt-6-sol"}, ...],
-  "probes":  [{...}, ...],    # each probe's answer, as returned (dict or text)
+  "answers": r'''...''',   # every probe answer as returned, pasted one after another
+  "probes":  [{...}, ...],    # or: a list of answers (dict or text)
   "budget_note": "...",       # optional line for the report's notes
+  "citations": false,         # optional: false skips the cited-prompts section;
+                              # tests pass {"metrics": ..., "search": ...} instead
 }
 
 It downloads scripts/compute.py and artifact/index.html from the repo,
-recomputes every number, writes the insights from those numbers, publishes
-index.html + data.js with the sites tool and prints one line:
+recomputes every number, writes the insights from those numbers, adds the
+real AI answers that cite the site ("Your website is also cited for these
+prompts"), publishes index.html + data.js with the sites tool and prints one line:
 <<<SITE>>>{"site_url": ..., "visibility_pct": ..., "summary": [...], "notes": [...]}
 
 Outside FlyMyAI (no `flymy` module) it writes the two files to ./site_out/
@@ -64,6 +68,40 @@ def as_obj(x):
     return obj
 
 
+def all_objects(text):
+    """Every top-level JSON object in a text, in order: the answers may be
+    pasted one per line, separated by commas or with prose between them."""
+    dec, out, i, s = json.JSONDecoder(), [], 0, str(text)
+    while True:
+        i = s.find("{", i)
+        if i < 0:
+            return out
+        try:
+            obj, end = dec.raw_decode(s, i)
+        except json.JSONDecodeError:
+            i += 1
+            continue
+        out.append(obj)
+        i = end
+
+
+CITE_TOOLS = ("custom--dataforseo--dataforseo_ai_llm_mentions_target_metrics",
+              "custom--dataforseo--dataforseo_ai_llm_mentions_search")
+
+
+def fetch_citations(flymy, domain):
+    """Ask the AI-answers index which real ChatGPT / Google AI Overview answers
+    cite the domain: totals, and the 20 most-asked of those questions. About
+    $0.23 for both calls."""
+    target = [{"domain": domain, "include_subdomains": True, "search_scope": ["sources"]}]
+    stamp = re.sub(r"[^a-z0-9]+", "-", domain.lower()) + "-" + str(int(time.time()))
+    metrics = flymy.tool(CITE_TOOLS[0], {"target": target, "internal_list_limit": 5},
+                         operation_key="aivc-cite-metrics-" + stamp)
+    search = flymy.tool(CITE_TOOLS[1], {"target": target, "limit": 20, "order_by": ["ai_search_volume,desc"]},
+                        operation_key="aivc-cite-search-" + stamp)
+    return {"metrics": metrics, "search": search}
+
+
 def main(cfg):
     src = fetch(cfg, "scripts/compute.py")
     C = types.ModuleType("compute")
@@ -72,16 +110,20 @@ def main(cfg):
 
     plan = as_obj(cfg["plan"])
     engines = cfg["engines"]
+    raw = [as_obj(p) for p in cfg.get("probes") or []]
+    if cfg.get("answers"):
+        raw += [as_obj(o) for o in all_objects(cfg["answers"])]
     probes = []
-    for i, p in enumerate(cfg.get("probes") or []):
-        o = as_obj(p)
-        if "mode" not in o:
-            o["mode"] = "full" if (("results" in o and "scores" in o) or "r" in o) else ("sentiment" if "scores" in o else "visibility")
-        if not o.get("engine") and i < len(engines):
-            o["engine"] = engines[i]["id"]  # probes are passed in engine order
+    for i, o in enumerate(raw):
+        o = C.normalize_probe(o)
+        if not o.get("engine") and o["mode"] != "ask" and len(raw) == len(engines):
+            o["engine"] = engines[i]["id"]  # older runs passed one answer per engine, in engine order
         probes.append(o)
 
     report = C.assemble(plan, engines, probes)
+    if any(o["mode"] == "ask" for o in probes):
+        report["notes"].append("Each question was asked in its own fresh run per engine; "
+                               "the engines were never told which site is being checked.")
     report = C.compute(report)
     report["insights"] = C.insights(report)
     scored = {C.norm(s["brand"]) for s in report.get("sentiment", [])}
@@ -91,6 +133,29 @@ def main(cfg):
                                f"{', '.join(unscored)} came up in the answers but were not scored.")
     if cfg.get("budget_note"):
         report["notes"].append(str(cfg["budget_note"]))
+
+    try:
+        import flymy  # present only inside a FlyMyAI sandbox
+    except ImportError:
+        flymy = None
+
+    # real AI answers that already cite the site: "Your website is also cited for these prompts"
+    cit = cfg.get("citations")
+    if cit is None and flymy is not None and report["target"].get("domain"):
+        try:
+            cit = fetch_citations(flymy, report["target"]["domain"])
+        except Exception as e:  # the tool may not be available to this sandbox
+            cit = None
+            report["notes"].append(f"The prompts that cite {report['target']['domain']} could not be "
+                                   f"looked up in this run ({str(e)[:120]}).")
+    if cit:
+        c = C.citations_from(cit.get("metrics"), cit.get("search"), report["target"])
+        report["ai_citations"] = c
+        if c["answers"]:
+            report["insights"].append(
+                f"{report['target']['domain']} is also cited as a source in {c['answers']} AI answers to "
+                f"real questions ({c['ai_search_volume']:,} monthly searches)"
+                + (f", for example '{c['prompts'][0]['q']}'." if c["prompts"] else "."))
 
     # data.js feeds the page only: per-answer citations, domains and summaries stay out
     lean = json.loads(json.dumps(report))
@@ -106,10 +171,6 @@ def main(cfg):
              {"path": "flymy.site.json",
               "content": json.dumps({"schema": "flymyai.site.calls/v1", "calls": [], "permissions": []})}]
 
-    try:
-        import flymy  # present only inside a FlyMyAI sandbox
-    except ImportError:
-        flymy = None
     site_url = None
     if flymy is None:
         import os
@@ -134,6 +195,7 @@ def main(cfg):
         "by_engine": {e: x["pct"] for e, x in v["by_engine"].items()},
         "leaderboard": [[b["brand"], b["share_of_voice_pct"]] for b in report["leaderboard"]],
         "sentiment": [[s["brand"], s["index"]] for s in sorted(report["sentiment"], key=lambda s: -s["index"])],
+        "cited_in": (report.get("ai_citations") or {}).get("answers"),
         "summary": report["insights"], "notes": report["notes"],
     }, ensure_ascii=False))
 

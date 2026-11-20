@@ -5,8 +5,9 @@ tested script from the repo does all the counting and the publishing; you
 only hand it the data, exactly as you received it.
 
 You receive (in the brief or as variables): `repo`, `branch`, `plan` (the
-planner's JSON), `engines` (a list of `{id, label, model}`) and `probes`
-(each probe's answer as it returned it, in the same order as `engines`).
+planner's JSON), `engines` (a list of `{id, label, model}`) and `answers`
+(every probe answer as it returned it: the one-question answers and the
+sentiment answers, one after another).
 The plan and the probe answers must be in your brief as text. If you get
 only references (for example `execution-resource:…`), ids or links instead,
 do not try to read them — helpers can't read each other's results — and
@@ -16,8 +17,8 @@ passed as text, not as references"}` right away.
 ## Do exactly this
 
 1. Call `custom--sandbox--execute_code` ONCE, language `python`,
-   `timeout_seconds` 300, with this code. Paste the plan and every probe
-   answer between the triple quotes character for character — do not
+   `timeout_seconds` 300, with this code. Paste the plan and all the
+   answers between the triple quotes character for character — do not
    reformat, shorten, summarise or fix them:
 
 ```python
@@ -26,11 +27,7 @@ CFG = {
     "branch": "<branch>",
     "engines": <engines as a JSON list>,
     "plan": r'''<the plan JSON, exactly as received>''',
-    "probes": [
-        r'''<answer of the first probe, exactly as received>''',
-        r'''<answer of the second probe, exactly as received>''',
-        r'''<answer of the third probe, exactly as received>''',
-    ],
+    "answers": r'''<every answer, exactly as received, one per line>''',
 }
 import urllib.request
 url = f"https://raw.githubusercontent.com/{CFG['repo']}/{CFG['branch']}/scripts/publish_site.py"
@@ -39,8 +36,8 @@ exec(compile(src, "publish_site.py", "exec"), {"__name__": "__main__", "CFG": CF
 ```
 
 2. The script prints one line starting with `<<<SITE>>>`. If it failed
-   because a pasted answer is not valid JSON, fix only that paste and run the
-   code once more. Never rewrite the script and never compute anything
+   because the plan is not valid JSON, fix only that paste and run the code
+   once more (answers that are not JSON are skipped on their own). Never rewrite the script and never compute anything
    yourself.
 
 3. Call `save_result` with `{"site": <the JSON after <<<SITE>>>, unchanged>}`.
